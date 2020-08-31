@@ -1,11 +1,12 @@
 questions = [
     {
-        "questionOriginal": "Oppression by corporations is more of a concern than oppression by governments.",
-        "question": "The growing influence of corporations is more of a concern than the growing influence of governments.",
-        "sentiment": {
-            "The updated question has more bias than the original (count).": 1,
-            "The updated question has less bias than the original (count).": 5,
-            "The updated question is just right (count).": 3
+        "questionV001": "Oppression by corporations is more of a concern than oppression by governments.",
+        "questionV002": "The growing influence of corporations is more of a concern than the growing influence of governments.",
+        "sentimentCounts": {
+            "This question feels overly biased and should be deleted or re-written.": 1,
+            "This question has a bit of bias, but is acceptable.": 5,
+            "This question feels unbiased.": 3,
+            "This question has a defect, get rid of it.": 1
         },
         "effect": {
             "econ": 10,
@@ -15,12 +16,13 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is necessary for the government to intervene in the economy to protect consumers.",
-        "question": "It is sometimes necessary for the government to step in an make corrections to the economy.",
-        "sentiment": {
-            "The updated question has more bias than the original (count).": 1,
-            "The updated question has less bias than the original (count).": 5,
-            "The updated question is just right (count).": 3
+        "questionV001": "It is necessary for the government to intervene in the economy to protect consumers.",
+        "questionV002": "It is sometimes necessary for the government to step in an make corrections to the economy.",
+        "sentimentCounts": {
+            "This question feels overly biased and should be deleted or re-written.": 1,
+            "This question has a bit of bias, but is acceptable.": 5,
+            "This question feels unbiased.": 3,
+            "This question has a defect, get rid of it.": 1
         },
         "effect": {
             "econ": 10,
@@ -35,8 +37,14 @@ questions = [
         // for a whole bunch of actions taken by people (buying things, selling things, signing contracts, etc.), a 
         // "free market" is really just a bunch of people with a lot of economic freedom.
         // https://www.reddit.com/r/communism101/comments/534r9f/what_does_the_freer_the_market_the_freer_the/
-        "questionOriginal": "The freer the markets, the freer the people.",
-        "question": "In general, people should be free to buy and sell whatever goods they want.",
+        "questionV001": "The freer the markets, the freer the people.",
+        "questionV002": "In general, people should be free to buy and sell whatever goods they want.",
+        "sentimentCounts": {
+            "This question feels overly biased and should be deleted or re-written.": 1,
+            "This question has a bit of bias, but is acceptable.": 5,
+            "This question feels unbiased.": 3,
+            "This question has a defect, get rid of it.": 1
+        },
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -47,8 +55,8 @@ questions = [
     {
         // ?????
         //https://www.quora.com/It-is-better-to-maintain-a-balanced-budget-than-to-ensure-welfare-for-all-citizens-How-much-do-you-agree-with-the-following-statement
-        "questionOriginal": "It is better to maintain a balanced budget than to ensure welfare for all citizens.",
-        "question": "The government should not spend more money than it takes in from taxes and should not go into debt because of welfare spending.",
+        "questionV001": "It is better to maintain a balanced budget than to ensure welfare for all citizens.",
+        "questionV002": "The government should not spend more money than it takes in from taxes and should not go into debt because of welfare spending.",
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -59,8 +67,8 @@ questions = [
     {
         //https://psmag.com/news/benefits-government-funded-research-86168
         //https://academicmatters.ca/the-public-value-of-public-funding-for-research/
-        "questionOriginal": "Publicly-funded research is more beneficial to the people than leaving it to the market.",
-        "question": "Inventions and scientific breakthroughs that are the result of public funding benefit the people more than if private companies in the market make similar advancements.",
+        "questionV001": "Publicly-funded research is more beneficial to the people than leaving it to the market.",
+        "questionV002": "Inventions and scientific breakthroughs that are the result of public funding benefit the people more than if private companies in the market make similar advancements.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -73,8 +81,8 @@ questions = [
         // of foreign goods in order to make domestic produce comparatively cheaper, with the aim of
         // encouraging domestic production by protecting local firms from global competition.
         //https://www.theguardian.com/business/2018/jul/06/what-are-trade-tariffs-and-who-will-they-affect#:~:text=Rather%20than%20being%20used%20to,local%20firms%20from%20global%20competition.
-        "questionOriginal": "Tariffs on international trade are important to encourage local production.",
-        "question": "It is important to make laws that make imported goods more expensive. This makes domestic products more competitive and in higher demand.",
+        "questionV001": "Tariffs on international trade are important to encourage local production.",
+        "questionV002": "It is important to make laws that make imported goods more expensive. This makes domestic products more competitive and in higher demand.",
         "effect": {
             "econ": 5,
             "dipl": 0,
@@ -91,8 +99,8 @@ questions = [
         // arrangement will be made possible by the abundance of goods and services that a developed communist
         // system will be capable to produce; the idea is that, with the full development of socialism and 
         // unfettered productive forces, there will be enough to satisfy everyone's needs.
-        "questionOriginal": "From each according to his ability, to each according to his needs.",
-        "question": "Anyone can work in society at any level they choose. Access to the consumer goods and services is available to all members of society, regardless of how much they contribute.",
+        "questionV001": "From each according to his ability, to each according to his needs.",
+        "questionV002": "Anyone can work in society at any level they choose. Access to the consumer goods and services is available to all members of society, regardless of how much they contribute.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -103,8 +111,8 @@ questions = [
     {
         // https://www.theatlantic.com/politics/archive/2014/03/the-conservative-myth-of-a-social-safety-net-built-on-charity/284552/
         // https://www.quora.com/It-would-be-best-if-social-programs-were-abolished-in-favor-of-private-charity-How-much-do-you-agree-with-the-following-statement
-        "questionOriginal": "It would be best if social programs were abolished in favor of private charity.",
-        "question": "Churches and other charities should be responsible to help the needy, not the government.",
+        "questionV001": "It would be best if social programs were abolished in favor of private charity.",
+        "questionV002": "Churches and other charities should be responsible to help the needy, not the government.",
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -113,8 +121,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Taxes should be increased on the rich to provide for the poor.",
-        "question": "The rich should pay more in taxes than the poor. Tax proceeds from the rich should be used to help the poor.",
+        "questionV001": "Taxes should be increased on the rich to provide for the poor.",
+        "questionV002": "The rich should pay more in taxes than the poor. Tax proceeds from the rich should be used to help the poor.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -128,8 +136,8 @@ questions = [
         // individual who owned/earned that wealth. It is that person’s right to determine
         // what happens to his/her wealth (property), whether they give it to charity, spend
         // it on wine, women & song, or will it to their progeny.
-        "questionOriginal": "Inheritance is a legitimate form of wealth.",
-        "question": "If your parents die and leave you money in their will, you are free to spend it however you like.",
+        "questionV001": "Inheritance is a legitimate form of wealth.",
+        "questionV002": "If your parents die and leave you money in their will, you are free to spend it however you like.",
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -139,8 +147,8 @@ questions = [
     },
     {
         //https://www.reddit.com/r/AskLibertarians/comments/dni205/public_utilities_like_roads_and_electricity/
-        "questionOriginal": "Basic utilities like roads and electricity should be publicly owned.",
-        "question": "Basic things that everyone uses, like electricity and roads, should be owned by the government and paid for with taxes.",
+        "questionV001": "Basic utilities like roads and electricity should be publicly owned.",
+        "questionV002": "Basic things that everyone uses, like electricity and roads, should be owned by the government and paid for with taxes.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -149,8 +157,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Government intervention is a threat to the economy.",
-        "question": "The government should rarely interfere in the economy.",
+        "questionV001": "Government intervention is a threat to the economy.",
+        "questionV002": "The government should rarely interfere in the economy.",
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -159,8 +167,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Those with a greater ability to pay should receive better healthcare.",
-        "question": "Rich people that get sick should be able to spend your extra money to get the best treatment they can find.",
+        "questionV001": "Those with a greater ability to pay should receive better healthcare.",
+        "questionV002": "Rich people that get sick should be able to spend your extra money to get the best treatment they can find.",
         "effect": {
             "econ": -10,
             "dipl": 0,
@@ -169,8 +177,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Quality education is a right of all people.",
-        "question": "Anyone that wants to go to school should be able to go for free. The education received should be high quality.",
+        "questionV001": "Quality education is a right of all people.",
+        "questionV002": "Anyone that wants to go to school should be able to go for free. The education received should be high quality.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -180,8 +188,8 @@ questions = [
     },
     {
         //https://en.wikipedia.org/wiki/Means_of_production#:~:text=society%20at%20large.-,Determinant%20of%20class,passive%20income%20from%20their%20operation.
-        "questionOriginal": "The means of production should belong to the workers who use them.",
-        "question": "The people have control over their work and their bosses because they have total control what is made or not made.",
+        "questionV001": "The means of production should belong to the workers who use them.",
+        "questionV002": "The people have control over their work and their bosses because they have total control what is made or not made.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -191,8 +199,8 @@ questions = [
     },
     {
         //https://www.quora.com/What-arguments-are-there-for-why-the-United-Nations-should-be-abolished
-        "questionOriginal": "The United Nations should be abolished.",
-        "question": "We should eliminate the United Nations.",
+        "questionV001": "The United Nations should be abolished.",
+        "questionV002": "We should eliminate the United Nations.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -201,8 +209,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Military action by our nation is often necessary to protect it.",
-        "question": "We often must go to war to protect our country.",
+        "questionV001": "Military action by our nation is often necessary to protect it.",
+        "questionV002": "We often must go to war to protect our country.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -211,8 +219,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "I support regional unions, such as the European Union.",
-        "question": "I support countries that join together and agree to help each other.",
+        "questionV001": "I support regional unions, such as the European Union.",
+        "questionV002": "I support countries that join together and agree to help each other.",
         "effect": {
             "econ": -5,
             "dipl": 10,
@@ -221,8 +229,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important to maintain our national sovereignty.",
-        "question": "It is important that our country remains independent and is governed by the people that live here.",
+        "questionV001": "It is important to maintain our national sovereignty.",
+        "questionV002": "It is important that our country remains independent and is governed by the people that live here.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -231,8 +239,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "A united world government would be beneficial to mankind.",
-        "question": "If the whole world was just one nation, mankind would benefit.",
+        "questionV001": "A united world government would be beneficial to mankind.",
+        "questionV002": "If the whole world was just one nation, mankind would benefit.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -241,8 +249,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is more important to retain peaceful relations than to further our strength.",
-        "question": "It is more important to keep peace than to prepare for war.",
+        "questionV001": "It is more important to retain peaceful relations than to further our strength.",
+        "questionV002": "It is more important to keep peace than to prepare for war.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -251,8 +259,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Wars do not need to be justified to other countries.",
-        "question": "If our country must go to war with another, we don't need any other country's permission.",
+        "questionV001": "Wars do not need to be justified to other countries.",
+        "questionV002": "If our country must go to war with another, we don't need any other country's permission.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -261,8 +269,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Military spending is a waste of money.",
-        "question": "When the government spends money on the military, it is a waste of money.",
+        "questionV001": "Military spending is a waste of money.",
+        "questionV002": "When the government spends money on the military, it is a waste of money.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -271,8 +279,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "International aid is a waste of money.",
-        "question": "Giving money to those in need that don't live in our country is a waste of money.",
+        "questionV001": "International aid is a waste of money.",
+        "questionV002": "Giving money to those in need that don't live in our country is a waste of money.",
         "effect": {
             "econ": -5,
             "dipl": -10,
@@ -281,8 +289,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "My nation is great.",
-        "question": "My nation is great.",
+        "questionV001": "My nation is great.",
+        "questionV002": "My nation is great.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -291,8 +299,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Research should be conducted on an international scale.",
-        "question": "Inventors from different countries should coopoerate to come up with new technologies.",
+        "questionV001": "Research should be conducted on an international scale.",
+        "questionV002": "Inventors from different countries should coopoerate to come up with new technologies.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -301,8 +309,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Governments should be accountable to the international community.",
-        "question": "Our country should obey international laws that all countries have agreed upon.",
+        "questionV001": "Governments should be accountable to the international community.",
+        "questionV002": "Our country should obey international laws that all countries have agreed upon.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -311,8 +319,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Even when protesting an authoritarian government, violence is not acceptable.",
-        "question": "Protestors should never cause harm to anyone or any property, even if protesting an authoritarian government.",
+        "questionV001": "Even when protesting an authoritarian government, violence is not acceptable.",
+        "questionV002": "Protestors should never cause harm to anyone or any property, even if protesting an authoritarian government.",
         "effect": {
             "econ": 0,
             "dipl": 5,
@@ -321,8 +329,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "My religious values should be spread as much as possible.",
-        "question": "Many of my values come from my religion.",
+        "questionV001": "My religious values should be spread as much as possible.",
+        "questionV002": "Many of my values come from my religion.",
         "effect": {
             "econ": 0,
             "dipl": -5,
@@ -331,8 +339,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Our nation's values should be spread as much as possible.",
-        "question": "Many of our country's values come from different religions.",
+        "questionV001": "Our nation's values should be spread as much as possible.",
+        "questionV002": "Many of our country's values come from different religions.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -341,8 +349,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is very important to maintain law and order.",
-        "question": "It is very important to have law and order. We should have as little crime as possible.",
+        "questionV001": "It is very important to maintain law and order.",
+        "questionV002": "It is very important to have law and order. We should have as little crime as possible.",
         "effect": {
             "econ": 0,
             "dipl": -5,
@@ -351,8 +359,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "The general populace makes poor decisions.",
-        "question": "The average person makes poor decisions.",
+        "questionV001": "The general populace makes poor decisions.",
+        "questionV002": "The average person makes poor decisions.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -361,8 +369,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Physician-assisted suicide should be legal.",
-        "question": "If you're sick and there is no hope to live, it is not against the law to have a doctor help you end your life.",
+        "questionV001": "Physician-assisted suicide should be legal.",
+        "questionV002": "If you're sick and there is no hope to live, it is not against the law to have a doctor help you end your life.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -371,8 +379,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
-        "question": "Because the threat of terrorism is on the rise, we must allow the government to know more about us so that they can more easily stop terrorism before it happens.",
+        "questionV001": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
+        "questionV002": "Because the threat of terrorism is on the rise, we must allow the government to know more about us so that they can more easily stop terrorism before it happens.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -381,8 +389,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Government surveillance is necessary in the modern world.",
-        "question": "In order to keep people safe, the government must watch people's behavior.",
+        "questionV001": "Government surveillance is necessary in the modern world.",
+        "questionV002": "In order to keep people safe, the government must watch people's behavior.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -391,8 +399,8 @@ questions = [
         }
     },
     {   
-        "questionOriginal": "The very existence of the state is a threat to our liberty.",
-        "question": "Because we choose to live together in a country, we limit our freedom.",
+        "questionV001": "The very existence of the state is a threat to our liberty.",
+        "questionV002": "Because we choose to live together in a country, we limit our freedom.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -401,8 +409,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Regardless of political opinions, it is important to side with your country.",
-        "question": "It is important to support your local government, especially during a war.",
+        "questionV001": "Regardless of political opinions, it is important to side with your country.",
+        "questionV002": "It is important to support your local government, especially during a war.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -411,8 +419,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "All authority should be questioned.",
-        "question": "We should ask powerful people questions, so we can know what they are doing.",
+        "questionV001": "All authority should be questioned.",
+        "questionV002": "We should ask powerful people questions, so we can know what they are doing.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -421,8 +429,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "A hierarchical state is best.",
-        "question": "A government where some officials are bosses over other officials is best.",
+        "questionV001": "A hierarchical state is best.",
+        "questionV002": "A government where some officials are bosses over other officials is best.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -431,8 +439,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important that the government follows the majority opinion, even if it is wrong.",
-        "question": "It is important that the government follows the majority opinion, no matter what.",
+        "questionV001": "It is important that the government follows the majority opinion, even if it is wrong.",
+        "questionV002": "It is important that the government follows the majority opinion, no matter what.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -441,8 +449,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "The stronger the leadership, the better.",
-        "question": "We are a better country when we have strong leaders.",
+        "questionV001": "The stronger the leadership, the better.",
+        "questionV002": "We are a better country when we have strong leaders.",
         "effect": {
             "econ": 0,
             "dipl": -10,
@@ -451,8 +459,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Democracy is more than a decision-making process.",
-        "question": "Democracy is more than just the way the government makes decisions.",
+        "questionV001": "Democracy is more than a decision-making process.",
+        "questionV002": "Democracy is more than just the way the government makes decisions.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -461,8 +469,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Environmental regulations are essential.",
-        "question": "Laws to protect the environment are needed.",
+        "questionV001": "Environmental regulations are essential.",
+        "questionV002": "Laws to protect the environment are needed.",
         "effect": {
             "econ": 5,
             "dipl": 0,
@@ -471,8 +479,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "A better world will come from automation, science, and technology.",
-        "question": "Science and technology will help the world become better.",
+        "questionV001": "A better world will come from automation, science, and technology.",
+        "questionV002": "Science and technology will help the world become better.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -481,8 +489,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Children should be educated in religious or traditional values.",
-        "question": "In school we should learn about religious topics and traditional values.",
+        "questionV001": "Children should be educated in religious or traditional values.",
+        "questionV002": "In school we should learn about religious topics and traditional values.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -491,8 +499,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Traditions are of no value on their own.",
-        "question": "Things we do only because our ancestors did them is a waste of time.",
+        "questionV001": "Traditions are of no value on their own.",
+        "questionV002": "Things we do only because our ancestors did them is a waste of time.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -501,8 +509,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Religion should play a role in government.",
-        "question": "Our government should partner with religious groups.",
+        "questionV001": "Religion should play a role in government.",
+        "questionV002": "Our government should partner with religious groups.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -511,8 +519,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Churches should be taxed the same way other institutions are taxed.",
-        "question": "Religious groups should be taxed like businesses are taxed.",
+        "questionV001": "Churches should be taxed the same way other institutions are taxed.",
+        "questionV002": "Religious groups should be taxed like businesses are taxed.",
         "effect": {
             "econ": 5,
             "dipl": 0,
@@ -521,8 +529,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Climate change is currently one of the greatest threats to our way of life.",
-        "question": "Climate change threatens our way of life.",
+        "questionV001": "Climate change is currently one of the greatest threats to our way of life.",
+        "questionV002": "Climate change threatens our way of life.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -531,8 +539,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important that we work as a united world to combat climate change.",
-        "question": "The world must unite to combat climate change.",
+        "questionV001": "It is important that we work as a united world to combat climate change.",
+        "questionV002": "The world must unite to combat climate change.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -541,8 +549,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Society was better many years ago than it is now.",
-        "question": "People were better off in the past than they are now.",
+        "questionV001": "Society was better many years ago than it is now.",
+        "questionV002": "People were better off in the past than they are now.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -551,8 +559,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important that we maintain the traditions of our past.",
-        "question": "It is important to remember and honor the people that came before us.",
+        "questionV001": "It is important that we maintain the traditions of our past.",
+        "questionV002": "It is important to remember and honor the people that came before us.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -561,8 +569,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important that we think in the long term, beyond our lifespans.",
-        "question": "It is important that we think about the future, beyond the time when we are dead.",
+        "questionV001": "It is important that we think in the long term, beyond our lifespans.",
+        "questionV002": "It is important that we think about the future, beyond the time when we are dead.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -571,8 +579,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Reason is more important than maintaining our culture.",
-        "question": "Figuring things out is more important than painting art.",
+        "questionV001": "Reason is more important than maintaining our culture.",
+        "questionV002": "Figuring things out is more important than painting art.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -581,8 +589,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Drug use should be legalized or decriminalized.",
-        "question": "We should be free to put anything in our bodies that we want to.",
+        "questionV001": "Drug use should be legalized or decriminalized.",
+        "questionV002": "We should be free to put anything in our bodies that we want to.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -591,8 +599,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Same-sex marriage should be legal.",
-        "question": "Women should be able to marry women. Men should be able to marry men.",
+        "questionV001": "Same-sex marriage should be legal.",
+        "questionV002": "Women should be able to marry women. Men should be able to marry men.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -601,8 +609,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "One group of people should not control another.",
-        "question": "One group of people should not have power over other groups of people.",
+        "questionV001": "One group of people should not control another.",
+        "questionV002": "One group of people should not have power over other groups of people.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -611,8 +619,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Sex outside marriage is immoral.",
-        "question": "Sex outside marriage is wrong.",
+        "questionV001": "Sex outside marriage is immoral.",
+        "questionV002": "Sex outside marriage is wrong.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -621,8 +629,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "If we accept migrants at all, it is important that they assimilate into our culture.",
-        "question": "It is important that people from other countries adapt to the ways of my country.",
+        "questionV001": "If we accept migrants at all, it is important that they assimilate into our culture.",
+        "questionV002": "It is important that people from other countries adapt to the ways of my country.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -631,8 +639,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Abortion should be prohibited in most or all cases.",
-        "question": "Terminating the life of an unborn baby should be illegal.",
+        "questionV001": "Abortion should be prohibited in most or all cases.",
+        "questionV002": "Terminating the life of an unborn baby should be illegal.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -641,8 +649,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Gun ownership should be prohibited for those without a valid reason.",
-        "question": "We should not allow people to own guns, unless they have a valid reason.",
+        "questionV001": "Gun ownership should be prohibited for those without a valid reason.",
+        "questionV002": "We should not allow people to own guns, unless they have a valid reason.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -651,8 +659,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "I support single-payer, universal healthcare.",
-        "question": "I believe that the government should pay for health care for everyone.",
+        "questionV001": "I support single-payer, universal healthcare.",
+        "questionV002": "I believe that the government should pay for health care for everyone.",
         "effect": {
             "econ": 10,
             "dipl": 0,
@@ -661,8 +669,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Prostitution should be illegal.",
-        "question": "Having sex with another person for money should be illegal.",
+        "questionV001": "Prostitution should be illegal.",
+        "questionV002": "Having sex with another person for money should be illegal.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -671,8 +679,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Maintaining family values is essential.",
-        "question": "Keeping close to your family is an essential part of life.",
+        "questionV001": "Maintaining family values is essential.",
+        "questionV002": "Keeping close to your family is an essential part of life.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -681,8 +689,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "To chase progress at all costs is dangerous.",
-        "question": "Sometimes I realize that it is best to stop what I am doing because it is dangerous to proceed.",
+        "questionV001": "To chase progress at all costs is dangerous.",
+        "questionV002": "Sometimes I realize that it is best to stop what I am doing because it is dangerous to proceed.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -691,8 +699,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Genetic modification is a force for good, even on humans.",
-        "question": "Changing the biology of nature is good thing, even when on humans.",
+        "questionV001": "Genetic modification is a force for good, even on humans.",
+        "questionV002": "Changing the biology of nature is good thing, even when on humans.",
         "effect": {
             "econ": 0,
             "dipl": 0,
@@ -701,8 +709,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "We should open our borders to immigration.",
-        "question": "Anyone who wants to live in my country is welcome to.",
+        "questionV001": "We should open our borders to immigration.",
+        "questionV002": "Anyone who wants to live in my country is welcome to.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -711,8 +719,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "Governments should be as concerned about foreigners as they are about their own citizens.",
-        "question": "Governments should be as concerned about people from other contries as they are about people in my country.",
+        "questionV001": "Governments should be as concerned about foreigners as they are about their own citizens.",
+        "questionV002": "Governments should be as concerned about people from other contries as they are about people in my country.",
         "effect": {
             "econ": 0,
             "dipl": 10,
@@ -721,8 +729,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "All people - regardless of factors like culture or sexuality - should be treated equally.",
-        "question": "All people should be treated equally.",
+        "questionV001": "All people - regardless of factors like culture or sexuality - should be treated equally.",
+        "questionV002": "All people should be treated equally.",
         "effect": {
             "econ": 10,
             "dipl": 10,
@@ -731,8 +739,8 @@ questions = [
         }
     },
     {
-        "questionOriginal": "It is important that we further my group's goals above all others.",
-        "question": "It is important that we further my group's goals above all others.",
+        "questionV001": "It is important that we further my group's goals above all others.",
+        "questionV002": "It is important that we further my group's goals above all others.",
         "effect": {
             "econ": -10,
             "dipl": -10,
