@@ -1,3 +1,3 @@
-# political_fingerprint_api
+# political_fingerprint_fe
 
-https://github.com/FergusDevelopmentLLC/political_fingerprint_api
+https://github.com/FergusDevelopmentLLC/political_fingerprint_fe
