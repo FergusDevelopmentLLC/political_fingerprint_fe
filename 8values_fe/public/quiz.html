@@ -34,8 +34,12 @@
     let qn = 0 // Question number
     let prev_answer = null
 
+    //const url_prefix = 'http://138.68.23.63:3000'
+    const url_prefix = 'http://127.0.0.1:3000'
+    const version = 1
+
     const getQuestions = async () => {
-      return await fetch("http://127.0.0.1:3000/questions/by_version/1").then(r => r.json())
+      return await fetch(`${url_prefix}/questions/by_version/${version}`).then(r => r.json())
     }
 
     const init_question = async () => {
