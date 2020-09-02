@@ -22,43 +22,27 @@
   <br>
   <button class="small_button" onclick="prev_question()" id="back_button">Back</button>
   <button class="small_button_off" id="back_button_off">Back</button><br>
-
-  <!-- Website visit statistics - no personal information is collected! -->
-  <script type="text/javascript">
-    var sc_project = 11325211;
-    var sc_invisible = 1;
-    var sc_security = "fd9f0659";
-    var scJsHost = (("https:" == document.location.protocol) ?
-      "https://secure." : "http://www.");
-    document.write("<sc" + "ript type='text/javascript' src='" +
-      scJsHost +
-      "statcounter.com/counter/counter.js'></" + "script>");
-  </script>
-  <noscript>
-    <div class="statcounter"><a title="web stats" href="http://statcounter.com/" target="_blank"><img
-          class="statcounter" src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web
-stats"></a></div>
-  </noscript>
+  <noscript></noscript>
 
   <!-- JavaScript for the test itself -->
   <script>
-    var max_econ, max_dipl, max_govt, max_scty; // Max possible scores
-    max_econ = max_dipl = max_govt = max_scty = 0;
-    var econ, dipl, govt, scty; // User's scores
-    econ = dipl = govt = scty = 0;
-    var qn = 0; // Question number
-    var prev_answer = null;
+
+    let max_econ, max_dipl, max_govt, max_scty // Max possible scores
+    max_econ = max_dipl = max_govt = max_scty = 0
+    let econ, dipl, govt, scty // User's scores
+    econ = dipl = govt = scty = 0
+    let qn = 0 // Question number
+    let prev_answer = null
 
     const getQuestions = async () => {
       return await fetch("http://127.0.0.1:3000/questions/by_version/1").then(r => r.json())
     }
 
     const init_question = async () => {
-      // document.getElementById("question-original-text").innerHTML = questions[qn].questionV001;
-      questions = await getQuestions();
-      console.log('questions', questions)
-      document.getElementById("question-text").innerHTML = questions[qn].content;
-      document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+      questions = await getQuestions()
+      document.getElementById("question-text").innerHTML = questions[qn].content
+      document.getElementById("question-number").innerHTML = `Question ${qn + 1} of ${questions.length}`
+      
       if (prev_answer == null) {
         document.getElementById("back_button").style.display = 'none';
         document.getElementById("back_button_off").style.display = 'block';
@@ -67,15 +51,17 @@ stats"></a></div>
         document.getElementById("back_button_off").style.display = 'none';
       }
 
-      for (var i = 0; i < questions.length; i++) {
+      questions.forEach((question, i) => {
         max_econ += Math.abs(questions[i].effect.econ)
         max_dipl += Math.abs(questions[i].effect.dipl)
         max_govt += Math.abs(questions[i].effect.govt)
         max_scty += Math.abs(questions[i].effect.scty)
-      }
+      })
+
     }
 
     const next_question = (mult) => {
+      
       console.log('next_question')
 
       econ += mult * questions[qn].effect.econ
@@ -94,6 +80,7 @@ stats"></a></div>
     }
 
     const prev_question = () => {
+      
       console.log('prev_question')
 
       if (prev_answer == null) {
@@ -112,12 +99,17 @@ stats"></a></div>
     }
 
     const calc_score = (score, max) => {
+      
       console.log('calc_score')
+      
       return (100 * (max + score) / (2 * max)).toFixed(1)
+    
     }
 
     const results = () => {
+      
       console.log('results')
+      
       location.href = `results.html`
         + `?e=${calc_score(econ, max_econ)}`
         + `&d=${calc_score(dipl, max_dipl)}`
