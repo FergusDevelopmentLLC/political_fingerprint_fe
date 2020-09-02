@@ -9,8 +9,8 @@ https://flaviocopes.com/urlsearchparams/
 https://disnovation.org/doc/OCW_70x100_RVB.pdf
 https://www.youtube.com/watch?v=nT4bhRMV298
 https://www.reddit.com/r/neoliberal/comments/f3mnud/effortpost_the_political_compass_is_biased_and_i/
-
-
+huge timesaver: https://stackoverflow.com/questions/51618226/visual-studio-code-removing-lines-containing-criteria
+https://stackoverflow.com/questions/51004206/vscode-always-ask-for-permission-to-save
 
 "weight";"word";"color";"url"
 "20";"capitalism";"#000000";""
