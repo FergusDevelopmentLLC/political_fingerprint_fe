@@ -79,6 +79,8 @@ ideologies = [
     },
     {
         "name": "Religious Communism",
+        "definition": "Religious communism is a form of communism that incorporates religious principles. Scholars have used the term to describe a variety of social or religious movements throughout history that have favored the communal ownership of property.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Religious_communism",
         "stats": {
             "econ": 100,
             "dipl": 50,
@@ -88,6 +90,8 @@ ideologies = [
     },
     {
         "name": "State Socialism",
+        "definition": "State socialism is a political and economic ideology within the socialist movement advocating state ownership of the means of production, either as a temporary measure or as a characteristic of socialism in the transition from the capitalist to the socialist mode of production or communist society. Aside from anarchists and other libertarian socialists, there was confidence amongst socialists in the concept of state socialism as being the most effective form of socialism. State socialism went into decline starting in the 1970s, with the discovery of stagflation during the 1970s energy crisis, the rise of neoliberalism and later with the fall of state socialist regimes in the Eastern Bloc during the Revolutions of 1989 and the fall of the Soviet Union.",
+        "definitionSource": "https://en.wikipedia.org/wiki/State_socialism",
         "stats": {
             "econ": 80,
             "dipl": 30,
@@ -97,6 +101,8 @@ ideologies = [
     },
     {
         "name": "Theocratic Socialism",
+        "definition": "Religious socialism is any form of socialism based on religious values. Members of several major religions have found that their beliefs about human society fit with socialist principles and ideas. As a result, religious socialist movements have developed within these religions. Such movements include: Buddhist socialism, Christian socialism, Islamic socialism, and Jewish socialism",
+        "definitionSource": "https://en.wikipedia.org/wiki/Religious_socialism",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -106,6 +112,8 @@ ideologies = [
     },
     {
         "name": "Religious Socialism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -115,6 +123,8 @@ ideologies = [
     },
     {
         "name": "Democratic Socialism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -124,6 +134,8 @@ ideologies = [
     },
     {
         "name": "Revolutionary Socialism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 80,
             "dipl": 20,
@@ -133,6 +145,8 @@ ideologies = [
     },
     {
         "name": "Libertarian Socialism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 80,
             "dipl": 80,
@@ -142,6 +156,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Syndicalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -151,6 +167,8 @@ ideologies = [
     },
     {
         "name": "Left-Wing Populism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 40,
@@ -160,6 +178,8 @@ ideologies = [
     },
     {
         "name": "Theocratic Distributism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 40,
@@ -169,6 +189,8 @@ ideologies = [
     },
     {
         "name": "Distributism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 50,
@@ -178,6 +200,8 @@ ideologies = [
     },
     {
         "name": "Social Liberalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 60,
@@ -187,6 +211,8 @@ ideologies = [
     },
     {
         "name": "Christian Democracy",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 60,
@@ -196,6 +222,8 @@ ideologies = [
     },
     {
         "name": "Social Democracy",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 70,
@@ -205,6 +233,8 @@ ideologies = [
     },
     {
         "name": "Progressivism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 80,
@@ -214,6 +244,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Mutualism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 50,
@@ -223,6 +255,8 @@ ideologies = [
     },
     {
         "name": "National Totalitarianism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 20,
@@ -232,6 +266,8 @@ ideologies = [
     },
     {
         "name": "Global Totalitarianism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 80,
@@ -241,6 +277,8 @@ ideologies = [
     },
     {
         "name": "Technocracy",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 60,
@@ -250,6 +288,8 @@ ideologies = [
     },
     {
         "name": "Centrist",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 50,
@@ -259,6 +299,8 @@ ideologies = [
     },
     {
         "name": "Liberalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 60,
@@ -268,6 +310,8 @@ ideologies = [
     },
     {
         "name": "Religious Anarchism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 50,
@@ -277,6 +321,8 @@ ideologies = [
     },
     {
         "name": "Right-Wing Populism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 30,
@@ -286,6 +332,8 @@ ideologies = [
     },
     {
         "name": "Moderate Conservatism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 40,
@@ -295,6 +343,8 @@ ideologies = [
     },
     {
         "name": "Reactionary",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 40,
@@ -304,6 +354,8 @@ ideologies = [
     },
     {
         "name": "Social Libertarianism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 60,
             "dipl": 70,
@@ -313,6 +365,8 @@ ideologies = [
     },
     {
         "name": "Libertarianism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 60,
@@ -322,6 +376,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Egoism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 50,
@@ -331,6 +387,8 @@ ideologies = [
     },
     {
         "name": "Nazism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 0,
@@ -340,6 +398,8 @@ ideologies = [
     },
     {
         "name": "Autocracy",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 50,
             "dipl": 20,
@@ -349,6 +409,8 @@ ideologies = [
     },
     {
         "name": "Fascism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 40,
             "dipl": 20,
@@ -358,6 +420,8 @@ ideologies = [
     },
     {
         "name": "Capitalist Fascism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 20,
@@ -367,6 +431,8 @@ ideologies = [
     },
     {
         "name": "Conservatism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 30,
             "dipl": 40,
@@ -376,6 +442,8 @@ ideologies = [
     },
     {
         "name": "Neo-Liberalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 30,
             "dipl": 30,
@@ -385,6 +453,8 @@ ideologies = [
     },
     {
         "name": "Classical Liberalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 30,
             "dipl": 60,
@@ -394,6 +464,8 @@ ideologies = [
     },
     {
         "name": "Authoritarian Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 30,
@@ -403,6 +475,8 @@ ideologies = [
     },
     {
         "name": "State Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -412,6 +486,8 @@ ideologies = [
     },
     {
         "name": "Neo-Conservatism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 20,
@@ -421,6 +497,8 @@ ideologies = [
     },
     {
         "name": "Fundamentalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 30,
@@ -430,6 +508,8 @@ ideologies = [
     },
     {
         "name": "Libertarian Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -439,6 +519,8 @@ ideologies = [
     },
     {
         "name": "Market Anarchism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -448,6 +530,8 @@ ideologies = [
     },
     {
         "name": "Objectivism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 10,
             "dipl": 50,
@@ -457,6 +541,8 @@ ideologies = [
     },
     {
         "name": "Totalitarian Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 0,
             "dipl": 30,
@@ -466,6 +552,8 @@ ideologies = [
     },
     {
         "name": "Ultra-Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 0,
             "dipl": 40,
@@ -475,6 +563,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Capitalism",
+        "definition": "",
+        "definitionSource": "",
         "stats": {
             "econ": 0,
             "dipl": 50,
