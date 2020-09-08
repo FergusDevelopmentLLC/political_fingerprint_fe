@@ -101,8 +101,8 @@ ideologies = [
     },
     {
         "name": "Theocratic Socialism",
-        "definition": "Religious socialism is any form of socialism based on religious values. Members of several major religions have found that their beliefs about human society fit with socialist principles and ideas. As a result, religious socialist movements have developed within these religions. Such movements include: Buddhist socialism, Christian socialism, Islamic socialism, and Jewish socialism",
-        "definitionSource": "https://en.wikipedia.org/wiki/Religious_socialism",
+        "definition": "Form of government in which a deity is officially recognized as the civil ruler and official policy is governed by officials, regarded as divinely guided.",
+        "definitionSource": "https://www.cram.com/flashcards/art-history-5125469",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -112,8 +112,8 @@ ideologies = [
     },
     {
         "name": "Religious Socialism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Religious socialism is any form of socialism based on religious values. Members of several major religions have found that their beliefs about human society fit with socialist principles and ideas. As a result, religious socialist movements have developed within these religions. Such movements include: Buddhist socialism, Christian socialism, Islamic socialism, and Jewish socialism",
+        "definitionSource": "https://en.wikipedia.org/wiki/Religious_socialism",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -123,8 +123,8 @@ ideologies = [
     },
     {
         "name": "Democratic Socialism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Democratic socialism is a political philosophy supporting political democracy within a socially owned economy, with a particular emphasis on economic democracy, workplace democracy and workers' self-management within a market socialist economy or some form of a decentralised planned socialist economy. Democratic socialists argue that capitalism is inherently incompatible with the values of freedom, equality and solidarity and that these ideals can only be achieved through the realisation of a socialist society.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Democratic_socialism",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -134,8 +134,8 @@ ideologies = [
     },
     {
         "name": "Revolutionary Socialism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Revolutionary socialism is a political philosophy, doctrine and tradition with socialism which stresses the idea that a social revolution is necessary in order to bring about structural changes to society. Revolution is not necessarily defined as a violent insurrection; it is defined as seizure of political power by mass movements of the working class so that the state is directly controlled or abolished by the working class as opposed to the capitalist class and its interests.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Revolutionary_socialism",
         "stats": {
             "econ": 80,
             "dipl": 20,
@@ -145,8 +145,8 @@ ideologies = [
     },
     {
         "name": "Libertarian Socialism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Libertarian socialism,also referred to as anarcho-socialism, anarchist socialism, free socialism, stateless socialism, socialist anarchism and socialist libertarianism, is an anti-authoritarian, anti-statist and libertarian political philosophy within the socialist movement which rejects the state socialist conception of socialism as a statist form where the state retains centralized control of the economy. It criticizes wage slavery relationships within the workplace, emphasizing workers' self-management[14] and decentralized structures of political organization.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Libertarian_socialism",
         "stats": {
             "econ": 80,
             "dipl": 80,
@@ -156,8 +156,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Syndicalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Anarcho-syndicalism is a political philosophy and anarchist school of thought that views revolutionary industrial unionism or syndicalism as a method for workers in capitalist society to gain control of an economy and thus control influence in broader society. The end goal of syndicalism is to abolish the wage system, regarding it as wage slavery.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Anarcho-syndicalism",
         "stats": {
             "econ": 80,
             "dipl": 50,
@@ -167,8 +167,8 @@ ideologies = [
     },
     {
         "name": "Left-Wing Populism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Left-wing populism, also called inclusionary populism and social populism, is a political ideology that combines left-wing politics and populist rhetoric and themes. Its rhetoric often consists of anti-elitist sentiments, opposition to the establishment and speaking for the \"common people\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Left-wing_populism",
         "stats": {
             "econ": 60,
             "dipl": 40,
@@ -177,20 +177,9 @@ ideologies = [
         }
     },
     {
-        "name": "Theocratic Distributism",
-        "definition": "",
-        "definitionSource": "",
-        "stats": {
-            "econ": 60,
-            "dipl": 40,
-            "govt": 30,
-            "scty": 20
-        }
-    },
-    {
         "name": "Distributism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Distributism is an economic theory asserting that the world's productive assets should be widely owned rather than concentrated.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Distributism",
         "stats": {
             "econ": 60,
             "dipl": 50,
@@ -199,9 +188,20 @@ ideologies = [
         }
     },
     {
+        "name": "Theocratic Distributism",
+        "definition": "Distributism under a government run according to the principles of a specific religion.",
+        "definitionSource": "https://www.reddit.com/r/distributism/comments/f9q1vc/what_is_theocratic_distributism",
+        "stats": {
+            "econ": 60,
+            "dipl": 40,
+            "govt": 30,
+            "scty": 20
+        }
+    },
+    {
         "name": "Social Liberalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Social liberalism, also known as left liberalism in Germany, modern liberalism in the United States and new liberalism in the United Kingdom, is a political ideology and variety of liberalism that endorses a regulated market economy and the expansion of civil and political rights.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Social_liberalism",
         "stats": {
             "econ": 60,
             "dipl": 60,
@@ -211,8 +211,8 @@ ideologies = [
     },
     {
         "name": "Christian Democracy",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Christian democracy is a political ideology that emerged in 19th-century Europe under the influence of Catholic social teaching,[1][2] as well as neo-Calvinism. It was conceived as a combination of modern democratic ideas and traditional Christian values, incorporating the social teachings espoused by the Catholic, Lutheran, Reformed, and Pentecostal traditions in various parts of the world.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Christian_democracy",
         "stats": {
             "econ": 60,
             "dipl": 60,
