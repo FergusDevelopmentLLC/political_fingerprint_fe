@@ -1,12 +1,8 @@
 ideologies = [
     {
-        // Anarcho-communism, also referred to as anarchist communism, communist anarchism, free communism, libertarian communism and stateless communism,
-        // is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private 
-        // property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common 
-        // ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production and
-        // consumption based on the guiding principle "From each according to his ability, to each according to his needs".
-        // https://en.wikipedia.org/wiki/Anarcho-communism
         "name": "Anarcho-Communism",
+        "definition": "Anarcho-communism, also referred to as anarchist communism, communist anarchism, free communism, libertarian communism and stateless communism, is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production andconsumption based on the guiding principle \"From each according to his ability, to each according to his needs\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Anarcho-communism",
         "stats": {
             "econ": 100,
             "dipl": 50,
@@ -15,14 +11,9 @@ ideologies = [
         }
     },
     {
-        // Libertarian communism, also referred to as anarchist communism, communist anarchism, free communism, anarcho-communism and stateless communism,
-        // is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private 
-        // property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common 
-        // ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production and
-        // consumption based on the guiding principle "From each according to his ability, to each according to his needs".
-        // https://en.wikipedia.org/wiki/Anarcho-communism
-
         "name": "Libertarian Communism",
+        "definition": "Libertarian communism, also referred to as anarchist communism, communist anarchism, free communism, anarcho-communism and stateless communism, is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production andconsumption based on the guiding principle \"From each according to his ability, to each according to his needs\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Anarcho-communism",
         "stats": {
             "econ": 100,
             "dipl": 70,
@@ -31,10 +22,10 @@ ideologies = [
         }
     },
     {
-        // Trotskyism is the name given to the political ideology of Russian revolutionary Marxist Leon Trotsky. Trotsky self-identified as an orthodox
-        // Marxist and Bolshevik–Leninist. He supported founding a vanguard party of the proletariat, proletarian internationalism and a dictatorship of
-        // the proletariat based on working class self-emancipation and mass democracy.
+        
         "name": "Trotskyism",
+        "definition": "Trotskyism is the name given to the political ideology of Russian revolutionary Marxist Leon Trotsky. Trotsky self-identified as an orthodox Marxist and Bolshevik–Leninist. He supported founding a vanguard party of the proletariat, proletarian internationalism and a dictatorship of the proletariat based on working class self-emancipation and mass democracy.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Trotskyism",
         "stats": {
             "econ": 100,
             "dipl": 100,
@@ -44,6 +35,8 @@ ideologies = [
     },
     {
         "name": "Marxism",
+        "definition": "Marxism is a method of socioeconomic analysis that uses a materialist interpretation of historical development, better known as historical materialism, to understand class relations and social conflict as well as a dialectical perspective to view social transformation. It originates from the works of 19th-century German philosophers Karl Marx and Friedrich Engels. As Marxism has developed over time into various branches and schools of thought, there is currently no single definitive Marxist theory.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Marxism",
         "stats": {
             "econ": 100,
             "dipl": 70,
@@ -51,7 +44,19 @@ ideologies = [
             "scty": 80
         }
     },
-    {
+    {   
+        // Marxist-De Leonism is a libertarian Marxist current developed by the American activist Daniel De Leon. De Leon was an early leader of the 
+        // first United States socialist political party, the Socialist Labor Party of America (SLP). De Leon introduced the concept of Socialist Industrial Unionism.
+        //
+        // According to De Leonist theory, militant industrial unions are the vehicle of class struggle. Industrial unions serving the interests of the proletariat 
+        // (working class) will be the needed republican structure used to establish a socialist system.
+        //
+        // While sharing some characteristics of anarcho-syndicalism (the management of workplaces through unions) and with the SLP being a member of the predominantly
+        // anarcho-syndicalist Industrial Workers of the World (IWW), De Leonism actually differs from it in that De Leonism, and its main proponent, the modern SLP, 
+        // still believe in the necessity of a political party advocating a Constitutional amendment making the Union the government of industry. Central government 
+        // would coordinate production. The party would cease to exist, as would the political state and that was its goal. No vanguardist elites are provided a base 
+        // in Marxist-DeLeonism to scuttle the Republic.
+        // https://en.wikipedia.org/wiki/De_Leonism
         "name": "De Leonism",
         "stats": {
             "econ": 100,
@@ -61,6 +66,14 @@ ideologies = [
         }
     },
     {
+        // Leninism is a political ideology developed by Russian revolutionary Vladimir Lenin that proposes the establishment of the dictatorship of the proletariat, 
+        // led by a revolutionary vanguard party, as the political prelude to the establishment of Communism. The function of the Leninist vanguard party is to provide 
+        // the working classes with the political consciousness (education and organisation) and revolutionary leadership necessary to depose capitalism in the Russian
+        // Empire (1721–1917). Leninist revolutionary leadership is based upon The Communist Manifesto (1848) identifying the communist party as "the most advanced
+        // and resolute section of the working class parties of every country; that section which pushes forward all others." As the vanguard party, the Bolsheviks 
+        // viewed history through the theoretical framework of dialectical materialism, which sanctioned political commitment to the successful overthrow of capitalism, 
+        // and then to instituting socialism; and, as the revolutionary national government, to realize the socio-economic transition by all means.
+        // https://en.wikipedia.org/wiki/Leninism
         "name": "Leninism",
         "stats": {
             "econ": 100,
