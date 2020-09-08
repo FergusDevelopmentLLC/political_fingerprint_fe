@@ -1,5 +1,11 @@
 ideologies = [
     {
+        // Anarcho-communism, also referred to as anarchist communism, communist anarchism, free communism, libertarian communism and stateless communism,
+        // is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private 
+        // property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common 
+        // ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production and
+        // consumption based on the guiding principle "From each according to his ability, to each according to his needs".
+        // https://en.wikipedia.org/wiki/Anarcho-communism
         "name": "Anarcho-Communism",
         "stats": {
             "econ": 100,
@@ -9,6 +15,13 @@ ideologies = [
         }
     },
     {
+        // Libertarian communism, also referred to as anarchist communism, communist anarchism, free communism, anarcho-communism and stateless communism,
+        // is a political philosophy and anarchist school of thought which advocates the abolition of the state, capitalism, wage labour and private 
+        // property (while retaining respect for personal property, along with collectively-owned items, goods and services)[18] in favor of common 
+        // ownership of the means of production and direct democracy as well as a horizontal network of workers' councils with production and
+        // consumption based on the guiding principle "From each according to his ability, to each according to his needs".
+        // https://en.wikipedia.org/wiki/Anarcho-communism
+
         "name": "Libertarian Communism",
         "stats": {
             "econ": 100,
@@ -18,6 +31,9 @@ ideologies = [
         }
     },
     {
+        // Trotskyism is the name given to the political ideology of Russian revolutionary Marxist Leon Trotsky. Trotsky self-identified as an orthodox
+        // Marxist and Bolshevik–Leninist. He supported founding a vanguard party of the proletariat, proletarian internationalism and a dictatorship of
+        // the proletariat based on working class self-emancipation and mass democracy.
         "name": "Trotskyism",
         "stats": {
             "econ": 100,

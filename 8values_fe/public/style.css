@@ -24,49 +24,24 @@ p.value-description {
     text-indent: -16pt;
     margin-left: 20pt;
 }
-p.question, p.question-orig {
+p.question {
     margin: 16pt auto;
     color: #333333;
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     width: 70%;
     min-width: 500pt;
+    min-height: 144pt;
     background-color: #eeeeee;
     padding: 16pt;
     border-radius: 16pt;
-    font-size: 2rem;
+    font-size: 36pt;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 
 }
-p.question-orig {
-    margin: 16pt auto;
-    color: #333333;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-    width: 70%;
-    min-width: 500pt;
-    background-color: #eeeeee;
-    padding: 16pt;
-    border-radius: 16pt;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-}
-
-/* .question-header {
-    text-align: center;
-    margin: 1rem 0 0 0;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-    font-size: 1.5rem;
-} */
-
 h1 {
     color: #222222;
     font-family: 'Montserrat', sans-serif;
@@ -84,17 +59,6 @@ h2 {
     margin-top: 12pt;
     margin-bottom: 0pt;
 }
-
-h3 {
-    color: #333333;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
 li {
     font-size: 16pt;
     text-indent: 16pt;
