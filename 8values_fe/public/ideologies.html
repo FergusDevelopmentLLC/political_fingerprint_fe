@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ideologies</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <style type="text/css">
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    dl {
+      display: flex;
+      flex-flow: row wrap;
+      border-bottom: 1px solid #333;
+    }
+
+    dt {
+      flex-basis: 10%;
+      font-weight: bold;
+      padding: 1rem;
+      text-align: right;
+      border-left: 1px solid #333;
+      border-top: 1px solid #333;
+      border-right: 1px solid #333;
+    }
+    
+    dd {
+      flex-basis: 80%;
+      flex-grow: 1;
+      margin: 0;
+      padding: 1rem;
+      border-top: 1px solid #333;
+      border-right: 1px solid #333;
+    }
+  
+  </style>
+</head>
+
+<body>
+  <div id="target">
+
+  </div>
+  <script>
+
+    const url_prefix = 'http://138.68.23.63:3030'
+    
+    const getIdeologies = async () => {
+      return await fetch(`${url_prefix}/ideologies`).then(r => r.json())
+    }
+
+    const init = async () => {
+
+      let ideologies = await getIdeologies()
+      let target = document.getElementById("target")
+      let dl = document.createElement("dl")
+
+      ideologies.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
+      ideologies.forEach(function (ideology, i) {
+        let dt = document.createElement("dt")
+        dt.innerHTML = ideology.name
+        dl.appendChild(dt)
+
+        let dd = document.createElement("dd")
+        dd.innerHTML = ideology.definition
+        dl.appendChild(dd)
+      })
+      
+      target.appendChild(dl)
+    }
+
+    init()
+
+  </script>
+</body>
+
+</html>
