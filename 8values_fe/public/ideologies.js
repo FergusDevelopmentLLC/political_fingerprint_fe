@@ -222,8 +222,8 @@ ideologies = [
     },
     {
         "name": "Social Democracy",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Social democracy is a government system that has similar values to socialism, but within a capitalist framework. The ideology, named from democracy where people have a say in government actions, supports a competitive economy with money while also helping people whose jobs don't pay a lot.",
+        "definitionSource": "https://simple.wikipedia.org/wiki/Social_democracy",
         "stats": {
             "econ": 60,
             "dipl": 70,
@@ -233,8 +233,8 @@ ideologies = [
     },
     {
         "name": "Progressivism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Progressivism generally means any political movement that wants to change government for the better. It is the opposite of conservatism.",
+        "definitionSource": "https://simple.wikipedia.org/wiki/Progressivism",
         "stats": {
             "econ": 60,
             "dipl": 80,
@@ -244,8 +244,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Mutualism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Anarcho-Mutualism or Utopian-Anarchism is a special faction of anarchy that believes that as long as the state remains there will always be inequality and racial tensions.",
+        "definitionSource": "https://anarchist-factions.fandom.com/wiki/Anarcho-Mutualism",
         "stats": {
             "econ": 60,
             "dipl": 50,
@@ -255,8 +255,8 @@ ideologies = [
     },
     {
         "name": "National Totalitarianism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "National totalitarianism is a term for a political system or form of national government that prohibits opposition parties, restricts individual opposition to the state and its claims, and exercises an extremely high degree of control over public and private life.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Totalitarianism",
         "stats": {
             "econ": 50,
             "dipl": 20,
@@ -266,8 +266,8 @@ ideologies = [
     },
     {
         "name": "Global Totalitarianism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Global totalitarianism is a term for a political system or form of global government that prohibits opposition parties, restricts individual opposition to the state and its claims, and exercises an extremely high degree of control over public and private life.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Totalitarianism",
         "stats": {
             "econ": 50,
             "dipl": 80,
@@ -277,8 +277,8 @@ ideologies = [
     },
     {
         "name": "Technocracy",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Technocracy is an ideological system of governance in which a decision-maker or makers are elected by the population or appointed on the basis of their expertise in a given area of responsibility, particularly with regard to scientific or technical knowledge.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Technocracy",
         "stats": {
             "econ": 60,
             "dipl": 60,
@@ -287,9 +287,9 @@ ideologies = [
         }
     },
     {
-        "name": "Centrist",
-        "definition": "",
-        "definitionSource": "",
+        "name": "Centrism",
+        "definition": "Centrism is a political outlook or specific position that involves acceptance or support of a balance of a degree of social equality and a degree of social hierarchy, while opposing political changes which would result in a significant shift of society strongly to either the left or the right.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Centrism",
         "stats": {
             "econ": 50,
             "dipl": 50,
@@ -299,8 +299,8 @@ ideologies = [
     },
     {
         "name": "Liberalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Liberalism is a political and moral philosophy based on liberty, consent of the governed and equality before the law. Liberals generally support free markets, free trade, limited government, individual rights (including civil rights and human rights), capitalism, democracy, secularism, gender equality, racial equality, internationalism, freedom of speech, freedom of the press and freedom of religion.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Liberalism",
         "stats": {
             "econ": 50,
             "dipl": 60,
@@ -310,8 +310,8 @@ ideologies = [
     },
     {
         "name": "Religious Anarchism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Religious anarchism is a movement in political theology that claims anarchism is inherent in specific religious teachings. It is grounded in the belief that there is only one source of authority (God). It therefore rejects the idea that human governments have ultimate authority over human societies.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Christian_anarchism",
         "stats": {
             "econ": 50,
             "dipl": 50,
@@ -321,8 +321,8 @@ ideologies = [
     },
     {
         "name": "Right-Wing Populism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Right-wing populism, is a political ideology which combines right-wing politics and populist rhetoric and themes. The rhetoric often consists of anti-elitist sentiments, opposition to the perceived establishment, and speaking to the \"common people\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Right-wing_populism",
         "stats": {
             "econ": 40,
             "dipl": 30,
@@ -343,8 +343,8 @@ ideologies = [
     },
     {
         "name": "Reactionary",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "A reactionary or reactionist is a person or entity holding political views that favor a return to a previous political state of society that they believe possessed positive characteristics that are absent in contemporary society. The word reactionary is often used in the context of the left–right political spectrum, and is one tradition in right-wing politics. In popular usage, it is commonly used to refer to a highly traditional position, one opposed to social or political change.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Reactionary",
         "stats": {
             "econ": 40,
             "dipl": 40,
@@ -354,8 +354,8 @@ ideologies = [
     },
     {
         "name": "Social Libertarianism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "social libertarianism is a political philosophy and type of libertarianism that stresses both individual freedom and social equality. Left-libertarianism represents several related yet distinct approaches to political and social theory. In its classical usage, it refers to anti-authoritarian varieties of left-wing politics such as anarchism, especially social anarchism, whose adherents simply call it libertarianism.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Left-libertarianism",
         "stats": {
             "econ": 60,
             "dipl": 70,
@@ -365,8 +365,8 @@ ideologies = [
     },
     {
         "name": "Libertarianism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Libertarianism is a political philosophy and movement that upholds liberty as a core principle. Libertarians seek to maximize political freedom and autonomy, emphasizing individualism, freedom of choice and voluntary association.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Libertarianism",
         "stats": {
             "econ": 40,
             "dipl": 60,
