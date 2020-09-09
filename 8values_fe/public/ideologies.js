@@ -376,8 +376,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Egoism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Anarcho-egoism is a school of anarchist thought that originated in the philosophy of Max Stirner, a 19th-century existentialist philosopher whose \"name appears with familiar regularity in historically orientated surveys of anarchist thought as one of the earliest and best known exponents of individualist anarchism\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Egoist_anarchism",
         "stats": {
             "econ": 40,
             "dipl": 50,
@@ -387,8 +387,8 @@ ideologies = [
     },
     {
         "name": "Nazism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Nazism is a form of fascism, with disdain for liberal democracy and the parliamentary system.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Nazism",
         "stats": {
             "econ": 40,
             "dipl": 0,
@@ -398,8 +398,8 @@ ideologies = [
     },
     {
         "name": "Autocracy",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Autocracy is a system of government in which supreme political power to direct all the activities of the state is concentrated in the hands of one person, whose decisions are subject to neither external legal restraints nor regularized mechanisms of popular control.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Autocracy",
         "stats": {
             "econ": 50,
             "dipl": 20,
@@ -409,8 +409,8 @@ ideologies = [
     },
     {
         "name": "Fascism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Fascism is a form of far-right, authoritarian ultranationalism characterized by dictatorial power, forcible suppression of opposition, as well as strong regimentation of society and of the economy.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Fascism",
         "stats": {
             "econ": 40,
             "dipl": 20,
@@ -431,8 +431,8 @@ ideologies = [
     },
     {
         "name": "Conservatism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Conservatism is a political and social philosophy promoting traditional social institutions in the context of culture and civilization. The central tenets of conservatism include tradition, organic society, hierarchy, authority, and property rights.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Conservatism",
         "stats": {
             "econ": 30,
             "dipl": 40,
@@ -442,8 +442,8 @@ ideologies = [
     },
     {
         "name": "Neo-Liberalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Neo-liberalism is the 20th-century resurgence of 19th-century ideas associated with economic liberalism and free-market capitalism. It is generally associated with policies of economic liberalization, including privatization, deregulation, globalization, free trade, austerity, and reductions in government spending in order to increase the role of the private sector in the economy and society.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Neoliberalism",
         "stats": {
             "econ": 30,
             "dipl": 30,
@@ -453,8 +453,8 @@ ideologies = [
     },
     {
         "name": "Classical Liberalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Classical liberalism is the term used to designate the ideology advocating private property, an unhampered market economy, the rule of law, constitutional guarantees of freedom of religion and of the press, and international peace based on free trade.",
+        "definitionSource": "https://mises.org/library/what-classical-liberalism",
         "stats": {
             "econ": 30,
             "dipl": 60,
@@ -486,8 +486,8 @@ ideologies = [
     },
     {
         "name": "Neo-Conservatism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Neo-Conservatism is a political movement born in the United States during the 1960s among liberal hawks who became disenchanted with the increasingly pacifist foreign policy of the Democratic Party and with the growing New Left and counterculture of the 1960s, particularly the Vietnam protests.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Neoconservatism",
         "stats": {
             "econ": 20,
             "dipl": 20,
@@ -497,8 +497,8 @@ ideologies = [
     },
     {
         "name": "Fundamentalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Fundamentalism usually has a religious connotation that indicates unwavering attachment to a set of irreducible beliefs. It is characterized by a markedly strict literalism as it is applied to certain specific scriptures, dogmas, or ideologies, and a strong sense of the importance of maintaining ingroup and outgroup distinctions.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Fundamentalism",
         "stats": {
             "econ": 20,
             "dipl": 30,
@@ -519,8 +519,8 @@ ideologies = [
     },
     {
         "name": "Market Anarchism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Market anarchism is the branch of anarchism that advocates a free-market economic system based on voluntary interactions without the involvement of the state.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Free-market_anarchism",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -530,8 +530,8 @@ ideologies = [
     },
     {
         "name": "Objectivism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Objectivism is a philosophical system developed by Russian-American writer Ayn Rand. Rand described Objectivism as \"the concept of man as a heroic being, with his own happiness as the moral purpose of his life, with productive achievement as his noblest activity, and reason as his only absolute\".",
+        "definitionSource": "https://en.wikipedia.org/wiki/Objectivism",
         "stats": {
             "econ": 10,
             "dipl": 50,
@@ -541,8 +541,8 @@ ideologies = [
     },
     {
         "name": "Totalitarian Capitalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Totalitarian capitalism, is an economic system in which a capitalist market economy exists alongside an authoritarian government. Totalitarian capitalism combines private property and the functioning of market forces with repression of dissent, restrictions on freedom of speech and either a lack of elections or an electoral system with a single dominant political party.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Authoritarian_capitalism",
         "stats": {
             "econ": 0,
             "dipl": 30,
@@ -563,8 +563,8 @@ ideologies = [
     },
     {
         "name": "Anarcho-Capitalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Anarcho-capitalism is a political philosophy and economic theory that advocates the elimination of centralized states in favor of free markets, private property and the right-libertarian interpretation of self-ownership.",
+        "definitionSource": "https://en.wikipedia.org/wiki/Anarcho-capitalism",
         "stats": {
             "econ": 0,
             "dipl": 50,
