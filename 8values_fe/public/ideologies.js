@@ -332,8 +332,8 @@ ideologies = [
     },
     {
         "name": "Moderate Conservatism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Moderate Conservatism is an economically center-right, civically moderate and culturally center-right ideology who represents the more moderate wing of conservative and right-wing politics, closer to the political center.",
+        "definitionSource": "https://polcompball.fandom.com/wiki/Moderate_Conservatism",
         "stats": {
             "econ": 40,
             "dipl": 40,
@@ -420,8 +420,8 @@ ideologies = [
     },
     {
         "name": "Capitalist Fascism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Capitalist fascism is a system of fascism where dictatorial power controls all aspects of society except the economy.",
+        "definitionSource": "https://twitter.com/zeithistoriker/status/1046876790856306689/photo/2",
         "stats": {
             "econ": 20,
             "dipl": 20,
@@ -464,7 +464,7 @@ ideologies = [
     },
     {
         "name": "Authoritarian Capitalism",
-        "definition": "",
+        "definition": "Authoritarian capitalism is an economic system in which a capitalist market economy exists alongside an authoritarian government.",
         "definitionSource": "",
         "stats": {
             "econ": 20,
@@ -475,8 +475,8 @@ ideologies = [
     },
     {
         "name": "State Capitalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "State capitalism is an economic system in which the state undertakes business and commercial economic activity (for-profit) and where the means of production are organized and managed as state-owned enterprises.",
+        "definitionSource": "https://en.wikipedia.org/wiki/State_capitalism",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -508,8 +508,8 @@ ideologies = [
     },
     {
         "name": "Libertarian Capitalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Libertarian capitalism is a laissez faire political philosophy advocating only minimal state intervention in the lives of citizens coupled with an economic system in which trade and industry are controlled by private owners for profit, rather than by the state.",
+        "definitionSource": "https://freeblr.org/faq/resource/politics/what-is-libertarian-capitalism",
         "stats": {
             "econ": 20,
             "dipl": 50,
@@ -552,8 +552,8 @@ ideologies = [
     },
     {
         "name": "Ultra-Capitalism",
-        "definition": "",
-        "definitionSource": "",
+        "definition": "Ultra-capitalism is the the expansion of private ownership to the production of goods and services currently considered only producible by government.",
+        "definitionSource": "https://www.quora.com/Is-an-ultra-capitalist-society-achievable",
         "stats": {
             "econ": 0,
             "dipl": 40,
