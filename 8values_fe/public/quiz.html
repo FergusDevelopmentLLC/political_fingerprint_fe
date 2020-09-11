@@ -57,6 +57,7 @@
     let feedbackGiven = false
     let feedbackScore = 0
 
+
     const url_prefix = 'http://138.68.23.63:3030'
     //const url_prefix = 'http://127.0.0.1:3000'
     const version = 2
@@ -65,7 +66,9 @@
     document.getElementById("next_button_on").style.display = 'none'
 
     const getQuestions = async () => {
-      return await fetch(`${url_prefix}/questions/by_version/${version}`).then(r => r.json())
+      let url = `${url_prefix}/questions/by_version/${version}`
+      console.log('url', url)
+      return await fetch(url).then(r => r.json())
     }
 
     init_question();
@@ -87,8 +90,8 @@
     }
 
     async function init_question() {
-      //questions = await getQuestions()
-
+      questions = await getQuestions()
+      
       window.scrollTo({ top: 0, behavior: 'smooth' })
       
       document.getElementById("question-text").innerHTML = questions[qn].question;
