@@ -131,9 +131,10 @@
       removeAllSelectedButtonsFromClass('button-answer')
       document.getElementById(id).className += " button-selected"
 
-      if (qn >= questions.length) {
-        results()
-      }
+      // Scroll to a certain element
+      document.querySelector('.feedback').scrollIntoView({ 
+        behavior: 'smooth' 
+      })
 
       if (answered && feedbackGiven) {
         document.getElementById("next_button_on").style.display = 'block'
@@ -184,7 +185,12 @@
 
         let qr = await fetch(apiUrl, options).then(r => r.json())
 
-        init_question()
+        if (qn >= questions.length) {
+          results()
+        }
+        else {
+          init_question()
+        }
         answered = false
         feedbackGiven = false
         feedbackScore = 0
