@@ -246,7 +246,7 @@ div.feedback {
 
 }
 
-p.question {
+p.question, div.feedback {
     margin: 2rem auto;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
@@ -264,6 +264,9 @@ p.question {
     text-align: center;
 }
 
+div.feedback {
+    flex-direction: column;
+}
 
 .back-next-wrapper {
     display: flex;
