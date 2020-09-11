@@ -21,17 +21,16 @@
   <button class="button button-answer" id="answer-05" onclick="accumulateScore(-1.0, this.id)" style="background-color: #b71c1c;">Strongly Disagree</button><br />
   <div class="feedback">
     <div>
-      <h4>Question Feedback</h4>
+      <h4>Question Feedback:</h4>
     </div>
-    <div>Indicate below to what degree the question above is flawed.<br />(biased, not understood or otherwise
-      problematic)</div>
+    <div>Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
   </div>
 
   <button class="button button-feedback" id="feedback-01" onclick="javascript:setFeedback(0, this.id)" style="background-color: #1b5e20;">No flaws</button> <br />
-  <button class="button button-feedback" id="feedback-02" onclick="javascript:setFeedback(2, this.id)" style="background-color: #4caf50;">Slightly flawed</button> <br />
-  <button class="button button-feedback" id="feedback-03" onclick="javascript:setFeedback(4, this.id)" style="background-color: #ff9400;">Significantly flawed</button> <br />
-  <button class="button button-feedback" id="feedback-04" onclick="javascript:setFeedback(6, this.id)" style="background-color: #f44336;">Substantially flawed</button> <br />
-  <button class="button button-feedback" id="feedback-05" onclick="javascript:setFeedback(8, this.id)" style="background-color: #b71c1c;">Majorly flawed</button> <br />
+  <button class="button button-feedback" id="feedback-02" onclick="javascript:setFeedback(10, this.id)" style="background-color: #4caf50;">Slightly flawed</button> <br />
+  <button class="button button-feedback" id="feedback-03" onclick="javascript:setFeedback(20, this.id)" style="background-color: #ff9400;">Significantly flawed</button> <br />
+  <button class="button button-feedback" id="feedback-04" onclick="javascript:setFeedback(30, this.id)" style="background-color: #f44336;">Substantially flawed</button> <br />
+  <button class="button button-feedback" id="feedback-05" onclick="javascript:setFeedback(40, this.id)" style="background-color: #b71c1c;">Majorly flawed</button> <br />
 
   <div class="explanation"><textarea id="explain" placeholder="Explain your feedback (optional)."></textarea></div>
 
@@ -56,11 +55,11 @@
     let answered = false
     let feedbackGiven = false
     let feedbackScore = 0
-
+    let currentQuestionIterationId = 0
 
     const url_prefix = 'http://138.68.23.63:3030'
     //const url_prefix = 'http://127.0.0.1:3000'
-    const version = 2
+    const version = 1
 
     // turn off next button
     document.getElementById("next_button_on").style.display = 'none'
@@ -93,6 +92,7 @@
       questions = await getQuestions()
       
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      currentQuestionIterationId = questions[qn].question_iteration_id
       
       document.getElementById("question-text").innerHTML = questions[qn].question;
       document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
@@ -109,6 +109,7 @@
 
       removeAllSelectedButtonsFromClass('button-answer')
       removeAllSelectedButtonsFromClass('button-feedback')
+      document.getElementById('explain').value = ''
     }
 
     function accumulateScore(mult, id) {
@@ -146,9 +147,35 @@
       }
     }
     
-    function next_question() {
+    function isEmptyOrSpaces(str){
+      return str === null || str.match(/^ *$/) !== null;
+    }
+
+    async function next_question() {
       if (answered && feedbackGiven) {
-        //write to db
+        
+        let explanation = document.getElementById('explain').value.trim()
+        
+        // console.log('currentQuestionIterationId', currentQuestionIterationId)
+        // console.log('explanation', explanation)
+        // console.log('feedbackScore', feedbackScore)
+
+        let questionResponse = {}
+        questionResponse.question_iteration_id = currentQuestionIterationId
+        questionResponse.score = feedbackScore
+        if (!isEmptyOrSpaces(explanation)) {
+          questionResponse.explanation = explanation
+        }
+        
+        const options = {
+          method: 'POST',
+          headers: new Headers({'content-type': 'application/json'}),
+          body: JSON.stringify( { question_response: questionResponse } )
+        }
+
+        let apiUrl = `${url_prefix}/question_responses`
+
+        let qr = await fetch(apiUrl, options).then(r => r.json())
 
         init_question()
         answered = false
@@ -158,9 +185,11 @@
     }
 
     function prev_question() {
+
       if (prev_answer == null) {
         return;
       }
+      
       qn--;
       econ -= prev_answer * questions[qn].effect.econ;
       dipl -= prev_answer * questions[qn].effect.dipl;
