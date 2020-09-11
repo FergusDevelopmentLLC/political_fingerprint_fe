@@ -231,7 +231,7 @@ span.weight-300 {
     font-weight: normal;
     width: 70%;
     min-width: 500pt;
-    min-height: 100pt;
+    min-height: 5rem;
     background-color: #eeeeee;
     padding: 2rem;
     border-radius: 16pt;
@@ -239,12 +239,7 @@ span.weight-300 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    display: flex;
-}
-
-
-.feedback {
-    flex-direction: column;
+    /* display: flex; */
 }
 
 .back-next-wrapper {
