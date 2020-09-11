@@ -13,16 +13,18 @@
   <h3>Political Fingerprint</h3>
   <hr>
   <h2 style="text-align:center;" id="question-number">Loading...</h2>
-  <p class="question" id="question-text"></p>
+  <div class="question">
+    <div id="question-text">Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
+  </div>
+
   <button class="button button-answer" id="answer-01" onclick="accumulateScore( 1.0, this.id)" style="background-color: #1b5e20;">Strongly Agree</button><br />
   <button class="button button-answer" id="answer-02" onclick="accumulateScore( 0.5, this.id)" style="background-color: #4caf50;">Agree</button><br />
   <button class="button button-answer" id="answer-03" onclick="accumulateScore( 0.0, this.id)" style="background-color: #bbbbbb;">Neutral/Unsure</button><br />
   <button class="button button-answer" id="answer-04" onclick="accumulateScore(-0.5, this.id)" style="background-color: #f44336;">Disagree</button> <br />
   <button class="button button-answer" id="answer-05" onclick="accumulateScore(-1.0, this.id)" style="background-color: #b71c1c;">Strongly Disagree</button><br />
+  
   <div class="feedback">
-    <div>
-      <h4>Question Feedback:</h4>
-    </div>
+    <h4>Question Feedback:</h4>
     <div>Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
   </div>
 
