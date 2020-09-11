@@ -79,10 +79,10 @@ img.center {
     text-align: center;
     text-decoration: none;
     display: block;
-    font-size: 24pt;
+    font-size: 3rem;
     margin: -2px auto;
     cursor: pointer;
-    height: 5rem;
+    height: 6rem;
 }
 
 .button-selected {
@@ -101,7 +101,7 @@ img.center {
     text-align: center;
     text-decoration: none;
     display: block;
-    font-size: 18pt;
+    font-size: 2rem;
     margin: -2px auto;
     cursor: pointer;
     height: 5rem;
@@ -216,16 +216,10 @@ span.weight-300 {
 }
 
 #explain {
-    border: 1px solid red;
-    width: 98%;
-    min-height: 5rem;
-}
-
-#explain {
 	border: 3px solid #cccccc;
 	padding: 5px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
+    font-size: 2rem;
     width: 98%;
     min-height: 7rem;
 }
