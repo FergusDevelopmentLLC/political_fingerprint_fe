@@ -70,7 +70,7 @@ img.center {
     box-sizing: border-box;
     background-color: #2196f3;
     font-family: Arial, Helvetica, sans-serif;
-    border: 3px solid #fff;
+    border: 5px solid #fff;
     border-radius: 8pt;
     color: white;
     padding: 8pt;
@@ -82,10 +82,11 @@ img.center {
     font-size: 24pt;
     margin: -2px auto;
     cursor: pointer;
+    height: 5rem;
 }
 
 .button-selected {
-    border: 3px solid #000;
+    border: 5px solid #000;
 }
 
 .small_button, .small_button_off {
@@ -103,6 +104,7 @@ img.center {
     font-size: 18pt;
     margin: -2px auto;
     cursor: pointer;
+    height: 5rem;
 }
 .small_button_off {
     background-color: #ddd;
