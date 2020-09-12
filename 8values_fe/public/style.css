@@ -6,7 +6,7 @@ body {
     /* width: 80%; */
     /* min-height: calc(100vh - 4em); */
     margin: 0 auto;
-    padding: 2em;
+    padding: 2rem .25rem;
     background-color: #dddddd;
     border-color: #dddddd;
     border-left-style: solid;
