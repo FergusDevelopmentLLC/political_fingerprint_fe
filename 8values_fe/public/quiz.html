@@ -51,7 +51,7 @@
     var econ, dipl, govt, scty; // User's scores
     econ = dipl = govt = scty = 0;
     var qn = 0; // Question number
-    //qn = 67;
+    qn = 67;
     var prev_answer = null;
 
     let answered = false
@@ -168,20 +168,20 @@
         // console.log('explanation', explanation)
         // console.log('feedbackScore', feedbackScore)
 
-        let questionResponse = {}
-        questionResponse.question_iteration_id = currentQuestionIterationId
-        questionResponse.score = feedbackScore
+        let questionFeedback = {}
+        questionFeedback.question_iteration_id = currentQuestionIterationId
+        questionFeedback.score = feedbackScore
         if (!isEmptyOrSpaces(explanation)) {
-          questionResponse.explanation = explanation
+          questionFeedback.explanation = explanation
         }
         
         const options = {
           method: 'POST',
           headers: new Headers({'content-type': 'application/json'}),
-          body: JSON.stringify( { question_response: questionResponse } )
+          body: JSON.stringify( { question_feedback: questionFeedback } )
         }
 
-        let apiUrl = `${url_prefix}/question_responses`
+        let apiUrl = `${url_prefix}/question_feedbacks`
 
         let qr = await fetch(apiUrl, options).then(r => r.json())
 
