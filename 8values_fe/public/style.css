@@ -3,12 +3,12 @@ html {
     padding: 0px;
 }
 body {
-    width: 80%;
-    min-height: calc(100vh - 4em);
+    /* width: 80%; */
+    /* min-height: calc(100vh - 4em); */
     margin: 0 auto;
     padding: 2em;
     background-color: #dddddd;
-    border-color: #eeeeee;
+    border-color: #dddddd;
     border-left-style: solid;
     border-right-style: solid;
     border-width: 20px;
@@ -240,6 +240,7 @@ span.weight-300 {
     font-weight: normal;
     width: 70%;
     min-width: 500pt;
+    max-width: 65rem;
     min-height: 5rem;
     background-color: #eeeeee;
     padding: 2rem;
@@ -273,6 +274,11 @@ span.weight-300 {
     font-size: 1.75rem;
     line-height: 2rem;
 }
+
+.home ol {
+    padding: 0 0 0 1.2rem;
+}
+
 
 .home ol li {
     color: #444444;
@@ -313,10 +319,6 @@ span.weight-300 {
 
 @media screen and (max-width: 850px) {
     
-    body {
-        width: 98%;
-    }
-
     .img-home-wrapper {
         width: 90%;
     }
@@ -336,16 +338,12 @@ span.weight-300 {
         font-size: 1.75rem;
     }
 
-    .home-button-wrapper {
-        width: 100%;
+    .button-home {
+        font-size: 1.2rem;
     }
 
     .button {
-        min-width: 17rem;
-    }
-
-    .button-home {
-        font-size: 1.5rem;
+        min-width: 15rem;
     }
 }
 
@@ -367,7 +365,7 @@ span.weight-300 {
     }
 
     .home ol li {
-        font-size: 1rem;
+        font-size: .9rem;
     }
 
     h3 {
@@ -375,7 +373,7 @@ span.weight-300 {
     }
     
     h5 {
-        font-size: 1rem;
+        font-size: .9rem;
         margin: 0 0 .5rem 0;
     }
 
