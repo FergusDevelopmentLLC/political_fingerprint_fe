@@ -1,6 +1,7 @@
 <head>
   <link href='style.css' rel='stylesheet' type='text/css'>
   <title>Political Fingerprint</title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
   <a href="https://github.com/FergusDevelopmentLLC/political_fingerprint_fe" class="github-corner" aria-label="View source on Github">
@@ -44,90 +45,49 @@
     }
   </style>
   <h3>Political <span class="redux">Fingerprint</span></h3>
-  <button class="button" onclick="location.href='quiz.html';" style="font-size:36pt;">Click/Tap to start</button>
+  <hr/>
+  <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
   <div class="home">
-    <h5>What is Political Fingerprint?</h5>
+    <h5>Part 1: The Test</h5>
+    <p>Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.</p>
     <p>
-      Political Fingerprint is a quiz that provides insight into political leanings beyond the traditional "right" and "left" framework.
+      After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify with it. 
+      Each response slightly affects your final results.
     </p>
     <p>
-      A series of statements will be presented. Answer each statement with your opinion, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>. 
-      Each answer slightly affects your final results.
+      At the end of the quiz, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
+      categories (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
     </p>
-    <p>
-      At the end of the quiz, your results will be presented based on your answers. The results will show where you place you on a continuum between 
-      two opposing perspectives in each of four categories (Economic, Diplomatic, Civil and Societal). The opposing perspectives for each category 
-      are detailed in the figure below.
-    </p>
-    <img src="political_fingerprint.png" class="center"></img>
+    
+    <div class="img-home-wrapper"><img class="img-home" src="political_fingerprint.png"></img></div>
 
-    <h5>Providing feedback</h5>
-    <p>In addition to the quiz results, the aim of this project is to improve the quiz in the following ways.</p>
+    <h5>Part 2: Feedback</h5>
+    <p>An important goal of this project is to improve the test in the following ways.</p>
     <ol>
       <li>Eliminate statement bias</li>
       <li>Simplify the statements</li>
-      <li>Make the quiz shorter by eliminating some of the questions.</li>
+      <li>Make the test shorter</li>
     </ol>
-    <p>In this first iteration, the statements and scoring is identical to the quiz found at https://8values.github.io/.</p>
-    
-    <h5>What's the "Closest Match" mean at the bottom of the results?</h5>
-    <p>Political Fingerprint is based on the <a href='https://github.com/8values/8values.github.io'>8values</a>.</p>
+    <p>
+      By collecting feedback for each statement, subsequent versions of the test can be improved. Feedback from <strong>No flaws</strong> to 
+      <strong>Majorly flawed</strong> is collected for each question along with an optional explanation field.
+    </p>
+    <p>
+      In its current form, the statements and test scoring are identical to the original test found at <a href='https://8values.github.io/'>8values</a>. 
+      With feedback and iteration, the goal is that rewritten and improved statements will replace lesser ones.
+    </p>
+    <h5>Part 3: Closest Match (experimental)</h5>
+    <p>
+      At the end of test, in addition to the results, there there is also an attempt to match your answers most closely with one of these <a href='ideologies.html'>ideologies</a>. 
+      This part of the app is experimental and is a work in progress.
+    </p>
+    <h5>What data is being collected?</h5>
+    <p>
+      Currently only the feedback for each question is being collected. Political Fingerprint does not collect any information about individual statement 
+      responses nor test results.
+    </p>
+    <h5>Credits</h5>
+    <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political compass</a>.</p>
   </div>
-
-  
-  
-
-  <!-- <img src="values.svg" class="center"></img> -->
-
-  <!-- <h2>What is 8values?</h2>
-  <p>8values is, in essence, a political quiz that attempts to assign percentages for eight different political values.
-    You will be presented by a statement, and then you will answer with your opinion on the statement, from <b>Strongly
-      Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz,
-    your answers will be compared to the maximum possible for each value, thus giving you a percentage. Answer
-    honestly!<br /><br />
-    There are <b><u>70</u></b> questions in the test.</p> -->
-    <!-- There are <b><u><span id="numOfQuestions"></span></u></b> questions in the test.</p> -->
-
-  <!-- <h2>What are the eight values?</h2>
-  <p>There are four independent axes - Economic, Diplomatic, State, and Society - and each has two opposing values
-    assigned to them. They are:</p>
-  <p class="value-description"><b style="color:#d32f2f;">Equality</b> (Economic)<br />
-    Those with higher Equality scores believe the economy should distribute value evenly among the populace. They tend
-    to support progressive tax codes, social programs, and at high values, socialism.</p>
-  <p class="value-description"><b style="color:#00796b;">Markets</b> (Economic)<br />
-    Those with higher Market scores believe the economy should be focused on rapid growth. They tend to support lower
-    taxes, privatization, deregulation, and at high values, laissez-faire capitalism.</p>
-  <p class="value-description"><b style="color:#f57c00;">Nation</b> (Diplomatic)<br />
-    Those with higher Nation scores are patriotic and nationalist. They often believe in an aggressive foreign policy,
-    valuing the military, strength, sovereignty, and at high values, territorial expansion.</p>
-  <p class="value-description"><b style="color:#0288d1;">Globe</b> (Diplomatic)<br />
-    Those with higher Globe scores are cosmopolitan and globalist. They often believe in a peaceful foreign policy,
-    emphasizing diplomacy, cooperation, integration, and at high values, a world government.</p>
-  <p class="value-description"><b style="color:#fbc02d;">Liberty</b> (State)<br />
-    Those with higher Liberty scores believe in strong civil liberties. They tend to support democracy and oppose state
-    intervention in personal lives. Note that this refers to civil liberties, not economic liberties.</p>
-  <p class="value-description"><b style="color:#303f9f;">Authority</b> (State)<br />
-    Those with higher Authority scores believe in strong state power. They tend to support state intervention in
-    personal lives, government surveillance, and at high values, censorship or autocracy.</p>
-  <p class="value-description"><b style="color:#689f38;">Tradition</b> (Society)<br />
-    Those with higher Tradition scores believe in traditional values and strict adherence to a moral code. Though not
-    always, they are usually religious, and support the status quo or the status quo ante.</p>
-  <p class="value-description"><b style="color:#7b1fa2;">Progress</b> (Society)<br />
-    Those with higher Progress scores believe in social change and rationality. Though not always, they are usually
-    secular or atheist, and support environmental action and scientific or technological research.</p>
-  <h2>What's the "Closest Match" mean at the bottom of the results?</h2>
-  <p>In addition to matching you to the eight values, the quiz also attempts to match you to a political ideology. This
-    is a work in progress and is much less accurate than the values and axes, so don't take it too seriously. If you
-    disagree with your assigned ideology, send us an email at eightvalues@gmail.com with your scores, matched ideology,
-    and preferred ideology, and we'll look into adjusting the system. Thanks!</p>
-  <h2>I don't like my scores!</h2>
-  <p>¯\_(ツ)_/¯<br />
-    If you have any suggestions or constructive criticism, feel free to send it to <a
-      href="mailto:eightvalues@gmail.com">eightvalues@gmail.com</a> or open an issue on the GitHub page here: <a
-      href="https://github.com/8values/8values.github.io">GitHub Page</a></p> -->
-
-  <!-- This is the script for the page itself -->
-  <!-- <script type="text/javascript">
-    document.getElementById("numOfQuestions").innerHTML = questions.length;
-  </script> -->
+  <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
 </body>
