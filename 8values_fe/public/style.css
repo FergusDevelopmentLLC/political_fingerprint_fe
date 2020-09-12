@@ -262,8 +262,13 @@ span.weight-300 {
     max-width: 22rem;
 }
 
+.home {
+    width: 70%;
+    margin: auto;
+}
+
 .home p {
     padding: 0;
     margin: 0 0 1rem 0;
-    border: 1px solid red;
+    font-size: 1.2rem;
 }
