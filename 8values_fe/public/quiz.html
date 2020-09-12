@@ -23,8 +23,8 @@
   <button class="button button-answer" id="answer-05" onclick="accumulateScore(-1.0, this.id)" style="background-color: #b71c1c;">Strongly Disagree</button><br />
   
   <div class="feedback">
-    <h4>Question&nbsp;Feedback:</h4>
-    <div>Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
+    <h4>Statement&nbsp;Feedback:</h4>
+    <div>Indicate below to what degree the statement above is flawed.<br />(biased, unclear or otherwise problematic)</div>
   </div>
 
   <button class="button button-feedback" id="feedback-01" onclick="javascript:setFeedback(0, this.id)" style="background-color: #1b5e20;">No flaws</button> <br />
@@ -51,7 +51,6 @@
     var econ, dipl, govt, scty; // User's scores
     econ = dipl = govt = scty = 0;
     var qn = 0; // Question number
-    qn=67;
     var prev_answer = null;
 
     let answered = false
@@ -102,7 +101,7 @@
       currentQuestionIterationId = questions[qn].question_iteration_id
       
       document.getElementById("question-text").innerHTML = questions[qn].question;
-      document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+      document.getElementById("question-number").innerHTML = "Statement " + (qn + 1) + " of " + (questions.length);
       if (prev_answer == null) {
         document.getElementById("back_button").style.display = 'none';
         document.getElementById("back_button_off").style.display = 'block';

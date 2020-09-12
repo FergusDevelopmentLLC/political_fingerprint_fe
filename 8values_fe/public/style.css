@@ -30,20 +30,21 @@ h1, h3, h4, h5 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 72pt;
     text-align: center;
-    line-height: 72pt;
     margin-top: 0pt;
     margin-bottom: 0pt;
 }
+
 h2 {
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 36pt;
-    line-height: 36pt;
-    margin-top: 12pt;
+    margin-top: .5rem;
     margin-bottom: 0pt;
 }
+
 h3 {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 h4 {
@@ -233,7 +234,7 @@ span.weight-300 {
 }
 
 .question, .feedback {
-    margin: 2rem auto;
+    margin: .5rem auto 1rem ;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
@@ -247,7 +248,12 @@ span.weight-300 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* display: flex; */
+}
+
+.feedback h4 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+    line-height: 2rem;
 }
 
 .back-next-wrapper {
