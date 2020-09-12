@@ -319,6 +319,23 @@ span.weight-300 {
     text-decoration: none;
 }
 
+.ideologies-link a {
+    text-decoration: underline;
+}
+
+.ideologies-link a:link {
+    color: #444444;
+}
+  
+.ideologies-link a:visited {
+    color: #444444;
+}
+  
+.ideologies-link a:hover {
+    color: #444444;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 850px) {
     
     .img-home-wrapper {
