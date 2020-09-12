@@ -314,9 +314,9 @@ span.weight-300 {
 @media screen and (max-width: 850px) {
     
     body {
-        width: 100%;
+        width: 98%;
     }
-    
+
     .img-home-wrapper {
         width: 90%;
     }
