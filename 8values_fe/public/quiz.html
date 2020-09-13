@@ -2,15 +2,13 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
   <link href='style.css' rel='stylesheet' type='text/css'>
   <title>Political Fingerprint</title>
-  <link rel="icon" type="x-icon" href="icon.png">
-  <link rel="shortcut icon" type="x-icon" href="icon.png">
   <meta charset="utf-8">
 </head>
 
 <body>
   <script type="application/javascript" src="questions.js"></script>
   <h3>Political <span class="redux">Fingerprint</span></h3>
-  <hr>
+  <hr/>
   <h2 style="text-align:center;" id="question-number">Loading...</h2>
   <div class="question">
     <div id="question-text">Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
@@ -51,7 +49,7 @@
     var econ, dipl, govt, scty; // User's scores
     econ = dipl = govt = scty = 0;
     var qn = 0; // Question number
-    //qn = 67;
+    qn = 67;
     var prev_answer = null;
 
     let answered = false
