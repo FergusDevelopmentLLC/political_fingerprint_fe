@@ -38,6 +38,7 @@ equality = getQueryVariable("e")
 peace = getQueryVariable("d")
 liberty = getQueryVariable("g")
 progress = getQueryVariable("s")
+
 wealth = (100 - equality).toFixed(1)
 might = (100 - peace).toFixed(1)
 authority = (100 - liberty).toFixed(1)
