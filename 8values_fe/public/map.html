@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Political Fingerprint</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <style>
+    .mapboxgl-popup {
+      max-width: 500px;
+      font: 10px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <div id='map'></div>
+  <script>
+
+    // get bounding box: http://bboxfinder.com
+    let mapBounds = [-126.562500,24.206890,-64.687500,50.064192]//Southwest corner, Northeast corner
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
+
+    // let basemap = 'basic'
+    // let basemap = 'streets'
+    // let basemap = 'bright'
+    // let basemap = 'light'
+    let basemap = 'dark'
+    // let basemap = 'satellite'
+
+    //const url_prefix = 'http://127.0.0.1:3000'
+    const url_prefix = 'http://138.68.23.63:3030'
+
+    // https://www.mapbox.com/api-documentation/#styles
+    let map = new mapboxgl.Map({
+      container: 'map',
+      style: `mapbox://styles/mapbox/${basemap}-v9`,
+      center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
+      zoom: 4.5
+    })
+
+    const getTestResults = async () => {
+      let url = `${url_prefix}/test_results`
+      return await fetch(url).then(r => r.json())
+    }
+
+    map.on('load', async () => {
+
+      map.addImage('custom-marker', 'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
+      
+      let testResults = await getTestResults()
+      let fc = getFeatureCollectionFor(testResults)
+      map.addSource('testResults', {
+        type: 'geojson',
+        data: fc
+      })
+
+      // Add a layer showing the places.
+      map.addLayer({
+        'id': 'testResults',
+        'type': 'symbol',
+        'source': 'testResults',
+        'layout': {
+          'icon-image': 'custom-marker',
+          'icon-allow-overlap': true
+        }
+      })
+
+      console.log('here')
+
+      // for (testResult in testResults) {
+      //   var marker = new mapboxgl.Marker()
+      //     .setLngLat([testResults[testResult].longitude, testResults[testResult].latitude])
+      //     .addTo(map)
+      // }
+      
+
+
+      
+
+      // map.addLayer({
+      //   id: 'testResults',
+      //   source: 'testResults',
+      //   type: 'circle'
+      // })
+      
+      //handlePopup()
+
+    })
+
+    handlePopup = () => {
+
+      // Create a popup, but don't add it to the map yet.
+      let popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+      })
+
+      map.on('mouseenter', 'hikes', (e) => {
+
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer'
+
+        let coordinates = [e.features[0].properties.lng, e.features[0].properties.lat]
+
+        // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
+        }
+
+        let tooltip_msg = ''
+        tooltip_msg += `<strong>${e.features[0].properties.name}</strong><br/>`
+        tooltip_msg += `Hike date: ${e.features[0].properties.date}<br/>`
+        tooltip_msg += `Description: ${e.features[0].properties.desc}<br/>`
+        
+        // Populate the popup and set its coordinates based on the feature found.
+        popup.setLngLat(coordinates)
+          .setHTML(tooltip_msg)
+          .addTo(map)
+
+      })
+
+      map.on('mouseleave', 'hikes', () => {
+        map.getCanvas().style.cursor = ''
+        popup.remove()
+      })
+
+    }
+  
+  
+    getFeatureCollectionFor = (coll) => {
+
+      var features = [];
+
+      for(item in coll) {
+        feature = {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [coll[item].longitude, coll[item].latitude]
+          },
+          "properties": {
+            "url": coll[item].url,
+            "country_name": coll[item].country_name,
+            "city": coll[item].city,
+            "region": coll[item].region
+          }
+        }
+        features.push(feature)
+      }
+
+      var featureCollection = {
+        "type": "FeatureCollection",
+        "features": features
+      }
+
+      return featureCollection
+
+    }
+
+  </script>
+</body>
+
+</html>
