@@ -79,7 +79,7 @@
 
           // Add a symbol layer
           map.addLayer({
-            'id': 'points',
+            'id': 'testResults',
             'type': 'symbol',
             'source': 'testResults',
             'layout': {
@@ -97,10 +97,14 @@
             'paint': {
               'text-color': '#ffffff'
             }
-          });
+          })
+
         }
-      );
-    });
+      )
+
+      handlePopup()
+
+    })
 
 
     //   map.addLayer({
@@ -117,26 +121,26 @@
 
       // Create a popup, but don't add it to the map yet.
       let popup = new mapboxgl.Popup({
+        offset: 25,
         closeButton: false,
         closeOnClick: false
       })
 
-      map.on('mouseenter', 'hikes', (e) => {
-
-        // Change the cursor style as a UI indicator.
+      map.on('mouseenter', 'testResults', (e) => {
         map.getCanvas().style.cursor = 'pointer'
+      })
 
-        let coordinates = [e.features[0].properties.lng, e.features[0].properties.lat]
+      map.on('click', 'testResults', (e) => {
+        
+        let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
 
-        // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+        // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
         }
 
         let tooltip_msg = ''
-        tooltip_msg += `<strong>${e.features[0].properties.name}</strong><br/>`
-        tooltip_msg += `Hike date: ${e.features[0].properties.date}<br/>`
-        tooltip_msg += `Description: ${e.features[0].properties.desc}<br/>`
+        tooltip_msg += `<strong>${e.features[0].properties.url}</strong><br/>`
 
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
@@ -145,9 +149,9 @@
 
       })
 
-      map.on('mouseleave', 'hikes', () => {
+      map.on('mouseleave', 'testResults', () => {
         map.getCanvas().style.cursor = ''
-        popup.remove()
+        //popup.remove()
       })
 
     }
@@ -168,7 +172,9 @@
             "url": coll[item].url,
             "country_name": coll[item].country_name,
             "city": coll[item].city,
-            "region": coll[item].region
+            "region": coll[item].region,
+            "latitude": coll[item].latitude,
+            "longitude": coll[item].longitude
           }
         }
         features.push(feature)
