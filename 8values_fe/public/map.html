@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8' />
   <title>Political Fingerprint</title>
@@ -11,6 +12,7 @@
       margin: 0;
       padding: 0;
     }
+
     #map {
       position: absolute;
       top: 0;
@@ -32,7 +34,7 @@
   <script>
 
     // get bounding box: http://bboxfinder.com
-    let mapBounds = [-126.562500,24.206890,-64.687500,50.064192]//Southwest corner, Northeast corner
+    let mapBounds = [-130.209961, 22.512557, -59.282227, 51.781436]//Southwest corner, Northeast corner
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
@@ -51,7 +53,7 @@
       container: 'map',
       style: `mapbox://styles/mapbox/${basemap}-v9`,
       center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
-      zoom: 4.5
+      zoom: 4.2
     })
 
     const getTestResults = async () => {
@@ -59,10 +61,8 @@
       return await fetch(url).then(r => r.json())
     }
 
-    map.on('load', async () => {
+    map.on('load', async function () {
 
-      map.addImage('custom-marker', 'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
-      
       let testResults = await getTestResults()
       let fc = getFeatureCollectionFor(testResults)
       map.addSource('testResults', {
@@ -70,38 +70,48 @@
         data: fc
       })
 
-      // Add a layer showing the places.
-      // map.addLayer({
-      //   'id': 'testResults',
-      //   'type': 'symbol',
-      //   'source': 'testResults',
-      //   'layout': {
-      //     'icon-image': 'custom-marker',
-      //     'icon-allow-overlap': true
-      //   }
-      // })
+      // Add an image to use as a custom marker
+      map.loadImage(
+        'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('custom-marker', image);
 
-      // console.log('here')
+          // Add a symbol layer
+          map.addLayer({
+            'id': 'points',
+            'type': 'symbol',
+            'source': 'testResults',
+            'layout': {
+              'icon-image': 'custom-marker',
+              // get the title name from the source's "title" property
+              'text-field': ['get', 'region'],
+              'text-font': [
+                'Open Sans Semibold',
+                'Arial Unicode MS Bold',
+              ],
+              'text-size': 15,
+              'text-offset': [0, 1.75],
+              'text-anchor': 'top'
+            },
+            'paint': {
+              'text-color': '#ffffff'
+            }
+          });
+        }
+      );
+    });
 
-      for (testResult in testResults) {
-        var marker = new mapboxgl.Marker()
-          .setLngLat([testResults[testResult].longitude, testResults[testResult].latitude])
-          .addTo(map)
-      }
-      
 
+    //   map.addLayer({
+    //     id: 'testResults',
+    //     source: 'testResults',
+    //     type: 'circle'
+    //   })
 
-      
+    //   //handlePopup()
 
-      // map.addLayer({
-      //   id: 'testResults',
-      //   source: 'testResults',
-      //   type: 'circle'
-      // })
-      
-      //handlePopup()
-
-    })
+    // })
 
     handlePopup = () => {
 
@@ -127,7 +137,7 @@
         tooltip_msg += `<strong>${e.features[0].properties.name}</strong><br/>`
         tooltip_msg += `Hike date: ${e.features[0].properties.date}<br/>`
         tooltip_msg += `Description: ${e.features[0].properties.desc}<br/>`
-        
+
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
           .setHTML(tooltip_msg)
@@ -141,13 +151,13 @@
       })
 
     }
-  
-  
+
+
     getFeatureCollectionFor = (coll) => {
 
       var features = [];
 
-      for(item in coll) {
+      for (item in coll) {
         feature = {
           "type": "Feature",
           "geometry": {

@@ -39,3 +39,8 @@ https://www.nytimes.com/2018/09/16/opinion/politics/kevin-rudd-authoritarian-cap
 https://www.theatlantic.com/politics/archive/2009/06/an-interview-with-paul-samuelson-part-one/19572/ (Capitalist Fascism)
 https://www.digitalocean.com/community/tutorials/for-for-of-and-for-in-loops-in-javascript
 https://intellipaat.com/community/21064/how-to-change-an-elements-class-with-javascript
+
+https://docs.mapbox.com/mapbox-gl-js/example/add-image-generated/
+https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
+
+https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#paint-symbol-text-color
