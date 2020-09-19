@@ -53,7 +53,7 @@
       container: 'map',
       style: `mapbox://styles/mapbox/${basemap}-v9`,
       center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
-      zoom: 4.2
+      zoom: 4
     })
 
     const getTestResults = async () => {
@@ -140,7 +140,13 @@
         }
 
         let tooltip_msg = ''
-        tooltip_msg += `<strong>${e.features[0].properties.url}</strong><br/>`
+        tooltip_msg += `<strong>Test Results</strong><br/>`
+        tooltip_msg += `Economic: ${e.features[0].properties.economic}<br/>`
+        tooltip_msg += `Diplomatic: ${e.features[0].properties.diplomatic}<br/>`
+        tooltip_msg += `Civil: ${e.features[0].properties.civil}<br/>`
+        tooltip_msg += `Societal: ${e.features[0].properties.societal}<br/>`
+        tooltip_msg += `Test date: ${new Date(e.features[0].properties.taken_at).toLocaleString()}<br/>`
+        tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>View test result details</a><br/>`
 
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
@@ -169,10 +175,15 @@
             "coordinates": [coll[item].longitude, coll[item].latitude]
           },
           "properties": {
+            "economic": coll[item].economic,
+            "diplomatic": coll[item].diplomatic,
+            "civil": coll[item].civil,
+            "societal": coll[item].societal,
             "url": coll[item].url,
             "country_name": coll[item].country_name,
             "city": coll[item].city,
             "region": coll[item].region,
+            "taken_at": coll[item].taken_at,
             "latitude": coll[item].latitude,
             "longitude": coll[item].longitude
           }
