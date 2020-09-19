@@ -71,23 +71,23 @@
       })
 
       // Add a layer showing the places.
-      map.addLayer({
-        'id': 'testResults',
-        'type': 'symbol',
-        'source': 'testResults',
-        'layout': {
-          'icon-image': 'custom-marker',
-          'icon-allow-overlap': true
-        }
-      })
+      // map.addLayer({
+      //   'id': 'testResults',
+      //   'type': 'symbol',
+      //   'source': 'testResults',
+      //   'layout': {
+      //     'icon-image': 'custom-marker',
+      //     'icon-allow-overlap': true
+      //   }
+      // })
 
-      console.log('here')
+      // console.log('here')
 
-      // for (testResult in testResults) {
-      //   var marker = new mapboxgl.Marker()
-      //     .setLngLat([testResults[testResult].longitude, testResults[testResult].latitude])
-      //     .addTo(map)
-      // }
+      for (testResult in testResults) {
+        var marker = new mapboxgl.Marker()
+          .setLngLat([testResults[testResult].longitude, testResults[testResult].latitude])
+          .addTo(map)
+      }
       
 
 

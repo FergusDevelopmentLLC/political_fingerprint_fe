@@ -44,24 +44,51 @@
       }
     }
   </style>
+
+  <script>
+
+    const params = new URLSearchParams(window.location.search)
+    
+    let version = 1
+    if(params.has('qv')) {
+      version = parseInt(params.get('qv'))
+    }
+
+    const goToTest = () => location.href = `quiz.html?qv=${version}`
+
+  </script>
+
   <h3>Political <span class="redux">Fingerprint</span></h3>
+  <h4><span id="version"></span></h4>
+  <h6><span id="version-description"></span></h6>
   <hr/>
-  <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
+  <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   <div class="home">
-    <h5>Part 1: The Test</h5>
+    <h5>The Test</h5>
     <p>Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.</p>
     <p>
       After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify with it. 
       Each response slightly affects your final results.
     </p>
-    <p>
-      At the end of the quiz, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
+
+    <p class="test-instructions" id="test-version-01">
+      At the end of the test, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
       categories (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
     </p>
-    
-    <div class="img-home-wrapper"><img class="img-home" src="political_fingerprint.png"></img></div>
 
-    <h5>Part 2: Feedback</h5>
+    <p class="test-instructions" id="test-version-02">
+      At the end of the test, your results will indicate where you place on a continuum between opposing perspectives in two  
+      categories (<strong>Economic</strong> and <strong>Civil</strong>).
+    </p>
+    
+    <div class="img-home-wrapper">
+      <img class="img-home" id="img-home-economic"   src="axis-economic.png"></img>
+      <img class="img-home" id="img-home-diplomatic" src="axis-diplomatic.png"></img>
+      <img class="img-home" id="img-home-civil"      src="axis-civil.png"></img>
+      <img class="img-home" id="img-home-societal"   src="axis-societal.png"></img>
+    </div>
+
+    <h5>Feedback</h5>
     <p>An important goal of this project is to improve the test in the following ways.</p>
     <ol>
       <li>Eliminate statement bias</li>
@@ -71,17 +98,46 @@
     <p>
       By collecting feedback for each statement, subsequent versions of the test can be improved. 
     </p>
-    <h5>Part 3: Closest Match (experimental)</h5>
+    <h5>Closest Match (experimental, work in progress)</h5>
     <p>
-      At the end of test, in addition to the results, there is an attempt to match your answers most closely with one of these <a href='ideologies.html'>ideologies</a>. 
-      This part of the application is experimental and is a work in progress.
+      In addition to the results addition to the results, there is an attempt to match your answers most closely with one of these <a href='ideologies.html'>ideologies</a>. 
+      This part of the application is experimental and is a work in progress. Currently the logic behind matches what can be found at 8values, which Political Fingerprint is 
+      based on.
     </p>
+    <h5>Test results map</h5>
+    <p>Upon completion, the test taker is given a geographical glimpse of other test results similar to the following example:</p>
+    <div class="img-map-wrapper"><img class="img-map" src="map.png"></img></div>
     <h5>What data is being collected?</h5>
-    <p>
-      Feedback for each question is being collected. Test result scores are also saved, but not individual responses to statements. Additionally, the ip address of the test taker is saved upon test completion. This generalized location data will potentially be used to drive a map.
-    </p>
+    <ol>
+      <li>Feedback for each question</li>
+      <li>Test result scores, but not individual responses to statements</li>
+      <li>The IP address of the taker used (but not collected) in order to approximate generalized location of each test result to city level accuracy.</li>
+    </ol>
     <h5>Credits</h5>
-    <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political compass</a>.</p>
+    <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political compass</a>. Currently all statements and test logic matches <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> almost exactly.</p>
   </div>
   <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
+
+  <script>
+    let versionText = `version: ${version}`
+    document.getElementById('version').innerHTML = versionText
+    
+    if(version == 2) {
+      document.getElementById('version-description').innerHTML = `(25 statements in 2 categories)`
+      document.getElementById('test-version-02').style.display = 'block'
+      document.getElementById('img-home-economic').style.display = 'block'
+      document.getElementById('img-home-civil').style.display = 'block'
+    }
+    else {
+      document.getElementById('version-description').innerHTML = `(70 statements in 4 categories)`
+      document.getElementById('test-version-01').style.display = 'block'
+      document.getElementById('img-home-economic').style.display = 'block'
+      document.getElementById('img-home-diplomatic').style.display = 'block'
+      document.getElementById('img-home-civil').style.display = 'block'
+      document.getElementById('img-home-societal').style.display = 'block'
+    }
+
+    
+  </script>
+
 </body>

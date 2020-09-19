@@ -26,7 +26,7 @@ p.value-description {
     margin-left: 20pt;
 }
 
-h1, h3, h4, h5 {
+h1, h3, h4, h5, h6 {
     color: #222222;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 72pt;
@@ -59,6 +59,13 @@ h5 {
     text-align: left;
     margin: 2rem 0 1rem;
     padding: 0;
+}
+
+h6 {
+    font-size: 2rem;
+    margin: 0rem 0 1.5rem;
+    padding: 0;
+    font-weight: normal;
 }
 
 li {
@@ -334,6 +341,14 @@ span.weight-300 {
 .ideologies-link a:hover {
     color: #444444;
     text-decoration: none;
+}
+
+.img-home {
+    display: none;
+}
+
+.test-instructions {
+    display: none;
 }
 
 @media screen and (max-width: 850px) {
