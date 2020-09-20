@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express()
-const dir = __dirname + '/8values_fe/public/'
+const dir = __dirname + '/public/'
 console.log('dir', dir)
 app.use(express.static(dir)) //allows serving of static files in public folder
 
