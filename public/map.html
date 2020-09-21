@@ -85,7 +85,7 @@
             'layout': {
               'icon-image': 'custom-marker',
               // get the title name from the source's "title" property
-              'text-field': ['get', 'location'],
+              // 'text-field': ['get', 'location'],
               'text-font': [
                 'Open Sans Semibold',
                 'Arial Unicode MS Bold',
@@ -150,11 +150,7 @@
         }
 
         let tooltip_msg = ''
-        tooltip_msg += `<strong>Test Results</strong><br/>`
-        tooltip_msg += `Economic: ${e.features[0].properties.economic}<br/>`
-        tooltip_msg += `Diplomatic: ${e.features[0].properties.diplomatic}<br/>`
-        tooltip_msg += `Civil: ${e.features[0].properties.civil}<br/>`
-        tooltip_msg += `Societal: ${e.features[0].properties.societal}<br/>`
+        tooltip_msg += `<strong>${e.features[0].properties.location}</strong><br/>`
         tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
 
         // Populate the popup and set its coordinates based on the feature found.
@@ -187,6 +183,7 @@
             "id": coll[item].id,
             "url": coll[item].url,
             "location": coll[item].location,
+            "country": coll[item].country,
             "country_name": coll[item].country_name,
             "latitude": coll[item].latitude,
             "longitude": coll[item].longitude,
