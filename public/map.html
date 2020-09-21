@@ -151,7 +151,6 @@
 
         let tooltip_msg = ''
         tooltip_msg += `<strong>Test Results</strong><br/>`
-        tooltip_msg += `Location: ${e.features[0].properties.location}<br/>`
         tooltip_msg += `Economic: ${e.features[0].properties.economic}<br/>`
         tooltip_msg += `Diplomatic: ${e.features[0].properties.diplomatic}<br/>`
         tooltip_msg += `Civil: ${e.features[0].properties.civil}<br/>`
@@ -188,7 +187,6 @@
             "id": coll[item].id,
             "url": coll[item].url,
             "location": coll[item].location,
-            "taken_at": coll[item].taken_at,
             "country_name": coll[item].country_name,
             "latitude": coll[item].latitude,
             "longitude": coll[item].longitude,
