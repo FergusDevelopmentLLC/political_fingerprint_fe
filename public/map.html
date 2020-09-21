@@ -85,7 +85,7 @@
             'layout': {
               'icon-image': 'custom-marker',
               // get the title name from the source's "title" property
-              'text-field': ['get', 'region'],
+              'text-field': ['get', 'location'],
               'text-font': [
                 'Open Sans Semibold',
                 'Arial Unicode MS Bold',
@@ -126,14 +126,24 @@
         closeOnClick: false
       })
 
-      map.on('mouseenter', 'testResults', (e) => {
+      map.on('click', 'testResults', (e) => {
         map.getCanvas().style.cursor = 'pointer'
+        popup.remove()
+        map.flyTo(
+          {
+            center: [e.features[0].properties.longitude, e.features[0].properties.latitude], 
+            zoom: 12,
+            essential: true
+          }
+        )
       })
 
-      map.on('click', 'testResults', (e) => {
+      map.on('mouseenter', 'testResults', (e) => {
         
         let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
 
+        map.getCanvas().style.cursor = 'pointer'
+        
         // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
@@ -141,12 +151,12 @@
 
         let tooltip_msg = ''
         tooltip_msg += `<strong>Test Results</strong><br/>`
+        tooltip_msg += `Location: ${e.features[0].properties.location}<br/>`
         tooltip_msg += `Economic: ${e.features[0].properties.economic}<br/>`
         tooltip_msg += `Diplomatic: ${e.features[0].properties.diplomatic}<br/>`
         tooltip_msg += `Civil: ${e.features[0].properties.civil}<br/>`
         tooltip_msg += `Societal: ${e.features[0].properties.societal}<br/>`
-        tooltip_msg += `Test date: ${new Date(e.features[0].properties.taken_at).toLocaleString()}<br/>`
-        tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>View test result details</a><br/>`
+        tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
 
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
@@ -175,17 +185,17 @@
             "coordinates": [coll[item].longitude, coll[item].latitude]
           },
           "properties": {
+            "id": coll[item].id,
+            "url": coll[item].url,
+            "location": coll[item].location,
+            "taken_at": coll[item].taken_at,
+            "country_name": coll[item].country_name,
+            "latitude": coll[item].latitude,
+            "longitude": coll[item].longitude,
             "economic": coll[item].economic,
             "diplomatic": coll[item].diplomatic,
             "civil": coll[item].civil,
-            "societal": coll[item].societal,
-            "url": coll[item].url,
-            "country_name": coll[item].country_name,
-            "city": coll[item].city,
-            "region": coll[item].region,
-            "taken_at": coll[item].taken_at,
-            "latitude": coll[item].latitude,
-            "longitude": coll[item].longitude
+            "societal": coll[item].societal
           }
         }
         features.push(feature)
