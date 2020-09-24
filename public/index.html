@@ -1,14 +1,24 @@
+<!DOCTYPE html>
+<html>
+
 <head>
   <link href='style.css' rel='stylesheet' type='text/css'>
   <title>Political Fingerprint</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
+
 <body>
-  <a href="https://github.com/FergusDevelopmentLLC/political_fingerprint_fe" class="github-corner" aria-label="View source on Github">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <a href="https://github.com/FergusDevelopmentLLC/political_fingerprint_fe" class="github-corner"
+    aria-label="View source on Github">
+    <svg width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-      <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-      <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
     </svg>
   </a>
   <style>
@@ -34,6 +44,17 @@
       }
     }
 
+    .svg-map {
+      width: 100%;
+    }
+
+    #map-container {
+      width: 75%;
+      margin: 0 auto;
+      background: #424242;
+      padding: 2rem;
+    }
+
     @media (max-width:500px) {
       .github-corner:hover .octo-arm {
         animation: none
@@ -44,48 +65,115 @@
       }
     }
   </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="//d3js.org/topojson.v3.min.js"></script>
+  <script>
+    const statesHash = {
+      "AL": "Alabama",
+      "AK": "Alaska",
+      "AS": "American Samoa",
+      "AZ": "Arizona",
+      "AR": "Arkansas",
+      "CA": "California",
+      "CO": "Colorado",
+      "CT": "Connecticut",
+      "DE": "Delaware",
+      "DC": "District Of Columbia",
+      "FM": "Federated States Of Micronesia",
+      "FL": "Florida",
+      "GA": "Georgia",
+      "GU": "Guam",
+      "HI": "Hawaii",
+      "ID": "Idaho",
+      "IL": "Illinois",
+      "IN": "Indiana",
+      "IA": "Iowa",
+      "KS": "Kansas",
+      "KY": "Kentucky",
+      "LA": "Louisiana",
+      "ME": "Maine",
+      "MH": "Marshall Islands",
+      "MD": "Maryland",
+      "MA": "Massachusetts",
+      "MI": "Michigan",
+      "MN": "Minnesota",
+      "MS": "Mississippi",
+      "MO": "Missouri",
+      "MT": "Montana",
+      "NE": "Nebraska",
+      "NV": "Nevada",
+      "NH": "New Hampshire",
+      "NJ": "New Jersey",
+      "NM": "New Mexico",
+      "NY": "New York",
+      "NC": "North Carolina",
+      "ND": "North Dakota",
+      "MP": "Northern Mariana Islands",
+      "OH": "Ohio",
+      "OK": "Oklahoma",
+      "OR": "Oregon",
+      "PW": "Palau",
+      "PA": "Pennsylvania",
+      "PR": "Puerto Rico",
+      "RI": "Rhode Island",
+      "SC": "South Carolina",
+      "SD": "South Dakota",
+      "TN": "Tennessee",
+      "TX": "Texas",
+      "UT": "Utah",
+      "VT": "Vermont",
+      "VI": "Virgin Islands",
+      "VA": "Virginia",
+      "WA": "Washington",
+      "WV": "West Virginia",
+      "WI": "Wisconsin",
+      "WY": "Wyoming"
+    }
+  </script>
 
   <script>
-
     const params = new URLSearchParams(window.location.search)
-    
     let version = 1
-    if(params.has('qv')) {
+    if (params.has('qv')) {
       version = parseInt(params.get('qv'))
     }
-
     const goToTest = () => location.href = `quiz.html?qv=${version}`
-
   </script>
 
   <h3>Political <span class="redux">Fingerprint</span></h3>
   <h4><span id="version"></span></h4>
   <h6><span id="version-description"></span></h6>
-  <hr/>
-  <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
+  <hr />
+  <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to
+      begin</button></div>
   <div class="home">
     <h5>The Test</h5>
-    <p>Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.</p>
+    <p>Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and
+      "left" framework.</p>
     <p>
-      After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify with it. 
+      After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly
+        Disagree</strong> how closely you identify with it.
       Each response slightly affects your final results.
     </p>
 
     <p class="test-instructions" id="test-version-01">
-      At the end of the test, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
-      categories (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
+      At the end of the test, your results will indicate where you place on a continuum between two opposing
+      perspectives in each of four
+      categories (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and
+      <strong>Societal</strong>).
     </p>
 
     <p class="test-instructions" id="test-version-02">
-      At the end of the test, your results will indicate where you place on a continuum between opposing perspectives in two  
+      At the end of the test, your results will indicate where you place on a continuum between opposing perspectives in
+      two
       categories (<strong>Economic</strong> and <strong>Civil</strong>).
     </p>
-    
+
     <div class="img-home-wrapper">
-      <img class="img-home" id="img-home-economic"   src="axis-economic.png"></img>
+      <img class="img-home" id="img-home-economic" src="axis-economic.png"></img>
       <img class="img-home" id="img-home-diplomatic" src="axis-diplomatic.png"></img>
-      <img class="img-home" id="img-home-civil"      src="axis-civil.png"></img>
-      <img class="img-home" id="img-home-societal"   src="axis-societal.png"></img>
+      <img class="img-home" id="img-home-civil" src="axis-civil.png"></img>
+      <img class="img-home" id="img-home-societal" src="axis-societal.png"></img>
     </div>
 
     <h5>Feedback</h5>
@@ -96,33 +184,42 @@
       <li>Make the test shorter</li>
     </ol>
     <p>
-      By collecting feedback for each statement, subsequent versions of the test can be improved. 
+      By collecting feedback for each statement, subsequent versions of the test can be improved.
     </p>
     <h5>Closest Match (experimental, work in progress)</h5>
     <p>
-      In addition to the results addition to the results, there is an attempt to match your answers most closely with one of these <a href='ideologies.html'>ideologies</a>. 
-      This part of the application is experimental and is a work in progress. Currently the logic behind matches what can be found at 8values, which Political Fingerprint is 
+      In addition to the results addition to the results, there is an attempt to match your answers most closely with
+      one of these <a href='ideologies.html'>ideologies</a>.
+      This part of the application is experimental and is a work in progress. Currently the logic behind matches what
+      can be found at 8values, which Political Fingerprint is
       based on.
     </p>
     <h5>Test results map</h5>
-    <p>Upon completion, the test taker is given a geographical glimpse of other test results similar to the following example:</p>
-    <div class="img-map-wrapper"><img class="img-map" src="map.png"></img></div>
+    <p>Upon completion, the test taker is given a geographical glimpse of other test results similar to the following
+      example:</p>
+    <div class="img-map-wrapper">
+      <div id="map-container"></div>
+    </div>
     <h5>What data is being collected?</h5>
     <ol>
       <li>Feedback for each question</li>
       <li>Test result scores, but not individual responses to statements</li>
-      <li>The IP address of the taker used (but not collected) in order to approximate generalized location of each test result to city level accuracy.</li>
+      <li>The IP address of the taker used (but not collected) in order to approximate generalized location of each test
+        result to city level accuracy.</li>
     </ol>
     <h5>Credits</h5>
-    <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political compass</a>. Currently all statements and test logic matches <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> almost exactly.</p>
+    <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io'
+        target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political
+        compass</a>. Currently all statements and test logic matches <a
+        href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> almost exactly.</p>
   </div>
   <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
 
   <script>
     let versionText = `version: ${version}`
     document.getElementById('version').innerHTML = versionText
-    
-    if(version == 2) {
+
+    if (version == 2) {
       document.getElementById('version-description').innerHTML = `(25 statements in 2 categories)`
       document.getElementById('test-version-02').style.display = 'block'
       document.getElementById('img-home-economic').style.display = 'block'
@@ -137,7 +234,192 @@
       document.getElementById('img-home-societal').style.display = 'block'
     }
 
-    
   </script>
+  <script type="text/javascript">
 
+    let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').attr('viewBox', '0 0 1000 640')
+    let path = d3.geoPath()
+    let color = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
+
+    function callout(g, value) {
+
+      if (!value) return g.style("display", "none");
+
+      g.style("display", null)
+        .style("pointer-events", "none")
+        .style("font", "10px sans-serif");
+
+      var path = g
+        .selectAll("path")
+        .data([null])
+        .join("path")
+        .attr("fill", "white")
+        .attr("stroke", "black");
+
+      //.data((value['tooltipMessage'] + "").split("/\n/"))
+      var text = g
+        .selectAll("text")
+        .data([null])
+        .join("text")
+        .call(function (text) {
+          text.selectAll("tspan")
+            .data((value['tooltipMessage'] + "").split("|"))//TODO: lame, see comment above
+            .join("tspan")
+            .attr("x", 0)
+            .attr("y", function (d, i) {
+              return i * 1.1 + "em";
+            })
+            .style("font-weight", function (_, i) {
+              return i ? null : "bold";
+            })
+            .text(function (d) {
+              return d;
+            });
+        });
+
+      var x = text.node().getBBox().x;
+      var y = text.node().getBBox().y;
+      var w = text.node().getBBox().width;
+      var h = text.node().getBBox().height;
+
+      text.attr(
+        "transform",
+        "translate(" + -w / 2 + "," + (15 - y) + ")"
+      );
+      path.attr(
+        "d",
+        "M" +
+        (-w / 2 - 10) +
+        ",5H-5l5,-5l5,5H" +
+        (w / 2 + 10) +
+        "v" +
+        (h + 20) +
+        "h-" +
+        (w + 20) +
+        "z"
+      );
+    }
+
+    d3.json("data/counties-albers-10m.json").then(function (topo_data) {
+
+      let states = new Map(
+        topo_data.objects.states.geometries.map(function (d) {
+          return [d.id, d.properties];
+        })
+      );
+
+      d3.json("data/testResult.json").then(function (data) {
+        return data.map(function (d) {
+          let o = {}
+          o.id = d.id
+          o.economic = +d.economic
+          o.diplomatic = +d.diplomatic
+          o.civil = +d.civil
+          o.societal = +d.societal
+          o.name = d.name
+          o.state_abbrev = d.state_abbrev
+          o.state_name = d.state_name
+          o.tooltipMessage = `${o.name} County, ${o.state_abbrev}|econ: ${o.economic}|dipl: ${o.diplomatic}|civil: ${o.civil}|societal: ${o.societal}`
+          return o
+        })
+      })
+        .then(function (objects) {
+          svg.append("g")
+            .attr("id", "map")
+            .selectAll("path")
+            .data(
+              topojson.feature(
+                topo_data,
+                topo_data.objects.counties
+              ).features
+            )
+            .join("path")
+            .attr("class", "county")
+            .attr("fill", function (d) {
+
+              let match = objects.filter(obj => {
+                return obj.id.toString() === d.id.toString()
+              })
+
+              if (match.length > 0) {
+
+                let economic = match[0]['economic']
+                let diplomatic = match[0]['diplomatic']
+                let civil = match[0]['civil']
+                let societal = match[0]['societal']
+                let total = economic + diplomatic + civil + societal
+                let avg = total / 4
+
+                let c = color(avg)
+                if (c) return c
+              }
+              else {
+                return '#CCC'
+              }
+            })
+            .attr("d", path);
+
+          //this adds white borders around counties
+          svg.select("#map")
+            .append("path")
+            .attr("fill", "none")
+            .attr("stroke", "white")
+            .attr(
+              "d",
+              path(
+                topojson.mesh(
+                  topo_data,
+                  topo_data.objects.states,
+                  function (a, b) {
+                    return a !== b;
+                  }
+                )
+              )
+            );
+
+
+          // Create and customize tooltip
+          var tooltip = svg.append("g");
+
+          svg.selectAll(".county")
+            .on("mouseover", function (d) {
+
+              //TODO: getting state_abbreviation in a crazy way here. Need 1 source of state, counties
+              let tooltipMessage = `${d.properties.name} County, ${Object.keys(statesHash).find(key => statesHash[key] === states.get(d.id.slice(0, 2)).name)}|No test results`
+
+              let match = objects.filter(obj => {
+                return obj.id.toString() === d.id.toString()
+              })
+
+              if (match.length > 0)
+                tooltip.call(callout, match[0])
+              else
+                tooltip.call(callout, { 'tooltipMessage': tooltipMessage })
+
+              d3.select(this)
+                .attr("stroke", "red")
+                .raise();
+            })
+            .on("mousemove", function () {
+              tooltip.attr(
+                "transform",
+                "translate(" +
+                d3.mouse(this)[0] +
+                "," +
+                d3.mouse(this)[1] +
+                ")"
+              );
+            })
+            .on("mouseout", function () {
+              tooltip.call(callout, null);
+              d3.select(this)
+                .attr("stroke", null)
+                .lower();
+            });
+
+        });
+    });
+  </script>
 </body>
+
+</html>

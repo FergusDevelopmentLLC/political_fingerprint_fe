@@ -56,8 +56,8 @@
     let feedbackScore = 0
     let currentQuestionIterationId = 0
 
-    //const url_prefix = 'http://127.0.0.1:3000'
-    const url_prefix = 'http://138.68.23.63:3030'
+    const url_prefix = 'http://127.0.0.1:3000'
+    //const url_prefix = 'http://138.68.23.63:3030'
     
     const params = new URLSearchParams(window.location.search)
     let version = 1
@@ -250,6 +250,7 @@
         + `&d=${d}`
         + `&g=${g}`
         + `&s=${s}`
+        + `&v=${version}`
     }
 
     

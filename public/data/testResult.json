@@ -1,0 +1,102 @@
+[
+  {
+    "id": 48113,
+    "state_abbrev": "TX",
+    "state_name": "Texas",
+    "name": "Dallas",
+    "economic": 21.2,
+    "diplomatic": 37.8,
+    "civil": 32.1,
+    "societal": 30.04
+  },
+  {
+    "id": 40143,
+    "state_abbrev": "OK",
+    "state_name": "Oklahoma",
+    "name": "Tulsa",
+    "economic": 21.2,
+    "diplomatic": 37.8,
+    "civil": 32.1,
+    "societal": 30.04
+  },
+  {
+    "id": 17197,
+    "state_abbrev": "IL",
+    "state_name": "Illinois",
+    "name": "Will",
+    "economic": 81,
+    "diplomatic": 70,
+    "civil": 69,
+    "societal": 78.6
+  },
+  {
+    "id": 18091,
+    "state_abbrev": "IN",
+    "state_name": "Indiana",
+    "name": "LaPorte",
+    "economic": 21.2,
+    "diplomatic": 37.8,
+    "civil": 32.1,
+    "societal": 30.04
+  },
+  {
+    "id": "08031",
+    "state_abbrev": "CO",
+    "state_name": "Colorado",
+    "name": "Denver",
+    "economic": 81,
+    "diplomatic": 70,
+    "civil": 69,
+    "societal": 78.6
+  },
+  {
+    "id": "06065",
+    "state_abbrev": "CA",
+    "state_name": "California",
+    "name": "Riverside",
+    "economic": 81,
+    "diplomatic": 70,
+    "civil": 69,
+    "societal": 78.6
+  },
+  {
+    "id": 36061,
+    "state_abbrev": "NY",
+    "state_name": "New York",
+    "name": "New York",
+    "economic": 96.2,
+    "diplomatic": 73.3,
+    "civil": 75,
+    "societal": 91.9
+  },
+  {
+    "id": 53061,
+    "state_abbrev": "WA",
+    "state_name": "Washington",
+    "name": "Snohomish",
+    "economic": 53.2,
+    "diplomatic": 60.6,
+    "civil": 57.5,
+    "societal": 56.2
+  },
+  {
+    "id": 41057,
+    "state_abbrev": "OR",
+    "state_name": "Oregon",
+    "name": "Tillamook",
+    "economic": 21.2,
+    "diplomatic": 37.8,
+    "civil": 32.1,
+    "societal": 30.04
+  },
+  {
+    "id": 12119,
+    "state_abbrev": "FL",
+    "state_name": "Florida",
+    "name": "Sumter",
+    "economic": 21.2,
+    "diplomatic": 37.8,
+    "civil": 32.1,
+    "societal": 30.04
+  }
+]
