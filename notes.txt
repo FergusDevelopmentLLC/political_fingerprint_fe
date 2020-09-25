@@ -45,3 +45,4 @@ https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
 
 https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#paint-symbol-text-color
 https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+https://medium.com/@louisemoxy/a-simple-way-to-make-d3-js-charts-svgs-responsive-7afb04bc2e4b
