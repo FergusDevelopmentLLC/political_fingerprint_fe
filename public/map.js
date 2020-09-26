@@ -1,53 +1,55 @@
-let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').attr('viewBox', '0 0 1000 640')
+let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').attr('viewBox', '15 10 945 595')
 let path = d3.geoPath()
 let color = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
 
+
+
 function callout(g, value) {
 
-    if (!value) return g.style("display", "none");
+  if (!value) return g.style("display", "none");
 
-    g.style("display", null)
+  g.style("display", null)
     .style("pointer-events", "none")
     .style("font", "10px sans-serif");
 
-    var path = g
+  var path = g
     .selectAll("path")
     .data([null])
     .join("path")
     .attr("fill", "white")
     .attr("stroke", "black");
 
-    //.data((value['tooltipMessage'] + "").split("/\n/"))
-    var text = g
+  //.data((value['tooltipMessage'] + "").split("/\n/"))
+  var text = g
     .selectAll("text")
     .data([null])
     .join("text")
     .call(function (text) {
-        text.selectAll("tspan")
+      text.selectAll("tspan")
         .data((value['tooltipMessage'] + "").split("|"))//TODO: lame, see comment above
         .join("tspan")
         .attr("x", 0)
         .attr("y", function (d, i) {
-            return i * 1.1 + "em";
+          return i * 1.1 + "em";
         })
         .style("font-weight", function (_, i) {
-            return i ? null : "bold";
+          return i ? null : "bold";
         })
         .text(function (d) {
-            return d;
+          return d;
         });
     });
 
-    var x = text.node().getBBox().x;
-    var y = text.node().getBBox().y;
-    var w = text.node().getBBox().width;
-    var h = text.node().getBBox().height;
+  var x = text.node().getBBox().x;
+  var y = text.node().getBBox().y;
+  var w = text.node().getBBox().width;
+  var h = text.node().getBBox().height;
 
-    text.attr(
+  text.attr(
     "transform",
     "translate(" + -w / 2 + "," + (15 - y) + ")"
-    );
-    path.attr(
+  );
+  path.attr(
     "d",
     "M" +
     (-w / 2 - 10) +
@@ -58,51 +60,52 @@ function callout(g, value) {
     "h-" +
     (w + 20) +
     "z"
-    );
+  );
 }
 
 d3.json("data/counties-albers-10m.json").then(function (topo_data) {
 
-    let states = new Map(
+  let states = new Map(
     topo_data.objects.states.geometries.map(function (d) {
-        return [d.id, d.properties];
+      return [d.id, d.properties];
     })
-    );
+  );
 
-    d3.json("data/testResult.json").then(function (data) {
+  //d3.json("data/testResult.json").then(function (data) {
+  d3.json("http://138.68.23.63:3030/test_results").then(function (data) {
     return data.map(function (d) {
-        let o = {}
-        o.id = d.id
-        o.economic = +d.economic
-        o.diplomatic = +d.diplomatic
-        o.civil = +d.civil
-        o.societal = +d.societal
-        o.name = d.name
-        o.state_abbrev = d.state_abbrev
-        o.state_name = d.state_name
-        o.tooltipMessage = `${o.name} County, ${o.state_abbrev}|econ: ${o.economic}|dipl: ${o.diplomatic}|civil: ${o.civil}|societal: ${o.societal}`
-        return o
+      let o = {}
+      o.id = d.id
+      o.economic = +d.economic
+      o.diplomatic = +d.diplomatic
+      o.civil = +d.civil
+      o.societal = +d.societal
+      o.name = d.name
+      o.state_abbrev = d.state_abbrev
+      o.state_name = d.state_name
+      o.tooltipMessage = `${o.name}, ${o.state_abbrev}|econ: ${o.economic}|dipl: ${o.diplomatic}|civil: ${o.civil}|societal: ${o.societal}`
+      return o
     })
-    })
+  })
     .then(function (objects) {
-        svg.append("g")
+      svg.append("g")
         .attr("id", "map")
         .selectAll("path")
         .data(
-            topojson.feature(
+          topojson.feature(
             topo_data,
             topo_data.objects.counties
-            ).features
+          ).features
         )
         .join("path")
         .attr("class", "county")
         .attr("fill", function (d) {
 
-            let match = objects.filter(obj => {
+          let match = objects.filter(obj => {
             return obj.id.toString() === d.id.toString()
-            })
+          })
 
-            if (match.length > 0) {
+          if (match.length > 0) {
 
             let economic = match[0]['economic']
             let diplomatic = match[0]['diplomatic']
@@ -113,67 +116,70 @@ d3.json("data/counties-albers-10m.json").then(function (topo_data) {
 
             let c = color(avg)
             if (c) return c
-            }
-            else {
+          }
+          else {
             return '#CCC'
-            }
+          }
         })
         .attr("d", path);
 
-        //this adds white borders around counties
-        svg.select("#map")
+      //this adds white borders around counties
+      svg.select("#map")
         .append("path")
         .attr("fill", "none")
         .attr("stroke", "white")
         .attr(
-            "d",
-            path(
+          "d",
+          path(
             topojson.mesh(
-                topo_data,
-                topo_data.objects.states,
-                function (a, b) {
+              topo_data,
+              topo_data.objects.states,
+              function (a, b) {
                 return a !== b;
-                }
+              }
             )
-            )
+          )
         );
 
 
-        // Create and customize tooltip
-        var tooltip = svg.append("g");
+      // Create and customize tooltip
+      var tooltip = svg.append("g");
 
-        svg.selectAll(".county")
+      svg.selectAll(".county")
         .on("mouseover", function (d) {
 
-            //TODO: getting state_abbreviation in a crazy way here. Need 1 source of state, counties
-            let tooltipMessage = `${d.properties.name}|No test results`
+          let tooltipMessage = `${d.properties.name}`
 
-            let match = objects.filter(obj => {
+          let match = objects.filter(obj => {
             return obj.id.toString() === d.id.toString()
-            })
+          })
 
-            if (match.length > 0)
+          if (match.length > 0)
             tooltip.call(callout, match[0])
-            else
-            tooltip.call(callout, { 'tooltipMessage': tooltipMessage })
-
-            d3.select(this)
+          else {
+            //TODO: this is lame, fix this
+            let matchingCounties = counties.filter(obj => {
+              return obj.id.toString() === d.id.toString()
+            })
+            tooltip.call(callout, { 'tooltipMessage': `${tooltipMessage} County, ${matchingCounties[0].state_abbrev}|No test results` })
+          }
+          d3.select(this)
             .attr("stroke", "red")
             .raise();
         })
         .on("mousemove", function () {
-            tooltip.attr(
+          tooltip.attr(
             "transform",
             "translate(" +
             d3.mouse(this)[0] +
             "," +
             d3.mouse(this)[1] +
             ")"
-            );
+          );
         })
         .on("mouseout", function () {
-            tooltip.call(callout, null);
-            d3.select(this)
+          tooltip.call(callout, null);
+          d3.select(this)
             .attr("stroke", null)
             .lower();
         });

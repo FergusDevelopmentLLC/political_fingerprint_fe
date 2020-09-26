@@ -1,211 +1,31 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset='utf-8' />
   <title>Political Fingerprint</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <style>
+
     body {
       margin: 0;
       padding: 0;
+      background: #474747;
     }
 
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
+    #map-container {
+      width: 70%;
+      margin: 1rem auto 0;
     }
+
   </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="//d3js.org/topojson.v3.min.js"></script>
+  <script src="states.js"></script>
+  <script src="counties.js"></script>
 </head>
 
 <body>
-
-  <style>
-    .mapboxgl-popup {
-      max-width: 500px;
-      font: 10px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
-  </style>
-  <div id='map'></div>
-  <script>
-
-    // get bounding box: http://bboxfinder.com
-    let mapBounds = [-130.209961, 22.512557, -59.282227, 51.781436]//Southwest corner, Northeast corner
-
-    mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
-
-    // let basemap = 'basic'
-    // let basemap = 'streets'
-    // let basemap = 'bright'
-    // let basemap = 'light'
-    let basemap = 'dark'
-    // let basemap = 'satellite'
-
-    //const url_prefix = 'http://127.0.0.1:3000'
-    const url_prefix = 'http://138.68.23.63:3030'
-
-    // https://www.mapbox.com/api-documentation/#styles
-    let map = new mapboxgl.Map({
-      container: 'map',
-      style: `mapbox://styles/mapbox/${basemap}-v9`,
-      center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
-      zoom: 4
-    })
-
-    const getTestResults = async () => {
-      let url = `${url_prefix}/test_results`
-      return await fetch(url).then(r => r.json())
-    }
-
-    map.on('load', async function () {
-
-      let testResults = await getTestResults()
-      let fc = getFeatureCollectionFor(testResults)
-      map.addSource('testResults', {
-        type: 'geojson',
-        data: fc
-      })
-
-      // Add an image to use as a custom marker
-      map.loadImage(
-        'pf.png',
-        function (error, image) {
-          if (error) throw error;
-          map.addImage('custom-marker', image);
-
-          // Add a symbol layer
-          map.addLayer({
-            'id': 'testResults',
-            'type': 'symbol',
-            'source': 'testResults',
-            'layout': {
-              'icon-image': 'custom-marker',
-              // get the title name from the source's "title" property
-              // 'text-field': ['get', 'location'],
-              'text-font': [
-                'Open Sans Semibold',
-                'Arial Unicode MS Bold',
-              ],
-              'text-size': 15,
-              'text-offset': [0, 1.75],
-              'text-anchor': 'top'
-            },
-            'paint': {
-              'text-color': '#ffffff'
-            }
-          })
-
-        }
-      )
-
-      handlePopup()
-
-    })
-
-
-    //   map.addLayer({
-    //     id: 'testResults',
-    //     source: 'testResults',
-    //     type: 'circle'
-    //   })
-
-    //   //handlePopup()
-
-    // })
-
-    handlePopup = () => {
-
-      // Create a popup, but don't add it to the map yet.
-      let popup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: false,
-        closeOnClick: false
-      })
-
-      map.on('click', 'testResults', (e) => {
-        map.getCanvas().style.cursor = 'pointer'
-        popup.remove()
-        map.flyTo(
-          {
-            center: [e.features[0].properties.longitude, e.features[0].properties.latitude], 
-            zoom: 12,
-            essential: true
-          }
-        )
-      })
-
-      map.on('mouseenter', 'testResults', (e) => {
-        
-        let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
-
-        map.getCanvas().style.cursor = 'pointer'
-        
-        // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
-        }
-
-        let tooltip_msg = ''
-        tooltip_msg += `<strong>${e.features[0].properties.location}</strong><br/>`
-        tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
-
-        // Populate the popup and set its coordinates based on the feature found.
-        popup.setLngLat(coordinates)
-          .setHTML(tooltip_msg)
-          .addTo(map)
-
-      })
-
-      map.on('mouseleave', 'testResults', () => {
-        map.getCanvas().style.cursor = ''
-        //popup.remove()
-      })
-
-    }
-
-
-    getFeatureCollectionFor = (coll) => {
-
-      var features = [];
-
-      for (item in coll) {
-        feature = {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [coll[item].longitude, coll[item].latitude]
-          },
-          "properties": {
-            "id": coll[item].id,
-            "url": coll[item].url,
-            "location": coll[item].location,
-            "country": coll[item].country,
-            "country_name": coll[item].country_name,
-            "latitude": coll[item].latitude,
-            "longitude": coll[item].longitude,
-            "economic": coll[item].economic,
-            "diplomatic": coll[item].diplomatic,
-            "civil": coll[item].civil,
-            "societal": coll[item].societal
-          }
-        }
-        features.push(feature)
-      }
-
-      var featureCollection = {
-        "type": "FeatureCollection",
-        "features": features
-      }
-
-      return featureCollection
-
-    }
-
-  </script>
+  <div id="map-container"></div>
+  <script src="map.js"></script>
 </body>
-
 </html>
