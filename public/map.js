@@ -116,6 +116,8 @@ d3.json("data/counties-albers-10m.json").then(function (topo_data) {
             return '#CCC'
           }
         })
+        .attr("stroke", "#919191")
+        .attr("stroke-width", ".1pt")
         .attr("d", path);
 
       //this adds white borders around states
