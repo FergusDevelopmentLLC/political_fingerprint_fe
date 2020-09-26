@@ -1,8 +1,9 @@
-let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').attr('viewBox', '15 10 945 595')
+let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').attr('viewBox', '15 0 945 595')
 let path = d3.geoPath()
 let color = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
 
-
+//const urlPrefix = 'http://127.0.0.1:3000'
+const urlPrefix = 'http://138.68.23.63:3030'
 
 function callout(g, value) {
 
@@ -65,14 +66,8 @@ function callout(g, value) {
 
 d3.json("data/counties-albers-10m.json").then(function (topo_data) {
 
-  let states = new Map(
-    topo_data.objects.states.geometries.map(function (d) {
-      return [d.id, d.properties];
-    })
-  );
-
   //d3.json("data/testResult.json").then(function (data) {
-  d3.json("http://138.68.23.63:3030/test_results").then(function (data) {
+  d3.json(`${urlPrefix}/test_results`).then(function (data) {
     return data.map(function (d) {
       let o = {}
       o.id = d.id
@@ -123,7 +118,7 @@ d3.json("data/counties-albers-10m.json").then(function (topo_data) {
         })
         .attr("d", path);
 
-      //this adds white borders around counties
+      //this adds white borders around states
       svg.select("#map")
         .append("path")
         .attr("fill", "none")
