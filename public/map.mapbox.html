@@ -41,8 +41,8 @@
     // let basemap = 'basic'
     // let basemap = 'streets'
     // let basemap = 'bright'
-    // let basemap = 'light'
-    let basemap = 'dark'
+    let basemap = 'light'
+    // let basemap = 'dark'
     // let basemap = 'satellite'
 
     //const url_prefix = 'http://127.0.0.1:3000'
@@ -63,148 +63,79 @@
 
     map.on('load', async function () {
 
-      let testResults = await getTestResults()
-      let fc = getFeatureCollectionFor(testResults)
-      map.addSource('testResults', {
+      map.addSource('counties', {
         type: 'geojson',
-        data: fc
+        data: `${url_prefix}/data/counties.geojson`
       })
+      
+      map.addSource('counties', { type: 'geojson', data: url});
 
-      // Add an image to use as a custom marker
-      map.loadImage(
-        'pf.png',
-        function (error, image) {
-          if (error) throw error;
-          map.addImage('custom-marker', image);
-
-          // Add a symbol layer
-          map.addLayer({
-            'id': 'testResults',
-            'type': 'symbol',
-            'source': 'testResults',
-            'layout': {
-              'icon-image': 'custom-marker',
-              // get the title name from the source's "title" property
-              // 'text-field': ['get', 'location'],
-              'text-font': [
-                'Open Sans Semibold',
-                'Arial Unicode MS Bold',
-              ],
-              'text-size': 15,
-              'text-offset': [0, 1.75],
-              'text-anchor': 'top'
-            },
-            'paint': {
-              'text-color': '#ffffff'
-            }
-          })
-
-        }
-      )
-
-      handlePopup()
+      // add counties
+      map.addLayer({
+        'id': 'counties',
+        'type': 'fill',
+        'source': 'counties',
+        'layout': {},
+        'paint': {
+          'fill-color': '#088',
+          'fill-opacity': 0.8
+        }        
+      })
 
     })
 
+    // handlePopup = () => {
 
-    //   map.addLayer({
-    //     id: 'testResults',
-    //     source: 'testResults',
-    //     type: 'circle'
+    //   // Create a popup, but don't add it to the map yet.
+    //   let popup = new mapboxgl.Popup({
+    //     offset: 25,
+    //     closeButton: false,
+    //     closeOnClick: false
     //   })
 
-    //   //handlePopup()
+    //   map.on('click', 'testResults', (e) => {
+    //     map.getCanvas().style.cursor = 'pointer'
+    //     popup.remove()
+    //     map.flyTo(
+    //       {
+    //         center: [e.features[0].properties.longitude, e.features[0].properties.latitude], 
+    //         zoom: 12,
+    //         essential: true
+    //       }
+    //     )
+    //   })
 
-    // })
-
-    handlePopup = () => {
-
-      // Create a popup, but don't add it to the map yet.
-      let popup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: false,
-        closeOnClick: false
-      })
-
-      map.on('click', 'testResults', (e) => {
-        map.getCanvas().style.cursor = 'pointer'
-        popup.remove()
-        map.flyTo(
-          {
-            center: [e.features[0].properties.longitude, e.features[0].properties.latitude], 
-            zoom: 12,
-            essential: true
-          }
-        )
-      })
-
-      map.on('mouseenter', 'testResults', (e) => {
+    //   map.on('mouseenter', 'testResults', (e) => {
         
-        let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
+    //     let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
 
-        map.getCanvas().style.cursor = 'pointer'
+    //     map.getCanvas().style.cursor = 'pointer'
         
-        // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
-        }
+    //     // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
+    //     }
 
-        let tooltip_msg = ''
-        tooltip_msg += `<strong>${e.features[0].properties.location}</strong><br/>`
-        tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
+    //     let tooltip_msg = ''
+    //     tooltip_msg += `<strong>${e.features[0].properties.location}</strong><br/>`
+    //     tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
 
-        // Populate the popup and set its coordinates based on the feature found.
-        popup.setLngLat(coordinates)
-          .setHTML(tooltip_msg)
-          .addTo(map)
+    //     // Populate the popup and set its coordinates based on the feature found.
+    //     popup.setLngLat(coordinates)
+    //       .setHTML(tooltip_msg)
+    //       .addTo(map)
 
-      })
+    //   })
 
-      map.on('mouseleave', 'testResults', () => {
-        map.getCanvas().style.cursor = ''
-        //popup.remove()
-      })
+    //   map.on('mouseleave', 'testResults', () => {
+    //     map.getCanvas().style.cursor = ''
+    //     //popup.remove()
+    //   })
 
-    }
+    // }
 
 
-    getFeatureCollectionFor = (coll) => {
-
-      var features = [];
-
-      for (item in coll) {
-        feature = {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [coll[item].longitude, coll[item].latitude]
-          },
-          "properties": {
-            "id": coll[item].id,
-            "url": coll[item].url,
-            "location": coll[item].location,
-            "country": coll[item].country,
-            "country_name": coll[item].country_name,
-            "latitude": coll[item].latitude,
-            "longitude": coll[item].longitude,
-            "economic": coll[item].economic,
-            "diplomatic": coll[item].diplomatic,
-            "civil": coll[item].civil,
-            "societal": coll[item].societal
-          }
-        }
-        features.push(feature)
-      }
-
-      var featureCollection = {
-        "type": "FeatureCollection",
-        "features": features
-      }
-
-      return featureCollection
-
-    }
-
+    
   </script>
 </body>
 
