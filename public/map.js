@@ -67,7 +67,7 @@ function callout(g, value) {
 d3.json("data/counties-albers-10m.json").then(function (topo_data) {
 
   //d3.json("data/testResult.json").then(function (data) {
-  d3.json(`${urlPrefix}/test_results`).then(function (data) {
+  d3.json(`${urlPrefix}/test_results_fake/1800`).then(function (data) {
     return data.map(function (d) {
       let o = {}
       o.id = d.id
@@ -83,6 +83,7 @@ d3.json("data/counties-albers-10m.json").then(function (topo_data) {
     })
   })
     .then(function (objects) {
+      console.log('objects', objects)
       svg.append("g")
         .attr("id", "map")
         .selectAll("path")
