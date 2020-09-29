@@ -53,3 +53,7 @@ https://blog.appsignal.com/2018/07/31/generating-random-numbers-in-ruby.html
 https://stackoverflow.com/questions/2752231/random-record-in-activerecord
 https://medium.com/@ryanflach/next-and-break-in-ruby-4bf9daf5322d
 https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
+https://docs.mapbox.com/help/glossary/projection/
+https://blog.mapbox.com/mapping-the-us-elections-guide-to-albers-usa-projection-in-studio-45be6bafbd7e
+https://docs.mapbox.com/mapbox-gl-js/example/filter-features-within-map-view/
+https://github.com/mapbox/tippecanoe
