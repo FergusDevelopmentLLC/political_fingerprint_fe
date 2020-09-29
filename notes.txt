@@ -49,3 +49,7 @@ https://medium.com/@louisemoxy/a-simple-way-to-make-d3-js-charts-svgs-responsive
 
 https://docs.mapbox.com/help/glossary/projection/
 https://docs.mapbox.com/mapbox-gl-js/example/geojson-polygon/
+https://blog.appsignal.com/2018/07/31/generating-random-numbers-in-ruby.html
+https://stackoverflow.com/questions/2752231/random-record-in-activerecord
+https://medium.com/@ryanflach/next-and-break-in-ruby-4bf9daf5322d
+https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/

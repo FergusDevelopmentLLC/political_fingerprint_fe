@@ -7,6 +7,7 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -56,28 +57,86 @@
       zoom: 4
     })
 
+    const getCounties = async () => {
+      let url = `data/counties.geojson`
+      return await fetch(url).then(r => r.json())
+    }
+
     const getTestResults = async () => {
-      let url = `${url_prefix}/test_results`
+      let url = `${url_prefix}/test_results_fake/350`
       return await fetch(url).then(r => r.json())
     }
 
     map.on('load', async function () {
 
-      map.addSource('counties', {
-        type: 'geojson',
-        data: `data/counties.geojson`
+      let testResults = await getTestResults()
+      let countiesGeoJson = await getCounties()
+      
+      //merge them
+      countiesGeoJson.features.forEach(county => { 
+        let match = testResults.find(tr => tr.id === county.properties.geoid)
+        if(match) {
+          county.properties['economic'] = match['economic']
+          county.properties['diplomatic'] = match['diplomatic']
+          county.properties['civil'] = match['civil']
+          county.properties['societal'] = match['societal']
+          county.properties['avg'] = (parseFloat(county.properties['economic']) + parseFloat(county.properties['diplomatic']) + parseFloat(county.properties['civil']) + parseFloat(county.properties['societal'])) / 4
+        }
+        else {
+          county.properties['avg'] = 0
+        }
       })
       
-      // add counties
+      // why doesn't this work?
+      //countiesGeoJson.features = countiesGeoJson.features.map((item, i) => Object.assign({}, item, testResults[i]))
+      // let merged = [];
+      // merged = countiesGeoJson.features.map(itm => ({
+      //   ...testResults.find((item) => (item.geoid === itm.id)),
+      //   ...itm
+      // }));
+      // console.log('merged', merged)
+
+      //console.log('countiesGeoJson.features', countiesGeoJson.features)
+
+      map.addSource('counties', {
+        type: 'geojson',
+        data: countiesGeoJson
+      })
+
+      map.addSource('states', {
+        type: 'geojson',
+        data: 'data/states.geojson'
+      })
+
+      //add counties
       map.addLayer({
         'id': 'counties',
         'type': 'fill',
         'source': 'counties',
         'layout': {},
         'paint': {
-          'fill-color': '#088',
-          'fill-opacity': 0.3
-        }        
+          'fill-color': {
+            property: 'avg',
+            stops: [
+              [0, '#cccccc'],
+              [1, '#ff0000'],
+              [99, '#0015bc']
+            ]
+          },
+          'fill-outline-color': '#919191'
+        }
+      })
+
+      //add states
+      map.addLayer({
+        'id': 'states',
+        'type': 'line',
+        'source': 'states',
+        'paint': {
+          'line-color': '#ffffff',
+          'line-width': 2,
+          'line-blur': 1
+        }
       })
 
     })

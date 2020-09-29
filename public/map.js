@@ -2,9 +2,6 @@ let svg = d3.select("#map-container").append("svg").attr('class', 'svg-map').att
 let path = d3.geoPath()
 let color = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
 
-//const urlPrefix = 'http://127.0.0.1:3000'
-const urlPrefix = 'http://138.68.23.63:3030'
-
 function callout(g, value) {
 
   if (!value) return g.style("display", "none");
@@ -67,7 +64,7 @@ function callout(g, value) {
 d3.json("data/counties-albers-10m.json").then(function (topo_data) {
 
   //d3.json("data/testResult.json").then(function (data) {
-  d3.json(`${urlPrefix}/test_results_fake/1800`).then(function (data) {
+  d3.json(`${dataUrl}`).then(function (data) {
     return data.map(function (d) {
       let o = {}
       o.id = d.id

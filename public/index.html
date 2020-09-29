@@ -69,6 +69,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="//d3js.org/topojson.v3.min.js"></script>
   <script src="states.js"></script>
+  <script src="counties.js"></script>
 
   <script>
     const params = new URLSearchParams(window.location.search)
@@ -138,11 +139,17 @@
       <li>The IP address of the test taker used to approximate the county location. Only the county is saved for each test result.</li>
     </ol>
     <h5>Test results map</h5>
-    <p>Upon completion, the test taker is given a geographical glimpse of other test results similar to the following
-      example:</p>
+    <p>
+        Upon completion, the test taker is given a geographical glimpse of other test results similar to the following example:
+    </p>
     <div class="img-map-wrapper">
       <div id="map-container"></div>
     </div>
+    <p>
+      The test results that drive the map above have been randomly generated for illustration purposes and do not reflect actual tests. However, upon 
+      completion of your test, your results will be averaged with other test takers from your county if you choose. You will be presented with a map 
+      based on the current, actual test results. 
+    </p>
     
     <h5>Credits</h5>
     <p>Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io'
@@ -170,6 +177,11 @@
       document.getElementById('img-home-civil').style.display = 'block'
       document.getElementById('img-home-societal').style.display = 'block'
     }
+  </script>
+
+  <script>
+    //const dataUrl = 'http://127.0.0.1:3000/test_results_fake/1500'
+    const dataUrl = 'http://138.68.23.63:3030/test_results_fake/1500'
   </script>
 
   <script src="map.js"></script>
