@@ -120,6 +120,26 @@
         type: 'vector',
         url: 'mapbox://willcarter.czkf2uey'
       })
+
+      map.addSource('counties_contracted_source', {
+        type: 'vector',
+        url: 'mapbox://willcarter.1n52p1jf'
+      })
+
+      map.addSource('states_source', {
+        type: 'vector',
+        url: 'mapbox://willcarter.a5cnwnoj'
+      })
+
+      map.addLayer({
+        'id': 'states_bg',
+        'source': 'states_source',
+        'source-layer': 'states_albers',
+        'type': 'fill',
+        'paint': {
+          'fill-color': '#ffffff'
+        }
+      })
       
       map.addLayer({
         'id': 'county',
@@ -132,11 +152,6 @@
         }
       })
 
-      map.addSource('counties_contracted_source', {
-        type: 'vector',
-        url: 'mapbox://willcarter.1n52p1jf'
-      })
-
       map.addLayer({
         'id': 'counties_contracted',
         'source': 'counties_contracted_source',
@@ -144,6 +159,18 @@
         'type': 'fill',
         'paint': {
           'fill-opacity': 0
+        }
+      })
+
+      map.addLayer({
+        'id': 'states',
+        'source': 'states_source',
+        'source-layer': 'states_albers',
+        'type': 'line',
+        'paint': {
+          'line-width': 2,
+          'line-color': '#ffffff',
+          'line-opacity': 1
         }
       })
 
