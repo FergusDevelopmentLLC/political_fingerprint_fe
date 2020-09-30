@@ -58,12 +58,12 @@
     })
 
     const getCounties = async () => {
-      let url = `data/counties.geojson`
+      let url = `mapData/mapbox/counties.geojson`
       return await fetch(url).then(r => r.json())
     }
 
     const getTestResults = async () => {
-      let url = `${url_prefix}/test_results_fake/350`
+      let url = `${url_prefix}/test_results_fake/1500`
       return await fetch(url).then(r => r.json())
     }
 
