@@ -1,0 +1,30 @@
+QGIS version: 3.14.16-Pi
+QGIS code revision: a235a149
+Qt version: 5.14.2
+GDAL version: 3.0.4
+GEOS version: 3.8.1-CAPI-1.13.3
+PROJ version: Rel. 6.3.1, February 10th, 2020
+Processing algorithm…
+Algorithm 'Buffer' starting…
+Input parameters:
+{ 'DISSOLVE' : False, 'DISTANCE' : -0.0075, 'END_CAP_STYLE' : 0, 'INPUT' : '/home/geodevadmin/Desktop/buffer/counties.geojson|layername=counties', 'JOIN_STYLE' : 0, 'MITER_LIMIT' : 2, 'OUTPUT' : 'TEMPORARY_OUTPUT', 'SEGMENTS' : 5 }
+
+Execution completed in 0.86 seconds
+Results:
+{'OUTPUT': 'Buffered_985e7877_05e9_4029_b934_c9b689cb1bdd'}
+
+Loading resulting layers
+Algorithm 'Buffer' finished
+
+---------------------------------------
+
+QGIS version: 3.14.16-Pi
+QGIS code revision: a235a149
+Qt version: 5.14.2
+GDAL version: 3.0.4
+GEOS version: 3.8.1-CAPI-1.13.3
+PROJ version: Rel. 6.3.1, February 10th, 2020
+Processing algorithm…
+Algorithm 'Buffer' starting…
+Input parameters:
+{ 'DISSOLVE' : False, 'DISTANCE' : -0.008, 'END_CAP_STYLE' : 0, 'INPUT' : 'postgres://dbname=\'geodevdb\' host=127.0.0.1 port=5432 key=\'_uid_\' checkPrimaryKeyUnicity=\'1\' table=\"(SELECT row_number() over () AS _uid_,* FROM (select c.geoid, c.geom, c.name, p.state_name, p.state_abbrev, p.latitude, p.longitude, a.x as albers_x, a.y as albers_y from cb_2016_us_county_500k c left join counties_points p on p.geoid = c.geoid left join counties_pts_albers a on a.geoid = c.geoid where a.geoid is not null order by c.geoid\n) AS _subq_1_\n)\" (geom)', 'JOIN_STYLE' : 0, 'MITER_LIMIT' : 2, 'OUTPUT' : 'TEMPORARY_OUTPUT', 'SEGMENTS' : 5 }

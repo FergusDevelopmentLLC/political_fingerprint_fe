@@ -59,3 +59,4 @@ https://docs.mapbox.com/mapbox-gl-js/example/filter-features-within-map-view/
 https://github.com/mapbox/tippecanoe
 https://blog.mapbox.com/mapping-the-us-elections-guide-to-albers-usa-projection-in-studio-45be6bafbd7e
 https://mapshaper.org/
+https://gis.stackexchange.com/questions/232647/inward-buffering-using-qgis/263811

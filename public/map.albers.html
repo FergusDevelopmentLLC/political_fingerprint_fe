@@ -12,6 +12,7 @@
     body {
       margin: 0;
       padding: 0;
+      background: #474747;
     }
 
     #map {
@@ -49,12 +50,15 @@
     //const url_prefix = 'http://127.0.0.1:3030'
     const url_prefix = 'http://138.68.23.63:3030'
 
+    let countiesGeoJson
+    let testResults
+
     //style: `mapbox://styles/willcarter/ckfo94uv50uqz1apdv79q0lmb`,
     // https://www.mapbox.com/api-documentation/#styles
     //style: `mapbox://styles/mapbox/${basemap}-v9`,
     let map = new mapboxgl.Map({
       container: 'map',
-      style: `mapbox://styles/willcarter/ckfo94uv50uqz1apdv79q0lmb`,
+      style: `mapbox://styles/willcarter/ckfps2kwa01u019pp7bel1a7w`,
       zoom: 4.5
     })
 
@@ -101,18 +105,19 @@
 
     map.on('load', async function () {
 
-      let testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
-      let countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
+      testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
+      //testResults = await getJson(`${url_prefix}/test_results_averaged`)
+      countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
       
       map.addSource('counties', {
         type: 'vector',
-        url: 'mapbox://willcarter.1rve8aca'
+        url: 'mapbox://willcarter.czkf2uey'
       })
       
       map.addLayer({
         'id': 'county',
         'source': 'counties',
-        'source-layer': 'countiesalbersusa',
+        'source-layer': 'counties_albers-ala1ut',
         'type': 'fill',
         'paint': {
           'fill-color': getCountyFillColors(countiesGeoJson.features, testResults),
@@ -120,50 +125,22 @@
         }
       })
 
-      // map.addSource('county_overlay_data', {
-      //   type: 'geojson',
-      //   data: countiesGeoJson
-      // })
+      map.addSource('counties_contracted_source', {
+        type: 'vector',
+        url: 'mapbox://willcarter.1n52p1jf'
+      })
 
-      // map.addLayer({
-      //   'id': 'county_overlay',
-      //   'source': 'county_overlay_data',
-      //   'type': 'fill',
-      //   'paint': {
-      //     'fill-opacity': 1
-      //   }
-      // })
+      map.addLayer({
+        'id': 'counties_contracted',
+        'source': 'counties_contracted_source',
+        'source-layer': 'counties_contracted_albers-cvwq37',
+        'type': 'fill',
+        'paint': {
+          'fill-opacity': 0
+        }
+      })
 
-      // map.addSource('counties_pts', {
-      //   type: 'geojson',
-      //   data: 'data/counties_pts_albers.geojson'
-      // })
-
-      //add counties
-      // map.addLayer({
-      //   'id': 'county_points',
-      //   'type': 'circle',
-      //   'source': 'counties_pts',
-      //   paint: {
-      //     'circle-radius': 5,
-      //     'circle-opacity': 0
-      //   }
-      // })
-
-    
-    //   //add states
-    //   map.addLayer({
-    //     'id': 'states',
-    //     'type': 'line',
-    //     'source': 'states',
-    //     'paint': {
-    //       'line-color': '#ffffff',
-    //       'line-width': 2,
-    //       'line-blur': 1
-    //     }
-    //   })
-
-      //handlePopup()
+      handlePopup()
 
     })
 
@@ -176,42 +153,49 @@
         closeOnClick: false
       })
 
-      map.on('mouseenter', 'county_overlay', (e) => {
-        
-        console.log(e)
-
-        //let coordinates = [e.lngLat.lng, e.lngLat.lat]
-
-        //console.log('coordinates', coordinates)
+      map.on('mouseenter', 'counties_contracted', (e) => {
 
         map.getCanvas().style.cursor = 'pointer'
+
+        let countyOfInterest = e.features[0]
         
-        // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+        //let coordinates = [e.lngLat.lng, e.lngLat.lat]
+        let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
+        
+        let match = testResults.find(tr => tr.id === countyOfInterest.properties.geoid)
+        
+        // i don't think this works correctly under albers coordinate system
+        // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
         // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
         // }
 
-        // let tooltip_msg = ''
-        // tooltip_msg += `<strong>Title</strong><br/>`
-        // tooltip_msg += `some other text<br/>`
-
-        // // Populate the popup and set its coordinates based on the feature found.
+        let tooltip_msg = ''
+        tooltip_msg += `<strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong><br/>`
+        if(match) {
+          tooltip_msg += `econ: ${match.economic.toFixed(2)}<br/>`
+          tooltip_msg += `dipl: ${match.diplomatic.toFixed(2)}<br/>`
+          tooltip_msg += `civil: ${match.civil.toFixed(2)}<br/>`
+          tooltip_msg += `societal: ${match.societal.toFixed(2)}<br/>`
+        }
+        else {
+          tooltip_msg += `No test results<br/>`
+        }
         
-        // popup.setLngLat(coordinates)
-        //   .setHTML(tooltip_msg)
-        //   .addTo(map)
+        // Populate the popup and set its coordinates based on the feature found.
+        popup.setLngLat(coordinates)
+          .setHTML(tooltip_msg)
+          .addTo(map)
 
       })
 
-      map.on('mouseleave', 'county_overlay', () => {
+      map.on('mouseleave', 'counties_contracted', () => {
         map.getCanvas().style.cursor = ''
         popup.remove()
       })
 
     }
 
-
-    
   </script>
 </body>
 

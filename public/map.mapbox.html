@@ -49,6 +49,8 @@
     //const url_prefix = 'http://127.0.0.1:3030'
     const url_prefix = 'http://138.68.23.63:3030'
 
+    let countiesGeoJson
+
     // https://www.mapbox.com/api-documentation/#styles
     let map = new mapboxgl.Map({
       container: 'map',
@@ -70,7 +72,7 @@
     map.on('load', async function () {
 
       let testResults = await getTestResults()
-      let countiesGeoJson = await getCounties()
+      countiesGeoJson = await getCounties()
       
       //merge them
       countiesGeoJson.features.forEach(county => { 
@@ -105,7 +107,7 @@
 
       map.addSource('states', {
         type: 'geojson',
-        data: 'data/states.geojson'
+        data: 'mapData/mapbox/states.geojson'
       })
 
       //add counties
@@ -139,57 +141,68 @@
         }
       })
 
+      // map.addSource('counties_contracted', {
+      //   type: 'geojson',
+      //   data: 'mapData/mapbox/counties_contracted.geojson'
+      // })
+
+      //add states
+      map.addLayer({
+        'id': 'counties_contracted_layer',
+        'type': 'fill',
+        'source': 'counties_contracted',
+        'paint': {
+          'fill-opacity': 0
+        }
+      })
+
+      //handlePopup()
     })
 
-    // handlePopup = () => {
+    handlePopup = () => {
 
-    //   // Create a popup, but don't add it to the map yet.
-    //   let popup = new mapboxgl.Popup({
-    //     offset: 25,
-    //     closeButton: false,
-    //     closeOnClick: false
-    //   })
+      // Create a popup, but don't add it to the map yet.
+      let popup = new mapboxgl.Popup({
+        offset: 0,
+        closeButton: false,
+        closeOnClick: false
+      })
 
-    //   map.on('click', 'testResults', (e) => {
-    //     map.getCanvas().style.cursor = 'pointer'
-    //     popup.remove()
-    //     map.flyTo(
-    //       {
-    //         center: [e.features[0].properties.longitude, e.features[0].properties.latitude], 
-    //         zoom: 12,
-    //         essential: true
-    //       }
-    //     )
-    //   })
-
-    //   map.on('mouseenter', 'testResults', (e) => {
+      map.on('mouseenter', 'counties_contracted_layer', (e) => {
         
-    //     let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
-
-    //     map.getCanvas().style.cursor = 'pointer'
+        //console.log('e', e)
         
-    //     // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
-    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    //       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
-    //     }
+        let geoid = e.features[0].properties.geoid
 
-    //     let tooltip_msg = ''
-    //     tooltip_msg += `<strong>${e.features[0].properties.location}</strong><br/>`
-    //     tooltip_msg += `<a href='${e.features[0].properties.url}' target='_blank'>Details</a><br/>`
+        // let coordinates = [e.lngLat.lng, e.lngLat.lat]
+        let coordinates = [e.features[0].properties.longitude, e.features[0].properties.latitude]
 
-    //     // Populate the popup and set its coordinates based on the feature found.
-    //     popup.setLngLat(coordinates)
-    //       .setHTML(tooltip_msg)
-    //       .addTo(map)
+        let match = countiesGeoJson.features.find(county => county.properties.geoid === geoid)
 
-    //   })
+        map.getCanvas().style.cursor = 'pointer'
+        
+        // // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+        // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
+        // }
 
-    //   map.on('mouseleave', 'testResults', () => {
-    //     map.getCanvas().style.cursor = ''
-    //     //popup.remove()
-    //   })
+        let tooltip_msg = ''
+        tooltip_msg += `<strong>${match.properties.name} County</strong><br/>`
+        tooltip_msg += `some other text<br/>`
 
-    // }
+        // Populate the popup and set its coordinates based on the feature found.
+        popup.setLngLat(coordinates)
+          .setHTML(tooltip_msg)
+          .addTo(map)
+
+      })
+
+      map.on('mouseleave', 'counties_contracted_layer', () => {
+        map.getCanvas().style.cursor = ''
+        popup.remove()
+      })
+
+    }
 
 
     
