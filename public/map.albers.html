@@ -113,7 +113,7 @@
 
       testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
       //testResults = await getJson(`${url_prefix}/test_results_averaged`)
-      
+
       countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
       
       map.addSource('counties', {
@@ -184,8 +184,19 @@
       }
 
       map.on('click', 'counties_contracted', (e) => {
+        
         map.getCanvas().style.cursor = 'pointer'
+        
+        popup.remove()
+
+        map.flyTo({
+          center: [e.features[0].properties.albers_x, e.features[0].properties.albers_y], 
+          zoom: 7.5,
+          essential: true
+        })
+
         showPopup(e.features[0])
+
       })
 
       map.on('mouseenter', 'counties_contracted', (e) => {
