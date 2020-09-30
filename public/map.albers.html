@@ -64,6 +64,12 @@
 
     let getColor = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
     
+    let popup = new mapboxgl.Popup({
+      offset: 0,
+      closeButton: false,
+      closeOnClick: false
+    })
+
     const getJson = async (url) => {
       return await fetch(url).then(r => r.json())
     }
@@ -107,6 +113,7 @@
 
       testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
       //testResults = await getJson(`${url_prefix}/test_results_averaged`)
+      
       countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
       
       map.addSource('counties', {
@@ -141,29 +148,17 @@
       })
 
       handlePopup()
-
     })
 
     handlePopup = () => {
 
-      // Create a popup, but don't add it to the map yet.
-      let popup = new mapboxgl.Popup({
-        offset: 0,
-        closeButton: false,
-        closeOnClick: false
-      })
-
-      map.on('mouseenter', 'counties_contracted', (e) => {
-
-        map.getCanvas().style.cursor = 'pointer'
-
-        let countyOfInterest = e.features[0]
-        
+      const showPopup = (countyOfInterest) => {
+      
         //let coordinates = [e.lngLat.lng, e.lngLat.lat]
         let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
-        
+          
         let match = testResults.find(tr => tr.id === countyOfInterest.properties.geoid)
-        
+          
         // i don't think this works correctly under albers coordinate system
         // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
         // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -181,12 +176,21 @@
         else {
           tooltip_msg += `No test results<br/>`
         }
-        
+          
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
           .setHTML(tooltip_msg)
           .addTo(map)
+      }
 
+      map.on('click', 'counties_contracted', (e) => {
+        map.getCanvas().style.cursor = 'pointer'
+        showPopup(e.features[0])
+      })
+
+      map.on('mouseenter', 'counties_contracted', (e) => {
+        map.getCanvas().style.cursor = 'pointer'
+        showPopup(e.features[0])
       })
 
       map.on('mouseleave', 'counties_contracted', () => {
