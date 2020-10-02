@@ -24,13 +24,47 @@
 
     .popup-header {
       padding-bottom: .1rem;
-      margin-bottom: .5rem;
       border-bottom: 1px solid #484848;
     }
 
     .popup-subheader {
+      margin-top: .2rem;
       text-align: center;
-      margin-bottom: .2rem;
+      font-style: italic;
+    }
+
+    .bar-wrapper {
+      /* margin-top: 1rem;  */
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .bar-wrapper {
+      /* margin-top: 1rem;  */
+      margin: 0 auto;
+    }
+    
+    /* bar svg */
+    .bar {
+      fill: url(#gradient);
+    }
+
+    .line {
+      stroke:rgb(247,209,55);
+      stroke-width:2
+    }
+
+    .red-stop {
+      stop-color: #ff0000;
+    }
+
+    .blue-stop {
+      stop-color: #0015bc;
+    }
+
+    .popup-barheader {
+      display: flex;
+      justify-content: space-between;
     }
 
   </style>
@@ -125,8 +159,8 @@
 
     map.on('load', async function () {
 
-      testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
-      //testResults = await getJson(`${url_prefix}/test_results_averaged`)
+      //testResults = await getJson(`${url_prefix}/test_results_fake/1500`)
+      testResults = await getJson(`${url_prefix}/test_results_averaged`)
 
       countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
       
@@ -209,28 +243,72 @@
 
         let tooltip_msg = ''
         tooltip_msg += `<div class="popup-header"><strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong></div>`
+        tooltip_msg += `<div>`
         if(match) {
 
-          let height = 10
           let width = 100
-          
+          let height = 15
+          let defs = `
+            <defs>
+              <linearGradient id="gradient">
+                <stop class="red-stop" offset="0%" />
+                <stop class="blue-stop" offset="100%" />
+              </linearGradient>
+            </defs>`
+
           // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
           tooltip_msg += `<div class='popup-subheader'>Economic</div>`
-          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          tooltip_msg += `<div class='popup-barheader'><div>Equality</div><div>Markets</div></div>`
+          tooltip_msg += `
+          <div class="bar-wrapper">
+            <svg height="${height}" width="${width}">
+              ${defs}
+              <rect class="bar" width="${width}" height="${height}" />
+              <line class="line" x1="${match.economic}" y1="0" x2="${match.economic}" y2="${height}" />
+            </svg>
+          </div>`
+
           // tooltip_msg += `<div>dipl: ${match.diplomatic.toFixed(2)}</div>`
           tooltip_msg += `<div class='popup-subheader'>Diplomatic</div>`
-          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          tooltip_msg += `<div class='popup-barheader'><div>Nation</div><div>World</div></div>`
+          tooltip_msg += `
+          <div class="bar-wrapper">
+            <svg height="${height}" width="${width}">
+              ${defs}
+              <rect class="bar" width="${width}" height="${height}" />
+              <line class="line" x1="${match.diplomatic}" y1="0" x2="${match.diplomatic}" y2="${height}" />
+            </svg>
+            
+          </div>`
+
           // tooltip_msg += `<div>civil: ${match.civil.toFixed(2)}</div>`
           tooltip_msg += `<div class='popup-subheader'>Civil</div>`
-          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          tooltip_msg += `<div class='popup-barheader'><div>Liberty</div><div>Authority</div></div>`
+          tooltip_msg += `
+          <div class="bar-wrapper">
+            <svg height="${height}" width="${width}">
+              ${defs}
+              <rect class="bar" width="${width}" height="${height}" />
+              <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
+            </svg>
+          </div>`
+
           // tooltip_msg += `<div>societal: ${match.societal.toFixed(2)}</div>`
           tooltip_msg += `<div class='popup-subheader'>Societal</div>`
-          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          tooltip_msg += `<div class='popup-barheader'><div>Traditional</div><div>Modern</div></div>`
+          tooltip_msg += `
+          <div class="bar-wrapper">
+            <svg height="${height}" width="${width}">
+              ${defs}
+              <rect class="bar" width="${width}" height="${height}" />
+              <line class="line" x1="${match.societal}" y1="0" x2="${match.societal}" y2="${height}" />
+            </svg>
+          </div>`
         }
         else {
-          tooltip_msg += `No test results<br/>`
+          tooltip_msg += `<div class="popup-subheader">No test results</div>`
         }
-          
+        tooltip_msg += `<div>`
         // Populate the popup and set its coordinates based on the feature found.
         popup.setLngLat(coordinates)
           .setHTML(tooltip_msg)
