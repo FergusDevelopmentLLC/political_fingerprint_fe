@@ -19,7 +19,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 100%;
+      width: 98%;
     }
   </style>
 </head>
@@ -48,12 +48,11 @@
     const url_prefix = 'http://138.68.23.63:3030'
 
     // get bounding box: http://bboxfinder.com
-    let mapBounds = [-20.85,-13.75,20.09,12.15]//Southwest corner, Northeast corner
+    let mapBounds = [-21,-14,20,14]//Southwest corner, Northeast corner
     let map = new mapboxgl.Map({
       container: 'map',
       style: `mapbox://styles/willcarter/ckfps2kwa01u019pp7bel1a7w`,
-      center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
-      zoom: 4.5
+      center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2]
     })
 
     let getColor = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
@@ -106,6 +105,11 @@
       
       return returnArray
     }
+
+    map.fitBounds([
+      [mapBounds[0], mapBounds[1]],
+      [mapBounds[2], mapBounds[3]]
+    ])
 
     map.on('load', async function () {
 
