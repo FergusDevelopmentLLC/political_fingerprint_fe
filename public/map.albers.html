@@ -19,8 +19,20 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 98%;
+      width: 100%;
     }
+
+    .popup-header {
+      padding-bottom: .1rem;
+      margin-bottom: .5rem;
+      border-bottom: 1px solid #484848;
+    }
+
+    .popup-subheader {
+      text-align: center;
+      margin-bottom: .2rem;
+    }
+
   </style>
 </head>
 
@@ -196,13 +208,24 @@
         // }
 
         let tooltip_msg = ''
-        tooltip_msg += `<strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong><br/>`
+        tooltip_msg += `<div class="popup-header"><strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong></div>`
         if(match) {
-          tooltip_msg += `econ: ${match.economic.toFixed(2)}<br/>`
-          tooltip_msg += `dipl: ${match.diplomatic.toFixed(2)}<br/>`
-          tooltip_msg += `civil: ${match.civil.toFixed(2)}<br/>`
-          tooltip_msg += `societal: ${match.societal.toFixed(2)}<br/>`
-          tooltip_msg += `<svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>`
+
+          let height = 10
+          let width = 100
+          
+          // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
+          tooltip_msg += `<div class='popup-subheader'>Economic</div>`
+          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          // tooltip_msg += `<div>dipl: ${match.diplomatic.toFixed(2)}</div>`
+          tooltip_msg += `<div class='popup-subheader'>Diplomatic</div>`
+          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          // tooltip_msg += `<div>civil: ${match.civil.toFixed(2)}</div>`
+          tooltip_msg += `<div class='popup-subheader'>Civil</div>`
+          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
+          // tooltip_msg += `<div>societal: ${match.societal.toFixed(2)}</div>`
+          tooltip_msg += `<div class='popup-subheader'>Societal</div>`
+          tooltip_msg += `<div><svg height="${height}" width="${width}"><rect width="${width}" height="${height}" style="fill:rgb(0,0,255);"/></svg></div>`
         }
         else {
           tooltip_msg += `No test results<br/>`
