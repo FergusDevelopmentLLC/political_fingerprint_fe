@@ -35,6 +35,9 @@
   <div id='map'></div>
   <script>
 
+    // get bounding box: http://bboxfinder.com
+    let mapBounds = [-170.332031,14.774883,-50.976563,71.801410]//Southwest corner, Northeast corner
+
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
     // let basemap = 'basic'
@@ -47,12 +50,15 @@
     //const url_prefix = 'http://127.0.0.1:3030'
     const url_prefix = 'http://138.68.23.63:3030'
 
-    // get bounding box: http://bboxfinder.com
-    let mapBounds = [-20.85,-13.75,20.09,12.15]//Southwest corner, Northeast corner
+    let countiesGeoJson
+    let testResults
+
+    //style: `mapbox://styles/willcarter/ckfo94uv50uqz1apdv79q0lmb`,
+    // https://www.mapbox.com/api-documentation/#styles
+    //style: `mapbox://styles/mapbox/${basemap}-v9`,
     let map = new mapboxgl.Map({
       container: 'map',
       style: `mapbox://styles/willcarter/ckfps2kwa01u019pp7bel1a7w`,
-      center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
       zoom: 4.5
     })
 
@@ -63,10 +69,6 @@
       closeButton: false,
       closeOnClick: false
     })
-
-    let countiesGeoJson
-    
-    let testResults
 
     const getJson = async (url) => {
       return await fetch(url).then(r => r.json())
@@ -156,7 +158,7 @@
         'source-layer': 'counties_contracted_albers-cvwq37',
         'type': 'fill',
         'paint': {
-          'fill-opacity': 1
+          'fill-opacity': 0
         }
       })
 
@@ -198,7 +200,6 @@
           tooltip_msg += `dipl: ${match.diplomatic.toFixed(2)}<br/>`
           tooltip_msg += `civil: ${match.civil.toFixed(2)}<br/>`
           tooltip_msg += `societal: ${match.societal.toFixed(2)}<br/>`
-          tooltip_msg += `<svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>`
         }
         else {
           tooltip_msg += `No test results<br/>`
