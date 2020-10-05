@@ -1,0 +1,53 @@
+  .mapboxgl-popup {
+    max-width: 600px;
+    font: 10px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+
+  .popup-header {
+    padding-bottom: .1rem;
+    border-bottom: 1px solid #484848;
+  }
+
+  .popup-subheader {
+    text-align: center;
+    font-style: italic;
+    line-height: .8rem;
+    margin-top: .3rem;
+  }
+
+  .bar-wrapper {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .popup-barheader {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* .popup-barheader div { */
+    /* border: 1px solid red; */
+  /* } */
+
+  /* bar svg */
+  svg {
+    display: block;
+    margin: auto;
+  }
+  
+  .bar {
+    fill: url(#gradient);
+  }
+
+  .line {
+    stroke:rgb(247,209,55);
+    stroke-width:2
+  }
+
+  .red-stop {
+    stop-color: #ff0000;
+  }
+
+  .blue-stop {
+    stop-color: #0015bc;
+  }

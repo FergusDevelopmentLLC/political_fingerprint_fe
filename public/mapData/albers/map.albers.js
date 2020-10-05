@@ -40,13 +40,14 @@ const getCountyFillColors = (counties, testResults) => {
 
 let countiesGeoJson
 let testResults
+let minZoom
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
 // get bounding box: http://bboxfinder.com
 let mapBounds = [-21, -14, 20, 14]//Southwest corner, Northeast corner
 let map = new mapboxgl.Map({
-  container: 'map',
+  container: 'map-container',
   style: `mapbox://styles/willcarter/ckfps2kwa01u019pp7bel1a7w`,
   center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2]
 })
@@ -93,7 +94,7 @@ map.on('load', async function () {
       'fill-color': '#ffffff'
     }
   })
-
+  
   map.addLayer({
     'id': 'county',
     'source': 'counties',
@@ -104,7 +105,7 @@ map.on('load', async function () {
       'fill-outline-color': '#919191'
     }
   })
-
+  
   map.addLayer({
     'id': 'counties_contracted',
     'source': 'counties_contracted_source',
@@ -114,7 +115,7 @@ map.on('load', async function () {
       'fill-opacity': 0
     }
   })
-
+  
   map.addLayer({
     'id': 'states',
     'source': 'states_source',
@@ -129,6 +130,14 @@ map.on('load', async function () {
   })
 
   handlePopup()
+
+})
+
+map.on('idle', function() {
+  if(!minZoom) {
+    minZoom = map.getZoom()
+    map.setMinZoom(minZoom)
+  }
 })
 
 handlePopup = () => {
