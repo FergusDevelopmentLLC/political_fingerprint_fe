@@ -9,12 +9,13 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
+    
     body {
       margin: 0;
       padding: 0;
     }
 
-    #map {
+    #map-container {
       position: absolute;
       top: 0;
       bottom: 0;
@@ -30,7 +31,7 @@
 </head>
 
 <body>
-  <div id='map'></div>
+  <div id='map-container'></div>
   <script>
     //const dataUrl = 'http://127.0.0.1:3000/test_results_averaged'
     const dataUrl = 'http://138.68.23.63:3030/test_results_averaged'

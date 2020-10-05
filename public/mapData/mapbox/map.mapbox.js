@@ -8,7 +8,7 @@ let basemap = 'dark'
 let countiesGeoJson
 
 let map = new mapboxgl.Map({
-  container: 'map',
+  container: 'map-container',
   style: `mapbox://styles/mapbox/${basemap}-v9`,
   center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
   zoom: 4
