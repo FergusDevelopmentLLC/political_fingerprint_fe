@@ -65,7 +65,7 @@
     }
 
     const getTestResults = async () => {
-      let url = `${url_prefix}/test_results_fake/1500`
+      let url = `${url_prefix}/test_results_averaged`
       return await fetch(url).then(r => r.json())
     }
 
@@ -76,7 +76,7 @@
       
       //merge them
       countiesGeoJson.features.forEach(county => { 
-        let match = testResults.find(tr => tr.id === county.properties.geoid)
+        let match = testResults.find(tr => tr.geoid === county.properties.geoid)
         if(match) {
           county.properties['economic'] = match['economic']
           county.properties['diplomatic'] = match['diplomatic']
@@ -147,14 +147,14 @@
       // })
 
       //add states
-      map.addLayer({
-        'id': 'counties_contracted_layer',
-        'type': 'fill',
-        'source': 'counties_contracted',
-        'paint': {
-          'fill-opacity': 0
-        }
-      })
+      // map.addLayer({
+      //   'id': 'counties_contracted_layer',
+      //   'type': 'fill',
+      //   'source': 'counties_contracted',
+      //   'paint': {
+      //     'fill-opacity': 0
+      //   }
+      // })
 
       //handlePopup()
     })

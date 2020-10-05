@@ -128,6 +128,7 @@
     }
 
     const getCountyFillColors = (counties, testResults) => {
+
       // we want to return an array like this to drive county color
       // let fake = [
       //   'match',
@@ -148,7 +149,7 @@
       returnArray.push(['get', 'geoid'])
       
       for(testResult of testResults) {
-        returnArray.push(testResult['id'])
+        returnArray.push(testResult['geoid'])
         returnArray.push(getColorFor(testResult))
       }
 
@@ -238,7 +239,7 @@
         //let coordinates = [e.lngLat.lng, e.lngLat.lat]
         let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
           
-        let match = testResults.find(tr => tr.id === countyOfInterest.properties.geoid)
+        let match = testResults.find(tr => tr.geoid === countyOfInterest.properties.geoid)
           
         // i don't think this works correctly under albers coordinate system
         // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.

@@ -66,7 +66,7 @@ d3.json("mapData/d3/counties-albers-10m.json").then(function (topo_data) {
   d3.json(`${dataUrl}`).then(function (data) {
     return data.map(function (d) {
       let o = {}
-      o.id = d.id
+      o.geoid = d.geoid
       o.economic = +d.economic
       o.diplomatic = +d.diplomatic
       o.civil = +d.civil
@@ -93,7 +93,8 @@ d3.json("mapData/d3/counties-albers-10m.json").then(function (topo_data) {
       .attr("fill", function (d) {
 
         let match = objects.filter(obj => {
-          return obj.id.toString() === d.id.toString()
+          // console.log('obj', obj)
+          return obj.geoid.toString() === d.id.toString()
         })
 
         if (match.length > 0) {
@@ -144,7 +145,7 @@ d3.json("mapData/d3/counties-albers-10m.json").then(function (topo_data) {
         let tooltipMessage = `${d.properties.name}`
 
         let match = objects.filter(obj => {
-          return obj.id.toString() === d.id.toString()
+          return obj.geoid.toString() === d.id.toString()
         })
 
         if (match.length > 0)
