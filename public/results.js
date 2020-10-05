@@ -39,7 +39,10 @@ peace = getQueryVariable("d")
 liberty = getQueryVariable("g")
 progress = getQueryVariable("s")
 
-let version = parseInt(getQueryVariable("v"))
+let version = 1
+let qVersion = getQueryVariable("v")
+
+if(qVersion) version = parseInt(qVersion)
 
 wealth = (100 - equality).toFixed(1)
 
