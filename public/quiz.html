@@ -233,7 +233,7 @@
       testResult.civil = parseFloat(g)
       testResult.societal = parseFloat(s)
 
-      console.log('testResult', testResult)
+      //console.log('testResult', testResult)
 
       const options = {
         method: 'POST',
@@ -245,14 +245,14 @@
 
       let tr = await fetch(apiUrl, options).then(r => r.json())
 
-      console.log('tr', tr)
+      //console.log('tr', tr)
 
-      // location.href = `results.html`
-      //   + `?e=${e}`
-      //   + `&d=${d}`
-      //   + `&g=${g}`
-      //   + `&s=${s}`
-      //   + `&v=${version}`
+      location.href = `results.html`
+        + `?e=${e}`
+        + `&d=${d}`
+        + `&g=${g}`
+        + `&s=${s}`
+        + `&v=${version}`
     }
 
     
