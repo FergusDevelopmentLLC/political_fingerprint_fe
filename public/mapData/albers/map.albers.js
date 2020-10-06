@@ -3,7 +3,11 @@ const getJson = async (url) => {
 }
 
 const getColorFor = (testResult) => {
-  let avg = (parseFloat(testResult['economic']) + parseFloat(testResult['diplomatic']) + parseFloat(testResult['civil']) + parseFloat(testResult['societal'])) / 4
+  let total = parseFloat(testResult['economic']) 
+              + parseFloat(testResult['diplomatic'])
+              + (100 - parseFloat(testResult['civil'])) 
+              + parseFloat(testResult['societal'])
+  let avg = total / 4
   return d3.color(getColor(avg)).formatHex()
 }
 
@@ -165,7 +169,7 @@ handlePopup = () => {
 
       // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
       tooltip_msg += `<div class='popup-subheader'>Economic</div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Equality</div><div>Markets</div></div>`
+      tooltip_msg += `<div class='popup-barheader'><div>Markets</div><div>Equality</div></div>`
       tooltip_msg += `
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
@@ -196,13 +200,13 @@ handlePopup = () => {
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
+              <line class="line" x1="${100- match.civil}" y1="0" x2="${100 - match.civil}" y2="${height}" />
             </svg>
           </div>`
 
       // tooltip_msg += `<div>societal: ${match.societal.toFixed(2)}</div>`
       tooltip_msg += `<div class='popup-subheader'>Societal</div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Traditional</div><div>Modern</div></div>`
+      tooltip_msg += `<div class='popup-barheader'><div>Tradition</div><div>Progress</div></div>`
       tooltip_msg += `
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
