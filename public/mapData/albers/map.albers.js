@@ -178,7 +178,7 @@ map.on('load', async function () {
       return testResult.geoid.toString() === county.properties.geoid.toString()
     })
     if (match.length > 0) {
-      county.properties.height = match[0]["pct_of_test_results"]
+      county.properties.height = match[0]["pct_height"]
       matchedCounties.push (county)
     }
   }
@@ -201,7 +201,7 @@ map.on('load', async function () {
         'interpolate', ['linear'],
         ['get', 'height'],
         0, 0,
-        1, 3000000
+        1, 1000000
        ],    
       'fill-extrusion-opacity': 0
     }
