@@ -60,3 +60,7 @@ https://github.com/mapbox/tippecanoe
 https://blog.mapbox.com/mapping-the-us-elections-guide-to-albers-usa-projection-in-studio-45be6bafbd7e
 https://mapshaper.org/
 https://gis.stackexchange.com/questions/232647/inward-buffering-using-qgis/263811
+
+https://simpleicons.org/
+https://www.webtoolkitonline.com/xml-formatter.html
+https://thenounproject.com/search/?q=reset&i=1921251

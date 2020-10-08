@@ -45,32 +45,75 @@ const getCountyFillColors = (counties, testResults) => {
 class ExtrudeMapControl {
   onAdd(map) {
 
-    this._map = map
+    this.map = map
 
-    this._container = document.createElement('div')
-    this._container.classList.add('mapboxgl-ctrl')
-    this._container.classList.add('mapboxgl-ctrl-group')
+    this.container = document.createElement('div')
+    this.container.classList.add('mapboxgl-ctrl')
+    this.container.classList.add('mapboxgl-ctrl-group')
 
-    this._button = document.createElement('button')
-    this._button.innerText = "3D"
-    this._container.appendChild(this._button)
+    this.button = document.createElement('button')
+    this.button.setAttribute("id", "extrude-button")
+    this.img = document.createElement('img')
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602199943/political_fingerprint/blocks_zzzfj5.png")
 
-    this._button.addEventListener('click', () => {
-      if (this._map.getPitch() === 0) {
-        this._map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', .8)
-        this._map.easeTo({ pitch: 30 })
-        this._button.innerHTML = "<strong>3D</strong>"
+    this.button.appendChild(this.img)
+
+    this.container.appendChild(this.button)
+
+    this.button.addEventListener('click', () => {
+      if (this.map.getPitch() === 0) {
+        this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', .8)
+        this.map.easeTo({ pitch: 30 })
       } else {
-        this._map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
-        this._map.easeTo({ pitch: 0 })
-        this._button.innerHTML = "3D"
+        this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
+        this.map.easeTo({ pitch: 0 })
       }
     })
-    return this._container;
+
+    return this.container
   }
+
   onRemove() {
-    this.container.parentNode.removeChild(this.container);
-    this.map = undefined;
+    this.container.parentNode.removeChild(this.container)
+    this.map = undefined
+  }
+}
+
+class ResetMapControl {
+  onAdd(map) {
+
+    this.map = map
+
+    this.container = document.createElement('div')
+    this.container.classList.add('mapboxgl-ctrl')
+    this.container.classList.add('mapboxgl-ctrl-group')
+
+    this.button = document.createElement('button')
+    this.button.setAttribute("id", "reset-button")
+    
+    this.img = document.createElement('img')
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602194740/political_fingerprint/reset_b78exx.png")
+    
+    this.button.appendChild(this.img)
+    
+    this.container.appendChild(this.button)
+
+    this.button.addEventListener('click', () => {
+      this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
+      this.map.easeTo(
+        { 
+          pitch: 0,
+          center: center,
+          zoom: minZoom
+        })
+    })
+
+    return this.container
+  }
+
+  onRemove() {
+    this.container.parentNode.removeChild(this.container)
+    this.map = undefined
   }
 }
 
@@ -82,10 +125,13 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN
 
 // get bounding box: http://bboxfinder.com
 let mapBounds = [-21, -15, 20, 14]//Southwest corner, Northeast corner
+
+let center = [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2]
+
 let map = new mapboxgl.Map({
   container: 'map-container',
   style: `mapbox://styles/willcarter/ckfps2kwa01u019pp7bel1a7w`,
-  center: [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2],
+  center: center,
   pitch: 0,
   attributionControl: false
 })
@@ -104,8 +150,9 @@ map.fitBounds([
 ])
 
 map.addControl(new mapboxgl.NavigationControl())
+map.addControl(new ExtrudeMapControl())
+map.addControl(new ResetMapControl())
 map.addControl(new mapboxgl.FullscreenControl())
-map.addControl(new ExtrudeMapControl());
 
 map.on('load', async function () {
 
