@@ -9,10 +9,9 @@
 }
 
 .popup-subheader {
-  text-align: center;
-  font-style: italic;
+  text-align: left;
   line-height: .8rem;
-  margin-top: .3rem;
+  margin-top: .5rem;
 }
 
 .bar-wrapper {

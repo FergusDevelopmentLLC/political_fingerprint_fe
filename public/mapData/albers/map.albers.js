@@ -87,7 +87,7 @@ map.addControl(new ExtrudeMapControl())
 map.addControl(new RotateMapControl())
 map.addControl(new ResetMapControl())
 
-map.on('load', async function () {
+map.on('load', async () => {
 
   testResults = await getJson(testResultsUrl)
   countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
@@ -152,11 +152,13 @@ map.on('load', async function () {
   })
 
   let matchedCounties = []
+
   for (county of countiesGeoJson.features) {
     
     let match = testResults.filter(testResult => {
       return testResult.geoid.toString() === county.properties.geoid.toString()
     })
+
     if (match.length > 0) {
       county.properties.height = match[0]["pct_height"]
       matchedCounties.push (county)
@@ -227,8 +229,9 @@ handlePopup = () => {
             </defs>`
 
       // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Economic</div>`
+      tooltip_msg += `<div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>`
       tooltip_msg += `<div class='popup-barheader'><div>Markets</div><div>Equality</div></div>`
+
       tooltip_msg += `
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
@@ -239,7 +242,7 @@ handlePopup = () => {
           </div>`
 
       // tooltip_msg += `<div>dipl: ${match.diplomatic.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Diplomatic</div>`
+      tooltip_msg += `<div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>`
       tooltip_msg += `<div class='popup-barheader'><div>Nation</div><div>World</div></div>`
       tooltip_msg += `
           <div class="bar-wrapper">
@@ -252,7 +255,7 @@ handlePopup = () => {
           </div>`
 
       // tooltip_msg += `<div>civil: ${match.civil.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Civil</div>`
+      tooltip_msg += `<div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>`
       tooltip_msg += `<div class='popup-barheader'><div>Liberty</div><div>Authority</div></div>`
       tooltip_msg += `
           <div class="bar-wrapper">
@@ -264,7 +267,7 @@ handlePopup = () => {
           </div>`
 
       // tooltip_msg += `<div>societal: ${match.societal.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Societal</div>`
+      tooltip_msg += `<div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>`
       tooltip_msg += `<div class='popup-barheader'><div>Tradition</div><div>Progress</div></div>`
       tooltip_msg += `
           <div class="bar-wrapper">
@@ -274,6 +277,8 @@ handlePopup = () => {
               <line class="line" x1="${match.societal}" y1="0" x2="${match.societal}" y2="${height}" />
             </svg>
           </div>`
+
+      tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match}</em></div>`
     }
     else {
       tooltip_msg += `<div class="popup-subheader">No test results</div>`
