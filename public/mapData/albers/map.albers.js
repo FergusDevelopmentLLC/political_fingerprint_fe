@@ -1,3 +1,8 @@
+let countiesGeoJson
+let testResults
+let minZoom
+let isRotating = false
+
 const getJson = async (url) => {
   return await fetch(url).then(r => r.json())
 }
@@ -42,6 +47,12 @@ const getCountyFillColors = (counties, testResults) => {
   return returnArray
 }
 
+const rotateBy = (current) => {
+  map.rotateTo( current + 5, { duration: 200, easing: (t) => { return t } })//add 5 degrees to the current bearing.
+  // source:
+  // https://gist.github.com/danswick/ceb7de7a29330b024f88
+}
+
 class ExtrudeMapControl {
   onAdd(map) {
 
@@ -52,19 +63,26 @@ class ExtrudeMapControl {
     this.container.classList.add('mapboxgl-ctrl-group')
 
     this.button = document.createElement('button')
-    this.button.setAttribute("id", "extrude-button")
-    this.img = document.createElement('img')
-    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602199943/political_fingerprint/blocks_zzzfj5.png")
+    this.button.classList.add('mapcontrol')
+    this.button.setAttribute("id", "threedee")
+    this.button.setAttribute("title", 'Extrude Map')
 
+    this.img = document.createElement('img')
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272943/political_fingerprint/threedee_fdw66a.png")
+    
     this.button.appendChild(this.img)
 
     this.container.appendChild(this.button)
 
     this.button.addEventListener('click', () => {
       if (this.map.getPitch() === 0) {
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602294005/political_fingerprint/threedee-off_fbeuan.png")
+        this.button.setAttribute("title", 'Flatten Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', .8)
         this.map.easeTo({ pitch: 30 })
       } else {
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272943/political_fingerprint/threedee_fdw66a.png")
+        this.button.setAttribute("title", 'Extrude Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
         this.map.easeTo({ pitch: 0 })
       }
@@ -89,23 +107,31 @@ class ResetMapControl {
     this.container.classList.add('mapboxgl-ctrl-group')
 
     this.button = document.createElement('button')
-    this.button.setAttribute("id", "reset-button")
+    this.button.classList.add('mapcontrol')
+    this.button.setAttribute('id', 'reset')
+    this.button.setAttribute('title', 'Reset map')
     
     this.img = document.createElement('img')
-    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602194740/political_fingerprint/reset_b78exx.png")
-    
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602294032/political_fingerprint/reset_1_attqkt.png")
     this.button.appendChild(this.img)
     
     this.container.appendChild(this.button)
 
     this.button.addEventListener('click', () => {
+      
+      let threedeeButton = document.getElementById('threedee')
+      threedeeButton.setAttribute("title", 'Extrude Map')
+      let threedeeButtonImage = threedeeButton.getElementsByTagName('img')[0]
+      threedeeButtonImage.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272943/political_fingerprint/threedee_fdw66a.png")
+
+      let rotateButton = document.getElementById('rotate')
+      rotateButton.setAttribute("title", 'Rotate Map')
+      let rotateButtonImage = rotateButton.getElementsByTagName('img')[0]
+      rotateButtonImage.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
+      
       this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
-      this.map.easeTo(
-        { 
-          pitch: 0,
-          center: center,
-          zoom: minZoom
-        })
+      this.map.easeTo( { pitch: 0, center: center, zoom: minZoom, bearing: 0 } )
+      isRotating = false;
     })
 
     return this.container
@@ -117,9 +143,47 @@ class ResetMapControl {
   }
 }
 
-let countiesGeoJson
-let testResults
-let minZoom
+class RotateMapControl {
+  onAdd(map) {
+
+    this.map = map
+
+    this.container = document.createElement('div')
+    this.container.classList.add('mapboxgl-ctrl')
+    this.container.classList.add('mapboxgl-ctrl-group')
+
+    this.button = document.createElement('button')
+    this.button.classList.add('mapcontrol')
+    this.button.setAttribute('id', 'rotate')
+    this.button.setAttribute('title', 'Rotate map')
+    
+    this.img = document.createElement('img')
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
+    this.button.appendChild(this.img)
+    
+    this.container.appendChild(this.button)
+
+    this.button.addEventListener('click', () => {
+      isRotating = !isRotating
+      if(isRotating) {
+        rotateBy(this.map.getBearing())
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602294005/political_fingerprint/rotate-stop_ijkqhm.png")
+        this.button.setAttribute('title', 'Stop rotating')
+      }
+      else {
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
+        this.button.setAttribute('title', 'Rotate map')
+      }
+    })
+
+    return this.container
+  }
+
+  onRemove() {
+    this.container.parentNode.removeChild(this.container)
+    this.map = undefined
+  }
+}
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
@@ -150,9 +214,10 @@ map.fitBounds([
 ])
 
 map.addControl(new mapboxgl.NavigationControl())
-map.addControl(new ExtrudeMapControl())
-map.addControl(new ResetMapControl())
 map.addControl(new mapboxgl.FullscreenControl())
+map.addControl(new ExtrudeMapControl())
+map.addControl(new RotateMapControl())
+map.addControl(new ResetMapControl())
 
 map.on('load', async function () {
 
@@ -264,6 +329,25 @@ map.on('idle', function() {
     map.setMinZoom(minZoom)
   }
 })
+
+// every time the rotation animation is complete, 
+// fire it up again!
+map.on('moveend', function(data) {
+  if(isRotating) {
+    rotateBy(map.getBearing())
+  }
+})
+
+// start the rotation cycle as soon as the style loads
+map.on('style.load', function(){
+  //rotateBy(map.getBearing());
+})
+
+// add 90 degrees to the current bearing
+// function rotateBy(current) {
+//   var rotateNumber = current;
+//   map.rotateTo(rotateNumber + 90, {duration: 2000, easing: function(t) {return t;}});
+// }
 
 handlePopup = () => {
 
