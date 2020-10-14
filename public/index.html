@@ -4,7 +4,7 @@
 <head>
   <link href='style.css' rel='stylesheet' type='text/css'>
   <link href='mapData/albers/map.albers.css' rel='stylesheet' />
-  <title>Political Fingerprint</title>
+  <title>PolitiPoint.org</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 
@@ -47,7 +47,6 @@
 
     #map-container {
       width: 75%;
-      height: 50rem;
       margin: 0 auto;
       background: #808080;
       padding: 2rem;
@@ -77,40 +76,51 @@
     }
     const goToTest = () => location.href = `quiz.html?qv=${version}`
   </script>
-
-  <h3>Political <span class="redux">Fingerprint</span></h3>
-  <h4><span id="version"></span></h4>
-  <h6><span id="version-description"></span></h6>
+  <!-- <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602631946/politipoint/logos/politipoint-horizontal-color_yfwblx.png' title='PolitiPoint.org' /> -->
+  <div class='logo-wrapper'>
+    <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602633930/politipoint/logos/politipoint-vertical-color_jxp86v.png' title='PolitiPoint.org' />
+  </div>
+  <h4><span id="version"></span><br/><span id="version-description"></span></h4>
   <hr />
   <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   <div class="home">
     <h5>The Test</h5>
-    <p>Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.</p>
-    <p>
-      After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly
-        Disagree</strong> how closely you identify with it.
-      Each response slightly affects your final results.
-    </p>
-
+    
     <p class="test-instructions" id="test-version-01">
-      At the end of the test, your results will indicate where you place on a continuum between two opposing
-      perspectives in each of four
-      categories (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and
-      <strong>Societal</strong>).
+      Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
+      Your responses will indicate where you place on a continuum between two opposing perspectives in each of four categories 
+      (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
     </p>
 
     <p class="test-instructions" id="test-version-02">
-      At the end of the test, your results will indicate where you place on a continuum between opposing perspectives in
-      two
-      categories (<strong>Economic</strong> and <strong>Civil</strong>).
+      Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
+      Your responses will indicate where you place on a continuum between two opposing perspectives in each of two categories 
+      (<strong>Economic</strong> and <strong>Civil</strong>).
+    </p>
+    
+    <div class="img-home-wrapper">
+      <img class="img-home" id="img-home-economic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/economic_v4qiia.png"></img>
+      <img class="img-home" id="img-home-diplomatic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/civil_gxpwpm.png"></img>
+      <img class="img-home" id="img-home-civil" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/societal_x7z2os.png"></img>
+      <img class="img-home" id="img-home-societal" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/diplomatic_dwu2h7.png"></img>
+    </div>
+    <p>
+      After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely 
+      you identify with it. Each response slightly affects your final results.
     </p>
 
-    <div class="img-home-wrapper">
-      <img class="img-home" id="img-home-economic" src="axis-economic.png"></img>
-      <img class="img-home" id="img-home-diplomatic" src="axis-diplomatic.png"></img>
-      <img class="img-home" id="img-home-civil" src="axis-civil.png"></img>
-      <img class="img-home" id="img-home-societal" src="axis-societal.png"></img>
+    <h5>Test results map</h5>
+    <p>
+      Upon test completion, the test taker is given a chance to aggregate their responses with others based on county. Click on a county to see aggregated details
+      for that county. Click the extrude map button to see more information.
+    </p>
+    <div class="map-wrapper">
+      <div id="map-container"></div>
     </div>
+    <p>
+      The test results that drive the map above have been randomly generated for illustration purposes and do not reflect actual tests. However, upon 
+      completion of your test, your results will be averaged with other test takers from your county if you choose.
+    </p>
 
     <h5>Feedback</h5>
     <p>An important goal of this project is to improve the test in the following ways.</p>
@@ -136,19 +146,6 @@
       <li>Test result scores, but not individual responses to statements</li>
       <li>The IP address of the test taker used to approximate the county location. Only the county is saved for each test result.</li>
     </ol>
-    <h5>Test results map</h5>
-    <p>
-        Upon completion, the test taker is given a geographical glimpse of other test results similar to the following example:
-    </p>
-    <div class="img-map-wrapper">
-      <div id="map-container"></div>
-    </div>
-    <p>
-      The test results that drive the map above have been randomly generated for illustration purposes and do not reflect actual tests. However, upon 
-      completion of your test, your results will be averaged with other test takers from your county if you choose. You will be presented with a map 
-      based on the current, actual test results. 
-    </p>
-    
     <h5>Credits</h5>
     <p> 
         Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io'
@@ -162,17 +159,17 @@
   <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Click/tap here to begin</button></div>
 
   <script>
-    let versionText = `version: ${version}`
+    let versionText = `Version: ${version}`
     document.getElementById('version').innerHTML = versionText
 
     if (version == 2) {
-      document.getElementById('version-description').innerHTML = `(25 statements in 2 categories)`
+      document.getElementById('version-description').innerHTML = `25 statements`
       document.getElementById('test-version-02').style.display = 'block'
       document.getElementById('img-home-economic').style.display = 'block'
       document.getElementById('img-home-civil').style.display = 'block'
     }
     else {
-      document.getElementById('version-description').innerHTML = `(70 statements in 4 categories)`
+      document.getElementById('version-description').innerHTML = `70 statements`
       document.getElementById('test-version-01').style.display = 'block'
       document.getElementById('img-home-economic').style.display = 'block'
       document.getElementById('img-home-diplomatic').style.display = 'block'
