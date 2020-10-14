@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link href='style.css' rel='stylesheet' type='text/css'>
+  <link href='styles/style.css' rel='stylesheet' type='text/css'>
   <link href='mapData/albers/map.albers.css' rel='stylesheet' />
   <title>PolitiPoint.org</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -76,9 +76,8 @@
     }
     const goToTest = () => location.href = `quiz.html?qv=${version}`
   </script>
-  <!-- <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602631946/politipoint/logos/politipoint-horizontal-color_yfwblx.png' title='PolitiPoint.org' /> -->
   <div class='logo-wrapper'>
-    <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602633930/politipoint/logos/politipoint-vertical-color_jxp86v.png' title='PolitiPoint.org' />
+    <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602633930/PolitiPoint/logos/PolitiPoint-vertical-color_jxp86v.png' title='PolitiPoint.org' />
   </div>
   <h4><span id="version"></span><br/><span id="version-description"></span></h4>
   <hr />
@@ -87,22 +86,22 @@
     <h5>The Test</h5>
     
     <p class="test-instructions" id="test-version-01">
-      Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
+      PolitiPoint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
       Your responses will indicate where you place on a continuum between two opposing perspectives in each of four categories 
       (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
     </p>
 
     <p class="test-instructions" id="test-version-02">
-      Political Fingerprint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
+      PolitiPoint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework. 
       Your responses will indicate where you place on a continuum between two opposing perspectives in each of two categories 
       (<strong>Economic</strong> and <strong>Civil</strong>).
     </p>
     
     <div class="img-home-wrapper">
-      <img class="img-home" id="img-home-economic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/economic_v4qiia.png"></img>
-      <img class="img-home" id="img-home-diplomatic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/civil_gxpwpm.png"></img>
-      <img class="img-home" id="img-home-civil" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/societal_x7z2os.png"></img>
-      <img class="img-home" id="img-home-societal" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/politipoint/axis/diplomatic_dwu2h7.png"></img>
+      <img class="img-home" id="img-home-economic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/economic_v4qiia.png"></img>
+      <img class="img-home" id="img-home-diplomatic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/civil_gxpwpm.png"></img>
+      <img class="img-home" id="img-home-civil" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/societal_x7z2os.png"></img>
+      <img class="img-home" id="img-home-societal" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/diplomatic_dwu2h7.png"></img>
     </div>
     <p>
       After each presented statement, indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely 
@@ -132,23 +131,27 @@
     <p>
       By collecting feedback for each statement, subsequent versions of the test can be improved.
     </p>
-    <h5>Closest Match (experimental, work in progress)</h5>
+    <h5>Closest match (work in progress)</h5>
     <p>
-      In addition to the results addition to the results, there is an attempt to match your answers most closely with
-      one of these <a href='ideologies.html'>ideologies</a>.
-      This part of the application is experimental and is a work in progress. Currently the logic behind matches what
-      can be found at 8values, which Political Fingerprint is
-      based on.
+      In addition to the test results, there is an attempt to match your answers most closely with
+      one of following <a href='ideologies.html'>ideologies</a>. This part of the application is 
+      experimental and is a work in progress. Currently, the logic behind ideology matching 
+      is the same as what can be found at the open source project, <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a>, 
+      which PolitiPoint is based on.
     </p>
     <h5>What data is being collected?</h5>
     <ol>
       <li>Feedback for each question</li>
-      <li>Test result scores, but not individual responses to statements</li>
-      <li>The IP address of the test taker used to approximate the county location. Only the county is saved for each test result.</li>
+      <li>Test results by U.S. county</li>
     </ol>
+    <p>
+      Client IP address is used to approximate county location. Test takers can correct their county approximation, 
+      and choose not to aggregate their results with others. Such test results are not aggregated into the test 
+      results <a href='map.html'>map</a>.
+    </p>
     <h5>Credits</h5>
     <p> 
-        Political Fingerprint is inspired and based on <a href='https://github.com/8values/8values.github.io'
+        PolitiPoint is inspired and based on <a href='https://github.com/8values/8values.github.io'
         target='_blank'>8values</a> and <a href='https://www.politicalcompass.org/' target='_blank'>Political
         compass</a>. Currently all statements and test logic matches <a
         href='https://github.com/8values/8values.github.io' target='_blank'>8values</a> almost exactly.

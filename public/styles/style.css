@@ -6,7 +6,7 @@ body {
     /* width: 80%; */
     /* min-height: calc(100vh - 4em); */
     margin: 0 auto;
-    padding: 2rem .25rem;
+    padding: 1em .25rem;
     background-color: #dddddd;
     border-color: #dddddd;
     border-left-style: solid;
@@ -283,7 +283,13 @@ span.weight-300 {
 }
 
 .home ol {
-    padding: 0 0 0 2rem;
+    /* padding: 0 0 0 2rem; */
+    /* padding: 0; */
+    /* margin: 0; */
+
+    /* padding-left: 0; */
+    /* If you want you can change the list type from inside or outside */
+    list-style: inside decimal;
 }
 
 
@@ -357,11 +363,11 @@ span.weight-300 {
 
 .logo-wrapper {
   text-align: center;
+  padding: 0;
 }
 
 .logo-wrapper img {
-  /* border: 1px solid blue; */
-  width: 15%;
+  width: 20%;
 }
 
 
@@ -425,6 +431,24 @@ span.weight-300 {
         margin: 0 0 .5rem 0;
     }
 
+    /* //// */
+
+    .logo-wrapper img {
+        width: 40%;
+    }
+
+    h4 {
+        font-size: .8rem;
+        margin: 0 0 .5rem 0;
+    }
+
+    .home ol {
+        padding: 0;
+        margin: .5rem 0;
+    }
     
+    .home ol li {
+        font-size: .9rem;
+    }
 }
 

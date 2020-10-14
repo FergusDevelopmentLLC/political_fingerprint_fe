@@ -69,7 +69,7 @@ const rotateBy = (current) => {
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
 // get bounding box: http://bboxfinder.com
-let mapBounds = [-21, -15, 20, 14]//Southwest corner, Northeast corner
+let mapBounds = [-21, -15, 21, 14]//Southwest corner, Northeast corner
 
 let center = [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2]
 
