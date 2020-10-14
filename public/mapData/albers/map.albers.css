@@ -55,11 +55,3 @@ svg {
 .mapcontrol img {
   width: 100%;
 }
-
-.map-wrapper {
-  margin-bottom: 1rem;
-}
-
-div#map-container {
-  padding-bottom: 40%;
-}

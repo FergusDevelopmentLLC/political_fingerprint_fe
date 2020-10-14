@@ -357,8 +357,13 @@ span.weight-300 {
     display: none;
 }
 
-.img-map-wrapper {
-    margin: 0 0 1rem 0;
+.map-wrapper {
+    margin-bottom: 1rem;
+}
+  
+div#map-container {
+    padding-bottom: 40%;
+    margin: auto;
 }
 
 .logo-wrapper {
@@ -433,10 +438,6 @@ span.weight-300 {
 
     /* //// */
 
-    .logo-wrapper img {
-        width: 40%;
-    }
-
     h4 {
         font-size: .8rem;
         margin: 0 0 .5rem 0;
@@ -449,6 +450,11 @@ span.weight-300 {
     
     .home ol li {
         font-size: .9rem;
+    }
+
+    div#map-container {
+        padding-bottom: 40%;
+        margin: auto;
     }
 }
 
