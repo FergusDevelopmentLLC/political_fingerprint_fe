@@ -375,6 +375,13 @@ div#map-container {
   width: 20%;
 }
 
+.quiz-logo-wrapper {
+    text-align: center;
+}
+
+.quiz-logo-wrapper img {
+    width: 20%;
+}
 
 @media screen and (max-width: 850px) {
     
@@ -404,6 +411,7 @@ div#map-container {
     .button {
         min-width: 15rem;
     }
+    
 }
 
 @media screen and (max-width: 420px) {
@@ -456,5 +464,10 @@ div#map-container {
         padding-bottom: 40%;
         margin: auto;
     }
+
+    .quiz-logo-wrapper img {
+        width: 35%;
+    }
+
 }
 
