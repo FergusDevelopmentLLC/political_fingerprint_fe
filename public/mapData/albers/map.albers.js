@@ -96,9 +96,9 @@ map.fitBounds([
 
 map.addControl(new mapboxgl.NavigationControl())
 map.addControl(new mapboxgl.FullscreenControl())
-map.addControl(new ExtrudeMapControl())
-map.addControl(new RotateMapControl())
-map.addControl(new ResetMapControl())
+map.addControl(new ExtrudeMapControl(), 'top-left')
+map.addControl(new RotateMapControl(), 'top-left')
+map.addControl(new ResetMapControl(), 'top-left')
 
 map.on('load', async () => {
 
