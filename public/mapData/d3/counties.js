@@ -19397,4 +19397,7 @@ const counties = [
       "state_abbrev": "MI",
       "state_name": "Michigan"
     }
-  ]
+  ].sort((a, b) => {          
+    if (a.state_abbrev === b.state_abbrev) return a.name > b.name ? 1 : -1
+    return a.state_abbrev > b.state_abbrev ? 1 : -1
+  })

@@ -66,3 +66,4 @@ https://www.webtoolkitonline.com/xml-formatter.html
 https://thenounproject.com/search/?q=reset&i=1921251
 https://gist.github.com/danswick/ceb7de7a29330b024f88
 https://stackoverflow.com/questions/12772494/how-to-get-opposite-boolean-value-of-variable-in-javascript
+//https://stackoverflow.com/questions/3364493/how-do-i-clear-all-options-in-a-dropdown-box
