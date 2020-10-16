@@ -45,6 +45,13 @@
 
   <script>
 
+    const params = new URLSearchParams(atob(window.location.search.substring(1)))
+    let trId = params.get('tr_id')
+    let countyGeoId = params.get('county_geoid')
+
+    
+    //http://138.68.23.63:3030/counties_by_state
+
     let stateCounty = [
       {
         "name": "Colorado",

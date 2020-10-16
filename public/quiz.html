@@ -110,7 +110,8 @@
       currentQuestionIterationId = questions[qn].question_iteration_id
       
       document.getElementById("question-text").innerHTML = questions[qn].question;
-      document.getElementById("question-number").innerHTML = "Statement " + (qn + 1) + " of " + (questions.length);
+      document.getElementById("question-number").innerHTML = `Statement ${qn + 1} of ${questions.length}`
+
       if (prev_answer == null) {
         document.getElementById("back_button").style.display = 'none';
         document.getElementById("back_button_off").style.display = 'block';
@@ -124,6 +125,7 @@
 
       removeAllSelectedButtonsFromClass('button-answer')
       removeAllSelectedButtonsFromClass('button-feedback')
+      
       document.getElementById('explain').value = ''
     }
 
@@ -255,17 +257,17 @@
 
       let apiUrl = `${url_prefix}/test_results`
 
-      let tr = await fetch(apiUrl, options).then(r => r.json())
-
-      //console.log('tr', tr)
-
-      location.href = `results.html`
-        + `?e=${e}`
-        + `&d=${d}`
-        + `&g=${g}`
-        + `&s=${s}`
-        + `&v=${version}`
-    }
+      await fetch(apiUrl, options)
+              .then(res => res.json())
+                .then(tr => {
+                  if(tr['county']) {
+                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&county_geoid=${tr['county']['geoid']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
+                  }
+                  else {
+                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
+                  }
+                })
+      }
 
     
 
