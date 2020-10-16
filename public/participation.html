@@ -23,7 +23,7 @@
     avast spanker scuttle tack sloop carouser booty pinnace fore.
   </p>
   <h5>Location</h5>
-  <p>Based on your IP address, your local county has been approximated to be: <strong>Denver County, CO</strong>.</p>
+  <p>Based on your IP address, your local county has been approximated to be: <strong><span id="county"></span></strong>.</p>
 
   <p>You may choose your county affilitiation the approximated county is incorrect or you wish to affiliate your results with another U.S. county.</p>
   
@@ -46,10 +46,19 @@
   <script>
 
     const params = new URLSearchParams(atob(window.location.search.substring(1)))
+    
     let trId = params.get('tr_id')
+    let countyName = params.get('county_name')
+    let stateAbbrev = params.get('state_abbrev')
     let countyGeoId = params.get('county_geoid')
 
-    
+    console.log('trId', trId)
+    console.log('countyName', countyName)
+    console.log('stateAbbrev', stateAbbrev)
+    console.log('countyGeoId', countyGeoId)
+
+    document.getElementById("county").innerHTML = `${countyName}, ${stateAbbrev}`
+
     //http://138.68.23.63:3030/counties_by_state
 
     let stateCounty = [
