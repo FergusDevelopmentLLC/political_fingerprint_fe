@@ -102,7 +102,9 @@ map.addControl(new ResetMapControl(), 'top-left')
 
 map.on('load', async () => {
 
-  testResults = await getJson(testResultsUrl)
+  console.log('dataUrl', dataUrl)
+
+  testResults = await getJson(dataUrl)
   countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
 
   map.addSource('counties', {

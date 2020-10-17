@@ -5,7 +5,6 @@
   <link href='styles/style.css' rel='stylesheet' type='text/css'>
   <title>PolitiPoint.org</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <script src="mapData/d3/counties.js"></script>
 </head>
 
 <body>
@@ -14,7 +13,7 @@
   </div>
   <hr />
   <h5>Many Thanks!</h5>
-  <p>
+  <p class="thankyou-instructions">
     We very much appreciate your feedback, and as mentioned, it will be use to improve question wording in upcoming versions of PolitiPoint. 
     Gibbet maroon scuttle quarterdeck bilged on her anchor fire in the hole dance the hempen jig Yellow Jack fathom belaying pin. 
     Provost red ensign fluke ahoy clap of thunder execution dock gaff loot Privateer brigantine. Take a caulk pink killick rigging 
@@ -23,26 +22,35 @@
     avast spanker scuttle tack sloop carouser booty pinnace fore.
   </p>
   <h5>Location</h5>
-  <p>Based on your IP address, your local county has been approximated to be: <strong><span id="county"></span></strong>.</p>
-
-  <p>You may choose your county affilitiation the approximated county is incorrect or you wish to affiliate your results with another U.S. county.</p>
+  <p class="thankyou-instructions">
+    Based on your IP address, your local county has been approximated as:
+  </p>
+  <div id="county-approx-wrapper"><strong><span id="county"></span></strong></div>
+  <p class="thankyou-instructions">
+    If wish to affiliate with a different county, please select it below:
+  </p>
   
-  <div>
-    <select id="stateSel" size="1">
+  <div class="state-county-select-wrapper">
+    <select class="select-css" id="stateSel" size="1">
       <option value="" selected="selected">-Select state-</option>
     </select>
-    <br/>
-    <br/>
-    <select id="countySel" size="1">
+    <select class="select-css" id="countySel" size="1">
       <option value="" selected="selected">-Select county-</option>
     </select>
   </div>
 
+  <h5>Share your results?</h5>
   <div>
     <input type="checkbox" id="optinout" class="optin-out-checkbox" checked="checked" />
-    <label for="optinout">I agree to share my test results to PolitiPoint and have them be averaged and aggregated by county into a national map.</label>
+    <label class="optinout-label" for="optinout">
+      I agree to share my test results that they can be averaged with other results and drive the national map.
+    </label>
   </div>
 
+  <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Test Results</button></div>
+  
+  <script src="js/defaults.js"></script>
+  
   <script>
 
     const params = new URLSearchParams(atob(window.location.search.substring(1)))
@@ -52,57 +60,34 @@
     let stateAbbrev = params.get('state_abbrev')
     let countyGeoId = params.get('county_geoid')
 
-    console.log('trId', trId)
-    console.log('countyName', countyName)
-    console.log('stateAbbrev', stateAbbrev)
-    console.log('countyGeoId', countyGeoId)
+    document.getElementById("county").innerHTML = `${countyName} County, ${stateAbbrev}`
 
-    document.getElementById("county").innerHTML = `${countyName}, ${stateAbbrev}`
-
-    //http://138.68.23.63:3030/counties_by_state
-
-    let stateCounty = [
-      {
-        "name": "Colorado",
-        "abbrev": "CO",
-        "geoid": "08031",
-        "counties": [
-          {
-            "name": "Denver",
-            "geoid": "08059"
-          },
-          {
-            "name": "Jefferson",
-            "geoid": "08058"
-          }
-        ]
-      },
-      {
-        "name": "Illinois",
-        "abbrev": "IL",
-        "geoid": "08032",
-        "counties": [
-          {
-            "name": "Will",
-            "geoid": "08049"
-          },
-          {
-            "name": "Cook",
-            "geoid": "08039"
-          }
-        ]
-      }
-    ]
-
-
-    window.onload = () => {
-      
+    const getStateCounty = async () => {
+      let url = `${url_prefix}/counties_by_state`
+      return await fetch(url).then(r => r.json())
+    }
+    
+    const populateStateCounty = async () => {
       let stateSelect = document.getElementById("stateSel")	
       let countySelect = document.getElementById("countySel")
+      let stateCounty = await getStateCounty()
       
       for(let state of stateCounty) {
-        stateSel.options[stateSel.options.length] = new Option(state.name, state.geoid)
+        stateSel.options[stateSel.options.length] = new Option(state.name, state.abbrev)
       }
+
+      let countiesForState = stateCounty.filter(state => {
+         return state.abbrev === stateAbbrev
+      })
+
+      countySelect.length = 1
+
+      for (county of countiesForState[0].counties) {
+        countySelect.options[countySelect.options.length] = new Option(`${county.name} County`, county.geoid)
+      }
+
+      stateSelect.value = stateAbbrev
+      countySelect.value = countyGeoId
 
       //hm. cannot use arrow function here, why?
       stateSelect.onchange = function () {		 
@@ -113,15 +98,20 @@
         
         if (this.selectedIndex < 1) return
 
-        let countiesForState = stateCounty.filter(state => {
-          return state.geoid === this.value
+        countiesForState = stateCounty.filter(state => {
+          return state.abbrev === this.value
         })
-
+        
         for (county of countiesForState[0].counties) {
           countySelect.options[countySelect.options.length] = new Option(`${county.name} County`, county.geoid)
         }
+
+        stateSelect.value = this.value
+
       }
     }
+
+    populateStateCounty()
     
   </script>
 </body>
