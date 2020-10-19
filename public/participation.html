@@ -63,18 +63,12 @@
   <div class="home-button-wrapper"><button class="button button-home" id="test-results-button">Test Results</button></div>
   
   <script src="js/defaults.js"></script>
+  <script src="js/stateCounty.js"></script>
   
   <script>
 
-    const getStateCounty = async () => {
-      let url = `${url_prefix}/counties_by_state`
-      return await fetch(url).then(r => r.json())
-    }
-
     const populateStateCounty = async (stateAbbrev, countyGeoId) => {
       
-      let stateCounty = await getStateCounty()
-
       for(let state of stateCounty) {
         stateSel.options[stateSel.options.length] = new Option(state.name, state.abbrev)
       }
@@ -149,6 +143,8 @@
       console.log('trId', trId)
       console.log('countyGeoId', countyGeoId)
       console.log('optIn', optIn)
+
+      window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
     }
     
   </script>
