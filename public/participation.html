@@ -24,24 +24,25 @@
     avast spanker scuttle tack sloop carouser booty pinnace fore.
   </p>
   <h5>Location</h5>
-  <p class="thankyou-instructions">
-    Based on your IP address, your local county has been approximated to be: <strong><span id="county"></span></strong>
+  
+  <p class="thankyou-instructions" id="local-county-known">
+    Based on your IP address, your local county has been approximated to be: <strong><span id="county"></span></strong>. If wish to affiliate 
+    with a different county, please select it below:
   </p>
-  <p class="thankyou-instructions" style="margin-top:1.5rem;">
-    If wish to affiliate with a different county, please select it below:
-  </p>
+
+  <p class="thankyou-instructions" id="local-county-unknown">Your local county could not be approximated. Please select it below:</p>
   
   <div class="state-county-select-wrapper">
     <div>
       <label for="stateSel">State</label>
       <select class="select-css" id="stateSel" size="1">
-        <option value="" selected="selected">-Select state-</option>
+        <option value="" selected="selected">-Select state-&nbsp;</option>
       </select>
     </div>
     <div>
       <label for="countySel">County</label>
       <select class="select-css" id="countySel" size="1">
-        <option value="" selected="selected">-Select county-</option>
+        <option value="" selected="selected">-Select county-&nbsp;</option>
       </select>
     </div>
   </div>
@@ -65,41 +66,32 @@
   
   <script>
 
-    const params = new URLSearchParams(atob(window.location.search.substring(1)))
-    
-    let trId = params.get('tr_id')
-    let countyName = params.get('county_name')
-    let stateAbbrev = params.get('state_abbrev')
-    let countyGeoId = params.get('county_geoid')
-
-    document.getElementById("county").innerHTML = `${countyName} County, ${stateAbbrev}`
-
     const getStateCounty = async () => {
       let url = `${url_prefix}/counties_by_state`
       return await fetch(url).then(r => r.json())
     }
-    
-    const populateStateCounty = async () => {
-      let stateSelect = document.getElementById("stateSel")	
-      let countySelect = document.getElementById("countySel")
-      let stateCounty = await getStateCounty()
+
+    const populateStateCounty = async (stateAbbrev, countyGeoId) => {
       
+      let stateCounty = await getStateCounty()
+
       for(let state of stateCounty) {
         stateSel.options[stateSel.options.length] = new Option(state.name, state.abbrev)
       }
 
-      let countiesForState = stateCounty.filter(state => {
-         return state.abbrev === stateAbbrev
-      })
+      if(stateAbbrev && countyGeoId) {
+        
+        countiesForState = stateCounty.filter(state => {
+          return state.abbrev === stateAbbrev
+        })
 
-      countySelect.length = 1
+        for (county of countiesForState[0].counties) {
+          countySelect.options[countySelect.options.length] = new Option(`${county.name} County`, county.geoid)
+        }
 
-      for (county of countiesForState[0].counties) {
-        countySelect.options[countySelect.options.length] = new Option(`${county.name} County`, county.geoid)
+        stateSel.value = stateAbbrev
+        countySelect.value = countyGeoId
       }
-
-      stateSelect.value = stateAbbrev
-      countySelect.value = countyGeoId
 
       //hm. cannot use arrow function here, why?
       stateSelect.onchange = function () {		 
@@ -123,15 +115,40 @@
       }
     }
 
-    populateStateCounty()
+    const params = new URLSearchParams(atob(window.location.search.substring(1)))
+    
+    let trId = params.get('tr_id')
+    let countyName = params.get('county_name')
+    let countyGeoId = params.get('county_geoid')
+    let stateAbbrev = params.get('state_abbrev')
 
-    document.getElementById('test-results-button').onclick = function() {
+    // trId = 1
+    // countyName = "Denver"
+    // stateAbbrev = "CO"
+    // countyGeoId = "08031"
+
+    let stateSelect = document.getElementById("stateSel")	
+    let countySelect = document.getElementById("countySel")
+
+    if(!countyGeoId || !countyGeoId || !stateAbbrev) {
+      document.getElementById('local-county-known').style.display = 'none'
+      document.getElementById('local-county-unknown').style.display = 'block'
+    }
+    else {
+      document.getElementById('local-county-known').style.display = 'block'
+      document.getElementById('local-county-unknown').style.display = 'none'
+      document.getElementById("county").innerHTML = `${countyName} County, ${stateAbbrev}`
+    }
+
+    populateStateCounty(stateAbbrev, countyGeoId)
+
+    document.getElementById('test-results-button').onclick = () => {
       let countyGeoId = document.getElementById('countySel').value
       let optIn = document.getElementById('optinout').checked
 
+      console.log('trId', trId)
       console.log('countyGeoId', countyGeoId)
       console.log('optIn', optIn)
-
     }
     
   </script>

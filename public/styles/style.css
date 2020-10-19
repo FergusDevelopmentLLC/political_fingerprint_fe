@@ -461,6 +461,12 @@ div#map-container {
     text-align: left;
 }
 
+
+#local-county-known, #local-county-unknown {
+    display: none;
+}
+
+
 @media screen and (max-width: 850px) {
     
     .img-home-wrapper {
