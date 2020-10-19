@@ -115,8 +115,6 @@
     let countyGeoId = params.get('county_geoid')
     let stateAbbrev = params.get('state_abbrev')
 
-    
-
     // trId = 1
     // countyName = "Denver"
     // stateAbbrev = "CO"
@@ -138,13 +136,18 @@
     populateStateCounty(stateAbbrev, countyGeoId)
 
     document.getElementById('test-results-button').onclick = async () => {
-      let countyGeoId = document.getElementById('countySel').value
+      
+      let newCountyGeoId = document.getElementById('countySel').value
       let optIn = document.getElementById('optinout').checked
 
       let tr = {}
       tr.id = trId
-      tr.countyGeoId = countyGeoId
+      tr.countyGeoId = newCountyGeoId
       tr.optIn = optIn
+      tr.countyOverride = false
+
+      if(countyGeoId !== newCountyGeoId)
+        tr.countyOverride = true
 
       const options = {
         method: 'PATCH',
