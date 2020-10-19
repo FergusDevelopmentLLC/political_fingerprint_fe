@@ -23,23 +23,33 @@
   </p>
   <h5>Location</h5>
   <p class="thankyou-instructions">
-    Based on your IP address, your local county has been approximated as:
+    Based on your IP address, your local county has been approximated to be: <strong><span id="county"></span></strong>
   </p>
-  <div id="county-approx-wrapper"><strong><span id="county"></span></strong></div>
-  <p class="thankyou-instructions">
+  <p class="thankyou-instructions" style="margin-top:1.5rem;">
     If wish to affiliate with a different county, please select it below:
   </p>
   
   <div class="state-county-select-wrapper">
-    <select class="select-css" id="stateSel" size="1">
-      <option value="" selected="selected">-Select state-</option>
-    </select>
-    <select class="select-css" id="countySel" size="1">
-      <option value="" selected="selected">-Select county-</option>
-    </select>
+    <div>
+      <label for="stateSel">State</label>
+      <select class="select-css" id="stateSel" size="1">
+        <option value="" selected="selected">-Select state-</option>
+      </select>
+    </div>
+    <div>
+      <label for="countySel">County</label>
+      <select class="select-css" id="countySel" size="1">
+        <option value="" selected="selected">-Select county-</option>
+      </select>
+    </div>
   </div>
 
   <h5>Share your results?</h5>
+  <p class="thankyou-instructions">
+    Gibbet maroon scuttle quarterdeck bilged on her anchor fire in the hole dance the hempen jig Yellow Jack fathom belaying pin. 
+    Provost red ensign fluke ahoy clap of thunder execution dock gaff loot Privateer brigantine. 
+  </p>
+
   <div>
     <input type="checkbox" id="optinout" class="optin-out-checkbox" checked="checked" />
     <label class="optinout-label" for="optinout">
@@ -47,7 +57,7 @@
     </label>
   </div>
 
-  <div class="home-button-wrapper"><button class="button button-home" onclick="location.href='quiz.html';">Test Results</button></div>
+  <div class="home-button-wrapper"><button class="button button-home" id="test-results-button">Test Results</button></div>
   
   <script src="js/defaults.js"></script>
   
@@ -112,6 +122,15 @@
     }
 
     populateStateCounty()
+
+    document.getElementById('test-results-button').onclick = function() {
+      let countyGeoId = document.getElementById('countySel').value
+      let optIn = document.getElementById('optinout').checked
+
+      console.log('countyGeoId', countyGeoId)
+      console.log('optIn', optIn)
+
+    }
     
   </script>
 </body>

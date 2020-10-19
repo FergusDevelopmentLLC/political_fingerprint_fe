@@ -386,11 +386,30 @@ div#map-container {
 .state-county-select-wrapper {
     display: flex;
     width: 70%;
-    margin: 1rem 0 1rem;
+    margin: 0rem 0 1rem;
+}
+
+.state-county-select-wrapper div {
+    margin: .25rem 1rem 0 0;
+}
+
+.state-county-select-wrapper label {
+    color: #444444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: bold;
+    padding-left: .1rem;
 }
 
 .state-county-select-wrapper select {
-    margin-right: 1rem;
+    margin-top: .25rem;
+    
+}
+
+.optinout-label {
+    color: #444444;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .select-css {
@@ -440,11 +459,6 @@ div#map-container {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     text-align: left;
-}
-
-.optinout-label {
-    font-family: Arial, Helvetica, sans-serif;     
-    font-size: .8rem;
 }
 
 @media screen and (max-width: 850px) {
