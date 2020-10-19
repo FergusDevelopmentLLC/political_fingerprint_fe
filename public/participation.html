@@ -61,7 +61,6 @@
   </div>
 
   <div class="home-button-wrapper"><button class="button button-home" id="test-results-button">Test Results</button></div>
-  
   <script src="js/defaults.js"></script>
   <script src="js/stateCounty.js"></script>
   
@@ -116,6 +115,8 @@
     let countyGeoId = params.get('county_geoid')
     let stateAbbrev = params.get('state_abbrev')
 
+    
+
     // trId = 1
     // countyName = "Denver"
     // stateAbbrev = "CO"
@@ -136,15 +137,33 @@
 
     populateStateCounty(stateAbbrev, countyGeoId)
 
-    document.getElementById('test-results-button').onclick = () => {
+    document.getElementById('test-results-button').onclick = async () => {
       let countyGeoId = document.getElementById('countySel').value
       let optIn = document.getElementById('optinout').checked
 
-      console.log('trId', trId)
-      console.log('countyGeoId', countyGeoId)
-      console.log('optIn', optIn)
+      let tr = {}
+      tr.id = trId
+      tr.countyGeoId = countyGeoId
+      tr.optIn = optIn
 
-      window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
+      const options = {
+        method: 'PATCH',
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify( { test_result: tr } )
+      }
+
+      let apiUrl = `${url_prefix}/test_results_check`
+
+      let test_result = await fetch(apiUrl, options).then(r => r.json())
+
+      let e = params.get('e')
+      let d = params.get('d')
+      let g = params.get('g')
+      let s = params.get('s')
+
+      let target = `results.html?e=${e}&d=${d}&g=${g}&s=${s}`
+      window.location.href = target
+      
     }
     
   </script>
