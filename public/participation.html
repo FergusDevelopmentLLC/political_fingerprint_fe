@@ -140,14 +140,19 @@
       let newCountyGeoId = document.getElementById('countySel').value
       let optIn = document.getElementById('optinout').checked
 
+      if(!newCountyGeoId) {
+        alert('Please select a state then a county.')
+        return
+      }
+
       let tr = {}
       tr.id = trId
-      tr.countyGeoId = newCountyGeoId
       tr.optIn = optIn
-      tr.countyOverride = false
 
       if(countyGeoId !== newCountyGeoId)
         tr.countyOverride = true
+
+      tr.countyGeoId = newCountyGeoId
 
       const options = {
         method: 'PATCH',
@@ -156,17 +161,16 @@
       }
 
       let apiUrl = `${url_prefix}/test_results_check`
-
       let test_result = await fetch(apiUrl, options).then(r => r.json())
 
       let e = params.get('e')
       let d = params.get('d')
       let g = params.get('g')
       let s = params.get('s')
-
+      
       let target = `results.html?e=${e}&d=${d}&g=${g}&s=${s}`
       window.location.href = target
-      
+
     }
     
   </script>
