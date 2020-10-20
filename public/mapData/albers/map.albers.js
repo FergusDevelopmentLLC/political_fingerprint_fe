@@ -247,7 +247,7 @@ handlePopup = () => {
 
       // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
       tooltip_msg += `<div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Markets</div><div>Equality</div></div>`
+      tooltip_msg += `<div class='popup-barheader'><div>Equality</div><div>Markets</div></div>`
 
       tooltip_msg += `
           <div class="bar-wrapper">
@@ -266,7 +266,7 @@ handlePopup = () => {
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${match.diplomatic}" y1="0" x2="${match.diplomatic}" y2="${height}" />
+              <line class="line" x1="${100 - match.diplomatic}" y1="0" x2="${100 - match.diplomatic}" y2="${height}" />
             </svg>
             
           </div>`
@@ -279,7 +279,7 @@ handlePopup = () => {
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${100- match.civil}" y1="0" x2="${100 - match.civil}" y2="${height}" />
+              <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
             </svg>
           </div>`
 
@@ -291,7 +291,7 @@ handlePopup = () => {
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${match.societal}" y1="0" x2="${match.societal}" y2="${height}" />
+              <line class="line" x1="${100 - match.societal}" y1="0" x2="${100 - match.societal}" y2="${height}" />
             </svg>
           </div>`
 
