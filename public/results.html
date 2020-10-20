@@ -51,6 +51,12 @@
     width: 95%;
     margin: auto;
   }
+
+  .bar-text {
+    fill: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+  }
   
 
   
@@ -121,14 +127,21 @@
       height = .10 * width
     } 
 
-    let linePosition = value / 100 * width
-    if(flip) linePosition = ((100 - value) / 100) * width
+    let lineValue = value
+    if(flip) {
+      lineValue = (100 - value)
+    }
+    let linePosition = (lineValue * width) / 100
     
     let barSvg = 
         `<svg viewBox="0 0 ${width} ${height}">
           ${defs}
-          <rect class="bar" width="${width}" height="${height}" />
-          <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
+          <g>
+            <rect class="bar" width="${width}" height="${height}" />
+            <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
+            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${ ((lineValue * 100) / 100).toFixed(1) }%</text>
+            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${(100 - ((lineValue * 100) / 100)).toFixed(1) }%</text>
+          </g>ex
         </svg>`
 
     document.getElementById(`bar-${target}`).innerHTML = barSvg
@@ -144,7 +157,7 @@
   setBar('economic', e, false)
   setBar('diplomatic', d, true)
   setBar('civil', g, false)
-  setBar('societal', e, true)
+  setBar('societal', s, true)
 
 </script>
 
