@@ -49,6 +49,10 @@
     justify-content: center;
   }
 
+  #results-economic, #results-diplomatic, #results-civil, #results-societal {
+    display: none;
+  }
+
   #results-economic, #results-diplomatic, #results-civil, #results-societal, #results-ideology, #results-map {
     width: 95%;
     margin: auto;
@@ -237,6 +241,12 @@
   let d = params.get('d')
   let g = params.get('g')
   let s = params.get('s')
+  let v = params.get('v')
+
+  document.getElementById('results-economic').style.display = 'block'
+  if(v == 1) document.getElementById('results-diplomatic').style.display = 'block'
+  document.getElementById('results-civil').style.display = 'block'
+  if(v == 1) document.getElementById('results-societal').style.display = 'block'
 
   setBar('economic', e, true)
   setBar('diplomatic', d, true)
