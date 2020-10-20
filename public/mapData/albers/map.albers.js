@@ -249,7 +249,7 @@ handlePopup = () => {
           `
           <div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>
           <div class='popup-barheader'><div>Equality</div><div>Markets</div></div>
-          <div class="bar-wrapper">
+          <div class="bar-wrapper-map">
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
@@ -260,7 +260,7 @@ handlePopup = () => {
       tooltip_msg += `
           <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
           <div class='popup-barheader'><div>World</div><div>Nation</div></div>
-          <div class="bar-wrapper">
+          <div class="bar-wrapper-map">
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
@@ -272,7 +272,7 @@ handlePopup = () => {
       tooltip_msg += `
           <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
           <div class='popup-barheader'><div>Authority</div><div>Liberty</div></div>
-          <div class="bar-wrapper">
+          <div class="bar-wrapper-map">
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
@@ -283,7 +283,7 @@ handlePopup = () => {
       tooltip_msg += `
           <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
           <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
-          <div class="bar-wrapper">
+          <div class="bar-wrapper-map">
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
@@ -291,7 +291,7 @@ handlePopup = () => {
             </svg>
           </div>`
 
-      tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match}</em></div>`
+      tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match_name}</em></div>`
     }
     else {
       tooltip_msg += `<div class="popup-subheader">No test results</div>`
