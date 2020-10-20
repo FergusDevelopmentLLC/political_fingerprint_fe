@@ -133,14 +133,23 @@
     }
     let linePosition = (lineValue * width) / 100
     
+    let threshold = 17 
+    let leftPercent = (lineValue * 100) / 100
+    let leftPercentText = ''
+    if(leftPercent > threshold) leftPercentText = `${leftPercent.toFixed(1)}%`
+    
+    let rightPercent = (100 - ((lineValue * 100) / 100))
+    let rightPercentText = ''
+    if(rightPercent > threshold) rightPercentText = `${rightPercent.toFixed(1)}%`
+    
     let barSvg = 
         `<svg viewBox="0 0 ${width} ${height}">
           ${defs}
           <g>
             <rect class="bar" width="${width}" height="${height}" />
             <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
-            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${ ((lineValue * 100) / 100).toFixed(1) }%</text>
-            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${(100 - ((lineValue * 100) / 100)).toFixed(1) }%</text>
+            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${leftPercentText}</text>
+            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${rightPercentText}</text>
           </g>ex
         </svg>`
 
