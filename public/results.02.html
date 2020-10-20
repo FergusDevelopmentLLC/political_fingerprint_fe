@@ -71,15 +71,8 @@
 <hr/>
 <h3>Results</h3>
 
-<!-- 
-  1. swap images to have markets on left, equality on right
-  2. setBar('economic', e, false) changed to setBar('economic', e, true) because of #1
-  3. Now markets, nation, liberty, tradition are on left. Equality, world, authority, progress on on right.
-  4. Switch all images and toggle setBar() function below 
--->
-
 <div id="results-economic">
-  <h2>Economic: <span class="weight-300" id="economic-label"></span></h2>
+  <h2>Economic Axis: <span class="weight-300" id="economic-label"></span></h2>
   <div class="axis" id="axis-economic">
     <div><img id="img-equality" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/equality_uw4lk1.png" /></div>
     <div class="bar-wrapper" id="bar-economic"></div>
@@ -88,29 +81,29 @@
 </div>
 
 <div id="results-diplomatic">
-  <h2>Diplomatic: <span class="weight-300" id="diplomatic-label"></span></h2>
+  <h2>Diplomatic Axis: <span class="weight-300" id="diplomatic-label"></span></h2>
   <div class="axis" id="axis-diplomatic">
-    <div><img id="img-peace" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/world_nujys1.png" /></div>
-    <div class="bar-wrapper" id="bar-diplomatic"></div>
     <div><img id="img-might" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/nation_iml2xv.png" /></div>
+    <div class="bar-wrapper" id="bar-diplomatic"></div>
+    <div><img id="img-peace" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/world_nujys1.png" /></div>
   </div>
 </div>
 
 <div id="results-civil">
-  <h2>Civil: <span class="weight-300" id="civil-label"></span></h2>
+  <h2>Civil Axis: <span class="weight-300" id="civil-label"></span></h2>
   <div class="axis" id="axis-civil">
-      <div><img id="img-authority" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/authority_ccttmk.png" /></div>
-    <div class="bar-wrapper" id="bar-civil"></div>
     <div><img id="img-liberty" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/liberty_i1mf1c.png" /></div>
+    <div class="bar-wrapper" id="bar-civil"></div>
+    <div><img id="img-authority" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/authority_ccttmk.png" /></div>
   </div>
 </div>
 
 <div id="results-societal">
-  <h2>Societal: <span class="weight-300" id="societal-label"></span></h2>
+  <h2>Societal Axis: <span class="weight-300" id="societal-label"></span></h2>
   <div class="axis" id="axis-societal">
-    <div><img id="img-progress" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/progress_i3vy0j.png" /></div>
-    <div class="bar-wrapper" id="bar-societal"></div>
     <div><img id="img-tradition" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/tradition_nnuptt.png" /></div>
+    <div class="bar-wrapper" id="bar-societal"></div>
+    <div><img id="img-progress" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/progress_i3vy0j.png" /></div>
   </div>
 </div>
 
@@ -123,8 +116,8 @@
     let defs = `
         <defs>
           <linearGradient id="gradient">
-            <stop class="blue-stop" offset="0%" />
-            <stop class="red-stop" offset="100%" />
+            <stop class="red-stop" offset="0%" />
+            <stop class="blue-stop" offset="100%" />
           </linearGradient>
         </defs>`
 
@@ -140,13 +133,14 @@
     }
     let linePosition = (lineValue * width) / 100
     
+    let threshold = 17 
     let leftPercent = (lineValue * 100) / 100
-    let rightPercent = (100 - ((lineValue * 100) / 100))
-
     let leftPercentText = ''
+    if(leftPercent > threshold) leftPercentText = `${leftPercent.toFixed(1)}%`
+    
+    let rightPercent = (100 - ((lineValue * 100) / 100))
     let rightPercentText = ''
-    if(leftPercent > rightPercent) leftPercentText = `${leftPercent.toFixed(0)}%`
-    if(rightPercent > leftPercent) rightPercentText = `${rightPercent.toFixed(0)}%`
+    if(rightPercent > threshold) rightPercentText = `${rightPercent.toFixed(1)}%`
     
     let barSvg = 
         `<svg viewBox="0 0 ${width} ${height}">
@@ -154,8 +148,8 @@
           <g>
             <rect class="bar" width="${width}" height="${height}" />
             <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
-            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${rightPercentText}</text>
-            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${leftPercentText}</text>
+            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${leftPercentText}</text>
+            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${rightPercentText}</text>
           </g>ex
         </svg>`
 
@@ -169,7 +163,7 @@
   let g = params.get('g')
   let s = params.get('s')
 
-  setBar('economic', e, true)
+  setBar('economic', e, false)
   setBar('diplomatic', d, true)
   setBar('civil', g, false)
   setBar('societal', s, true)

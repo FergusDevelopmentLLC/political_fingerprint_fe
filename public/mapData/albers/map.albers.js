@@ -240,8 +240,8 @@ handlePopup = () => {
       let defs = `
             <defs>
               <linearGradient id="gradient">
-                <stop class="red-stop" offset="0%" />
-                <stop class="blue-stop" offset="100%" />
+                <stop class="blue-stop" offset="0%" />
+                <stop class="red-stop" offset="100%" />
               </linearGradient>
             </defs>`
 
@@ -253,13 +253,13 @@ handlePopup = () => {
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${match.economic}" y1="0" x2="${match.economic}" y2="${height}" />
+              <line class="line" x1="${100 - match.economic}" y1="0" x2="${100 - match.economic}" y2="${height}" />
             </svg>
           </div>
           `
       tooltip_msg += `
           <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
-          <div class='popup-barheader'><div>Nation</div><div>World</div></div>
+          <div class='popup-barheader'><div>World</div><div>Nation</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
@@ -271,7 +271,7 @@ handlePopup = () => {
 
       tooltip_msg += `
           <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
-          <div class='popup-barheader'><div>Liberty</div><div>Authority</div></div>
+          <div class='popup-barheader'><div>Authority</div><div>Liberty</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
@@ -282,7 +282,7 @@ handlePopup = () => {
 
       tooltip_msg += `
           <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
-          <div class='popup-barheader'><div>Tradition</div><div>Progress</div></div>
+          <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
