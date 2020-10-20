@@ -245,23 +245,21 @@ handlePopup = () => {
               </linearGradient>
             </defs>`
 
-      // tooltip_msg += `<div>econ: ${match.economic.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Equality</div><div>Markets</div></div>`
-
-      tooltip_msg += `
+      tooltip_msg += 
+          `
+          <div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>
+          <div class='popup-barheader'><div>Equality</div><div>Markets</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
               <rect class="bar" width="${width}" height="${height}" />
               <line class="line" x1="${match.economic}" y1="0" x2="${match.economic}" y2="${height}" />
             </svg>
-          </div>`
-
-      // tooltip_msg += `<div>dipl: ${match.diplomatic.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Nation</div><div>World</div></div>`
+          </div>
+          `
       tooltip_msg += `
+          <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
+          <div class='popup-barheader'><div>Nation</div><div>World</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
@@ -271,10 +269,9 @@ handlePopup = () => {
             
           </div>`
 
-      // tooltip_msg += `<div>civil: ${match.civil.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Liberty</div><div>Authority</div></div>`
       tooltip_msg += `
+          <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
+          <div class='popup-barheader'><div>Liberty</div><div>Authority</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}
@@ -283,10 +280,9 @@ handlePopup = () => {
             </svg>
           </div>`
 
-      // tooltip_msg += `<div>societal: ${match.societal.toFixed(2)}</div>`
-      tooltip_msg += `<div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>`
-      tooltip_msg += `<div class='popup-barheader'><div>Tradition</div><div>Progress</div></div>`
       tooltip_msg += `
+          <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
+          <div class='popup-barheader'><div>Tradition</div><div>Progress</div></div>
           <div class="bar-wrapper">
             <svg height="${height}" width="${width}">
               ${defs}

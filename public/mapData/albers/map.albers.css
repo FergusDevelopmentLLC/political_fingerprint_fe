@@ -24,9 +24,10 @@
   justify-content: space-between;
 }
 
-/* .popup-barheader div { */
-  /* border: 1px solid red; */
-/* } */
+/* map controls */
+.mapcontrol img {
+  width: 100%;
+}
 
 /* bar svg */
 svg {
@@ -49,9 +50,4 @@ svg {
 
 .blue-stop {
   stop-color: #0015bc;
-}
-
-/* map controls */
-.mapcontrol img {
-  width: 100%;
 }
