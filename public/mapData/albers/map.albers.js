@@ -321,12 +321,6 @@ handlePopup = () => {
 
   map.on('mouseenter', 'counties_contracted', (e) => {
     map.getCanvas().style.cursor = 'pointer'
-    showPopup(e.features[0])
-  })
-
-  map.on('mouseleave', 'counties_contracted', () => {
-    map.getCanvas().style.cursor = ''
-    popup.remove()
   })
 
 }
