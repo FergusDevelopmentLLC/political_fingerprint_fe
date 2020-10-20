@@ -100,9 +100,9 @@ map.addControl(new ExtrudeMapControl(), 'top-left')
 map.addControl(new RotateMapControl(), 'top-left')
 map.addControl(new ResetMapControl(), 'top-left')
 
-map.on('load', async () => {
+map.scrollZoom.disable()
 
-  console.log('dataUrl', dataUrl)
+map.on('load', async () => {
 
   testResults = await getJson(dataUrl)
   countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
