@@ -244,9 +244,14 @@
   let v = params.get('v')
 
   document.getElementById('results-economic').style.display = 'block'
-  if(v == 1) document.getElementById('results-diplomatic').style.display = 'block'
+  document.getElementById('results-diplomatic').style.display = 'block'
   document.getElementById('results-civil').style.display = 'block'
-  if(v == 1) document.getElementById('results-societal').style.display = 'block'
+  document.getElementById('results-societal').style.display = 'block'
+  
+  if(parseInt(v) === 2) {
+    document.getElementById('results-diplomatic').style.display = 'none'
+    document.getElementById('results-societal').style.display = 'none'
+  }
 
   setBar('economic', e, true)
   setBar('diplomatic', d, true)
