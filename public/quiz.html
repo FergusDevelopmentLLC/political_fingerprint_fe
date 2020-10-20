@@ -79,7 +79,6 @@
 
     const getQuestions = async () => {
       let url = `${url_prefix}/questions/by_version/${version}`
-      console.log('url', url)
       return await fetch(url).then(r => r.json())
     }
 

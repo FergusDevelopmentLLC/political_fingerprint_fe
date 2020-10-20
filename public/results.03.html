@@ -114,12 +114,8 @@
   </div>
 </div>
 
-<h5 class="ideologies-link"><a href='ideologies.html'>Ideology</a>: <span id="ideology-label"></span></h5>
-<p id="ideology-definition"></p>
+<h2 class="ideologies-link"><a href='ideologies.html'>Ideology</a> match: <span class="weight-300" id="ideology-label"></span></h2>
 <button class="button" onclick="location.href='index.html';" style="background-color: #2196f3;">Back</button> <br>
-
-<script src="js/defaults.js"></script>
-
 <script>
   
   const setBar = (target, value, flip) => {
@@ -166,21 +162,6 @@
     document.getElementById(`bar-${target}`).innerHTML = barSvg
   }
 
-  const getIdeologyMatches = async (economic, diplomatic, civil, societal) => {
-    let url = `${url_prefix}/test_result_ideology/${economic}/${diplomatic}/${civil}/${societal}`
-    return await fetch(url).then(r => r.json())
-  }
-
-  const populateIdeologyMatches = async (economic, diplomatic, civil, societal) => {
-    let matches = await getIdeologyMatches(economic, diplomatic, civil, societal)
-    document.getElementById('economic-label').innerHTML = matches['economic_match']
-    document.getElementById('diplomatic-label').innerHTML = matches['diplomatic_match']
-    document.getElementById('civil-label').innerHTML = matches['civil_match']
-    document.getElementById('societal-label').innerHTML = matches['societal_match']
-    document.getElementById('ideology-label').innerHTML = `${matches['ideology_match_name']}`
-    document.getElementById('ideology-definition').innerHTML = `${matches['ideology_match_definition']}`
-  }
-
   const params = new URLSearchParams(window.location.search.substring(1))
 
   let e = params.get('e')
@@ -192,8 +173,6 @@
   setBar('diplomatic', d, true)
   setBar('civil', g, false)
   setBar('societal', s, true)
-
-  populateIdeologyMatches(e, d, g, s)
 
 </script>
 
