@@ -1,6 +1,5 @@
 let countiesGeoJson
 let testResults
-let minZoom
 let isRotating = false
 
 const getJson = async (url) => {
@@ -205,13 +204,6 @@ map.on('load', async () => {
   })
   
   handlePopup()
-})
-
-map.on('idle', function() {
-  // if(!minZoom) {
-  //   minZoom = map.getZoom()
-  //   map.setMinZoom(minZoom)
-  // }
 })
 
 map.on('moveend', () => {

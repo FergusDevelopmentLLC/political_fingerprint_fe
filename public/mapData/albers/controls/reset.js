@@ -21,7 +21,9 @@ class ResetMapControl {
     this.button.addEventListener('click', () => {
 
       popup.remove()
-      
+
+      isRotating = false
+
       let threedeeButton = document.getElementById('threedee')
       threedeeButton.setAttribute("title", 'Extrude Map')
       let threedeeButtonImage = threedeeButton.getElementsByTagName('img')[0]
@@ -33,9 +35,12 @@ class ResetMapControl {
       rotateButtonImage.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
 
       this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
-      this.map.easeTo({ pitch: 0, center: center, zoom: minZoom, bearing: 0 })
-
-      isRotating = false
+      this.map.setPitch(0)
+      this.map.setBearing(0)
+      this.map.fitBounds([
+        [mapBounds[0], mapBounds[1]],
+        [mapBounds[2], mapBounds[3]]
+      ])
     })
 
     return this.container
