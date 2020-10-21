@@ -53,41 +53,17 @@ const rotateBy = (current) => {
   // https://gist.github.com/danswick/ceb7de7a29330b024f88
 }
 
-function displayWindowSize() {
+function scaleMap() {
 
-  var w = document.documentElement.clientWidth
-  var h = document.documentElement.clientHeight
-
-  // var w = screen.height
-  // var h = screen.width
-
-  console.log(`width: ${w}, height: ${h}`)
-
-  document.getElementById('map-container').style.width = `${w}px`
+  let w = document.getElementById('map-container').offsetWidth
+  
   map.fitBounds([
     [mapBounds[0], mapBounds[1]],
     [mapBounds[2], mapBounds[3]]
   ])
+  
   map.resize()
 
-  //console.log('map-container', mapContainer)
-  
-  //.style.width = '500px'
-
-  
-  // map.resize()
-  // setTimeout(function(){ 
-  //   console.log(`doin it`)
-    
-  //   map.resize()
-    
-  //   map.fitBounds([
-  //     [mapBounds[0], mapBounds[1]],
-  //     [mapBounds[2], mapBounds[3]]
-  //   ])
-
-  //   console.log(`done`)
-  // }, 3000)
 }
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
@@ -346,4 +322,4 @@ handlePopup = () => {
 
 }
 
-window.addEventListener("resize", displayWindowSize)
+window.addEventListener("resize", scaleMap)
