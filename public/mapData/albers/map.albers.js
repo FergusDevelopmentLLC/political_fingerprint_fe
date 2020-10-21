@@ -54,6 +54,8 @@ const rotateBy = (current) => {
 
 const scaleMap = () => {
 
+  popup.remove()
+  
   map.fitBounds([
     [mapBounds[0], mapBounds[1]],
     [mapBounds[2], mapBounds[3]]
