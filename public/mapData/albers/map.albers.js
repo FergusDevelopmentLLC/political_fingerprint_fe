@@ -298,7 +298,7 @@ handlePopup = () => {
 
     map.flyTo({
       center: [e.features[0].properties.albers_x, e.features[0].properties.albers_y],
-      zoom: 7,
+      zoom: 6,
       essential: true
     })
 
