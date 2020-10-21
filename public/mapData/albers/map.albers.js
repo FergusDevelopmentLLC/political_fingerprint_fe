@@ -296,11 +296,9 @@ handlePopup = () => {
 
     map.getCanvas().style.cursor = 'pointer'
 
-    popup.remove()
-
     map.flyTo({
       center: [e.features[0].properties.albers_x, e.features[0].properties.albers_y],
-      zoom: 5.5,
+      zoom: 7,
       essential: true
     })
 
