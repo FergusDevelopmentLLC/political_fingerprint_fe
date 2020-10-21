@@ -52,10 +52,8 @@ const rotateBy = (current) => {
   // https://gist.github.com/danswick/ceb7de7a29330b024f88
 }
 
-function scaleMap() {
+const scaleMap = () => {
 
-  let w = document.getElementById('map-container').offsetWidth
-  
   map.fitBounds([
     [mapBounds[0], mapBounds[1]],
     [mapBounds[2], mapBounds[3]]
