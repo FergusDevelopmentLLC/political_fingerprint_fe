@@ -103,7 +103,10 @@
     async function init_question() {
       questions = await getQuestions()
       
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      document.querySelector('.quiz-logo-wrapper').scrollIntoView({ 
+        behavior: 'smooth' 
+      })
+
       currentQuestionIterationId = questions[qn].question_iteration_id
       
       document.getElementById("question-text").innerHTML = questions[qn].question;
@@ -138,7 +141,6 @@
       removeAllSelectedButtonsFromClass('button-answer')
       document.getElementById(id).className += " button-selected"
 
-      // Scroll to a certain element
       document.querySelector('.feedback').scrollIntoView({ 
         behavior: 'smooth' 
       })
