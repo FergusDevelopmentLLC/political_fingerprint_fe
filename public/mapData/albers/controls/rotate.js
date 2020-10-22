@@ -13,7 +13,7 @@ class RotateMapControl {
     this.button.setAttribute('title', 'Rotate map')
 
     this.img = document.createElement('img')
-    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/rotate_x9tvdg.png")
     this.button.appendChild(this.img)
 
     this.container.appendChild(this.button)
@@ -22,11 +22,11 @@ class RotateMapControl {
       isRotating = !isRotating
       if (isRotating) {
         rotateBy(this.map.getBearing())
-        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602294005/political_fingerprint/rotate-stop_ijkqhm.png")
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/rotate-stop_louvui.png")
         this.button.setAttribute('title', 'Stop rotating')
       }
       else {
-        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272942/political_fingerprint/rotate_oqfpub.png")
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/rotate_x9tvdg.png")
         this.button.setAttribute('title', 'Rotate map')
       }
     })

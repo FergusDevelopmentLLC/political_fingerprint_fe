@@ -13,7 +13,7 @@ class ExtrudeMapControl {
     this.button.setAttribute("title", 'Extrude Map')
 
     this.img = document.createElement('img')
-    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272943/political_fingerprint/threedee_fdw66a.png")
+    this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/threedee_fdkdgk.png")
     
     this.button.appendChild(this.img)
 
@@ -21,12 +21,12 @@ class ExtrudeMapControl {
 
     this.button.addEventListener('click', () => {
       if (this.map.getPitch() === 0) {
-        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602294005/political_fingerprint/threedee-off_fbeuan.png")
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/threedee-off_ivvyfm.png")
         this.button.setAttribute("title", 'Flatten Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', .8)
         this.map.easeTo({ pitch: 30 })
       } else {
-        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1602272943/political_fingerprint/threedee_fdw66a.png")
+        this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/threedee_fdkdgk.png")
         this.button.setAttribute("title", 'Extrude Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
         this.map.easeTo({ pitch: 0 })
