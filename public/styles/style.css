@@ -495,7 +495,7 @@ a:hover {
 }
   
 a:active {
-    text-decoration: underline;
+    text-decoration: none;
     color: #222222;
 }
 
