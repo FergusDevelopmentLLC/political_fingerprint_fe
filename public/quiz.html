@@ -18,7 +18,7 @@
   <hr/>
   <h2 style="text-align:center;" id="question-number">Loading...</h2>
   <div class="question">
-    <div id="question-text">Indicate below to what degree the question above is flawed.<br />(biased, unclear or otherwise problematic)</div>
+    <div id="question-text"></div>
   </div>
 
   <button class="button button-answer" id="answer-01" onclick="accumulateScore( 1.0, this.id)" style="background-color: #1b5e20;">Strongly Agree</button><br />
@@ -28,8 +28,8 @@
   <button class="button button-answer" id="answer-05" onclick="accumulateScore(-1.0, this.id)" style="background-color: #b71c1c;">Strongly Disagree</button><br />
   
   <div class="feedback">
-    <h4>Statement&nbsp;Feedback</h4>
-    <div>Indicate below to what degree the statement above is flawed.<br />(biased, unclear or otherwise problematic)</div>
+    <h4>Statement&nbsp;Feedback [<a href='#' id='quiz-statement-feedback-expand'>?</a>]</h4>
+    <div id='quiz-statement-feedback-desc'>Indicate below to what degree the statement above is flawed.<br />(biased, unclear or otherwise problematic)</div>
   </div>
 
   <button class="button button-feedback" id="feedback-01" onclick="javascript:setFeedback(0, this.id)" style="background-color: #1b5e20;">No flaws</button> <br />
@@ -82,7 +82,15 @@
       return await fetch(url).then(r => r.json())
     }
 
-    init_question();
+    let feedbackShowing = false
+    document.getElementById('quiz-statement-feedback-expand').onclick = () => {
+      feedbackShowing = !feedbackShowing
+      document.getElementById('quiz-statement-feedback-desc').style.display = feedbackShowing ? 'block' : 'none'
+      document.getElementById('quiz-statement-feedback-expand').innerHTML = feedbackShowing ? '-' : '?'
+      return false
+    }
+
+    init_question()
 
     for (var i = 0; i < questions.length; i++) {
       max_econ += Math.abs(questions[i].effect.econ)

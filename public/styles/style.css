@@ -240,13 +240,12 @@ span.weight-300 {
     min-height: 8rem;
 }
 
-.question, .feedback {
+.question {
     margin: .5rem auto 1.5rem ;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     width: 70%;
-    min-width: 500pt;
     max-width: 65rem;
     min-height: 5rem;
     background-color: #eeeeee;
@@ -258,8 +257,19 @@ span.weight-300 {
     text-align: center;
 }
 
-.feedback h4 {
+.feedback {
+    margin: 1rem auto 2rem;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    width: 70%;
+    max-width: 65rem;
     font-size: 2rem;
+    text-align: center;
+}
+
+.feedback h4 {
+    font-size: 2.5rem;
     margin: 0 0 1rem 0;
     line-height: 2rem;
 }
@@ -459,6 +469,34 @@ div#map-container {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     text-align: left;
+}
+
+#quiz-statement-feedback-desc {
+    display: none;
+}
+
+#quiz-statement-feedback-expand {
+    margin: 0 .2rem 0 .2rem;
+}
+
+a:link {
+    text-decoration: none;
+    color: #222222;
+}
+  
+a:visited {
+    text-decoration: none;
+    color: #222222;
+}
+  
+a:hover {
+    text-decoration: underline;
+    color: #222222;
+}
+  
+a:active {
+    text-decoration: underline;
+    color: #222222;
 }
 
 
