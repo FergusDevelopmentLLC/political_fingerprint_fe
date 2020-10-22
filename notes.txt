@@ -68,3 +68,9 @@ https://gist.github.com/danswick/ceb7de7a29330b024f88
 https://stackoverflow.com/questions/12772494/how-to-get-opposite-boolean-value-of-variable-in-javascript
 //https://stackoverflow.com/questions/3364493/how-do-i-clear-all-options-in-a-dropdown-box
 https://www.digitalocean.com/community/tutorials/how-to-debug-javascript-with-google-chrome-devtools-and-visual-studio-code
+
+NGINX, domain setup, https setup:
+https://www.digitalocean.com/community/tools/nginx
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
+https://www.digitalocean.com/community/questions/how-do-i-point-my-custom-domain-to-my-ip-port-41-111-20-36-8080
+https://www.informit.com/articles/article.aspx?p=2468330&seqNum=15
