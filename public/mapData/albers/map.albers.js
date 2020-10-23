@@ -307,7 +307,7 @@ handlePopup = () => {
 
     setTimeout(() => { 
       showPopup(feature)
-    }, 800)
+    }, 500)
 
   })
 
