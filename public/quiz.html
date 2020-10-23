@@ -115,7 +115,7 @@
     setMaxValues()
 
     async function init_question() {
-      
+
       questions = await getQuestions()
       
       document.querySelector('.quiz-logo-wrapper').scrollIntoView({ 
@@ -256,12 +256,16 @@
 
       let testResult = {}
       testResult.question_version = version
-      testResult.economic = parseFloat(e)
-      testResult.diplomatic = parseFloat(d)
-      testResult.civil = parseFloat(g)
-      testResult.societal = parseFloat(s)
 
-      //console.log('testResult', testResult)
+      if(e) testResult.economic = parseFloat(e)
+      if(d) testResult.diplomatic = parseFloat(d)
+      if(g) testResult.civil = parseFloat(g)
+      if(s) testResult.societal = parseFloat(s)
+
+      if(!testResult.economic) testResult.economic = 50
+      if(!testResult.diplomatic) testResult.diplomatic = 50
+      if(!testResult.civil) testResult.civil = 50
+      if(!testResult.societal) testResult.societal = 50
 
       const options = {
         method: 'POST',
