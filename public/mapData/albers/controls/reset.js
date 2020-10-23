@@ -20,10 +20,9 @@ class ResetMapControl {
 
     this.button.addEventListener('click', () => {
 
-      popup.remove()
-
       isRotating = false
-
+      featureOfInterest = null
+      
       let threedeeButton = document.getElementById('threedee')
       threedeeButton.setAttribute("title", 'Extrude Map')
       let threedeeButtonImage = threedeeButton.getElementsByTagName('img')[0]
@@ -41,6 +40,7 @@ class ResetMapControl {
         [mapBounds[0], mapBounds[1]],
         [mapBounds[2], mapBounds[3]]
       ])
+
     })
 
     return this.container

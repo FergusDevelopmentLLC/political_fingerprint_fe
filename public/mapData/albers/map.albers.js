@@ -66,6 +66,29 @@ const scaleMap = () => {
 
 }
 
+const handlePopup = () => {
+
+  map.on('click', 'counties_contracted', (e) => {
+
+    featureOfInterest = e.features[0]
+
+    map.getCanvas().style.cursor = 'pointer'
+
+    map.flyTo({
+      center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
+      zoom: 6.5,
+      maxDuration: 1100,
+      essential: true
+    })
+
+  })
+
+  map.on('mouseenter', 'counties_contracted', (e) => {
+    map.getCanvas().style.cursor = 'pointer'
+  })
+
+}
+
 const showPopup = (countyOfInterest) => {
 
   //let coordinates = [e.lngLat.lng, e.lngLat.lat]
@@ -182,13 +205,8 @@ map.addControl(new ResetMapControl(), 'top-left')
 map.scrollZoom.disable()
 
 map.on('moveend', () => {
-
   if (isRotating) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
-
-  if(featureOfInterest) {
-    showPopup(featureOfInterest)
-  }
-
+  featureOfInterest ? showPopup(featureOfInterest) : popup.remove()
 })
 
 map.on('load', async () => {
@@ -294,29 +312,7 @@ map.on('load', async () => {
   })
   
   handlePopup()
+
 })
-
-handlePopup = () => {
-
-  map.on('click', 'counties_contracted', (e) => {
-
-    featureOfInterest = e.features[0]
-
-    map.getCanvas().style.cursor = 'pointer'
-
-    map.flyTo({
-      center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
-      zoom: 6.5,
-      maxDuration: 1100,
-      essential: true
-    })
-
-  })
-
-  map.on('mouseenter', 'counties_contracted', (e) => {
-    map.getCanvas().style.cursor = 'pointer'
-  })
-
-}
 
 window.addEventListener("resize", scaleMap)
