@@ -1,6 +1,7 @@
 let countiesGeoJson
 let testResults
 let isRotating = false
+let featureOfInterest
 
 const getJson = async (url) => {
   return await fetch(url).then(r => r.json())
@@ -65,6 +66,85 @@ const scaleMap = () => {
 
 }
 
+const showPopup = (countyOfInterest) => {
+
+  //let coordinates = [e.lngLat.lng, e.lngLat.lat]
+  let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
+  let match = testResults.find(tr => tr.geoid === countyOfInterest.properties.geoid)
+
+  let tooltip_msg = ''
+  tooltip_msg += `<div class="popup-header"><strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong></div>`
+  tooltip_msg += `<div>`
+  if (match) {
+
+    let width = 100
+    let height = 15
+    let defs = `
+          <defs>
+            <linearGradient id="gradient">
+              <stop class="blue-stop" offset="0%" />
+              <stop class="red-stop" offset="100%" />
+            </linearGradient>
+          </defs>`
+
+    tooltip_msg += 
+        `
+        <div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>
+        <div class='popup-barheader'><div>Equality</div><div>Markets</div></div>
+        <div class="bar-wrapper-map">
+          <svg height="${height}" width="${width}">
+            ${defs}
+            <rect class="bar" width="${width}" height="${height}" />
+            <line class="line" x1="${100 - match.economic}" y1="0" x2="${100 - match.economic}" y2="${height}" />
+          </svg>
+        </div>
+        `
+    tooltip_msg += `
+        <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
+        <div class='popup-barheader'><div>World</div><div>Nation</div></div>
+        <div class="bar-wrapper-map">
+          <svg height="${height}" width="${width}">
+            ${defs}
+            <rect class="bar" width="${width}" height="${height}" />
+            <line class="line" x1="${100 - match.diplomatic}" y1="0" x2="${100 - match.diplomatic}" y2="${height}" />
+          </svg>
+          
+        </div>`
+
+    tooltip_msg += `
+        <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
+        <div class='popup-barheader'><div>Authority</div><div>Liberty</div></div>
+        <div class="bar-wrapper-map">
+          <svg height="${height}" width="${width}">
+            ${defs}
+            <rect class="bar" width="${width}" height="${height}" />
+            <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
+          </svg>
+        </div>`
+
+    tooltip_msg += `
+        <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
+        <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
+        <div class="bar-wrapper-map">
+          <svg height="${height}" width="${width}">
+            ${defs}
+            <rect class="bar" width="${width}" height="${height}" />
+            <line class="line" x1="${100 - match.societal}" y1="0" x2="${100 - match.societal}" y2="${height}" />
+          </svg>
+        </div>`
+
+    tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match_name}</em></div>`
+  }
+  else {
+    tooltip_msg += `<div class="popup-subheader">No test results</div>`
+  }
+  tooltip_msg += `<div>`
+  // Populate the popup and set its coordinates based on the feature found.
+  popup.setLngLat(coordinates)
+    .setHTML(tooltip_msg)
+    .addTo(map)
+}
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
 // get bounding box: http://bboxfinder.com
@@ -100,6 +180,16 @@ map.addControl(new RotateMapControl(), 'top-left')
 map.addControl(new ResetMapControl(), 'top-left')
 
 map.scrollZoom.disable()
+
+map.on('moveend', () => {
+
+  if (isRotating) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
+
+  if(featureOfInterest) {
+    showPopup(featureOfInterest)
+  }
+
+})
 
 map.on('load', async () => {
 
@@ -206,108 +296,20 @@ map.on('load', async () => {
   handlePopup()
 })
 
-map.on('moveend', () => {
-  // if isRotating flag is true, keep the map rotating
-  if (isRotating) rotateBy(map.getBearing())
-})
-
 handlePopup = () => {
 
-  const showPopup = (countyOfInterest) => {
-
-    //let coordinates = [e.lngLat.lng, e.lngLat.lat]
-    let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
-    let match = testResults.find(tr => tr.geoid === countyOfInterest.properties.geoid)
-
-    let tooltip_msg = ''
-    tooltip_msg += `<div class="popup-header"><strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong></div>`
-    tooltip_msg += `<div>`
-    if (match) {
-
-      let width = 100
-      let height = 15
-      let defs = `
-            <defs>
-              <linearGradient id="gradient">
-                <stop class="blue-stop" offset="0%" />
-                <stop class="red-stop" offset="100%" />
-              </linearGradient>
-            </defs>`
-
-      tooltip_msg += 
-          `
-          <div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>
-          <div class='popup-barheader'><div>Equality</div><div>Markets</div></div>
-          <div class="bar-wrapper-map">
-            <svg height="${height}" width="${width}">
-              ${defs}
-              <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${100 - match.economic}" y1="0" x2="${100 - match.economic}" y2="${height}" />
-            </svg>
-          </div>
-          `
-      tooltip_msg += `
-          <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
-          <div class='popup-barheader'><div>World</div><div>Nation</div></div>
-          <div class="bar-wrapper-map">
-            <svg height="${height}" width="${width}">
-              ${defs}
-              <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${100 - match.diplomatic}" y1="0" x2="${100 - match.diplomatic}" y2="${height}" />
-            </svg>
-            
-          </div>`
-
-      tooltip_msg += `
-          <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
-          <div class='popup-barheader'><div>Authority</div><div>Liberty</div></div>
-          <div class="bar-wrapper-map">
-            <svg height="${height}" width="${width}">
-              ${defs}
-              <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
-            </svg>
-          </div>`
-
-      tooltip_msg += `
-          <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
-          <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
-          <div class="bar-wrapper-map">
-            <svg height="${height}" width="${width}">
-              ${defs}
-              <rect class="bar" width="${width}" height="${height}" />
-              <line class="line" x1="${100 - match.societal}" y1="0" x2="${100 - match.societal}" y2="${height}" />
-            </svg>
-          </div>`
-
-      tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match_name}</em></div>`
-    }
-    else {
-      tooltip_msg += `<div class="popup-subheader">No test results</div>`
-    }
-    tooltip_msg += `<div>`
-    // Populate the popup and set its coordinates based on the feature found.
-    popup.setLngLat(coordinates)
-      .setHTML(tooltip_msg)
-      .addTo(map)
-  }
-
   map.on('click', 'counties_contracted', (e) => {
+
+    featureOfInterest = e.features[0]
 
     map.getCanvas().style.cursor = 'pointer'
 
     map.flyTo({
-      center: [e.features[0].properties.albers_x, e.features[0].properties.albers_y],
+      center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
       zoom: 6.5,
       maxDuration: 1100,
       essential: true
     })
-
-    let feature = e.features[0]
-
-    setTimeout(() => { 
-      showPopup(feature)
-    }, 500)
 
   })
 
