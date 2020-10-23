@@ -209,6 +209,11 @@ map.on('moveend', () => {
   featureOfInterest ? showPopup(featureOfInterest) : popup.remove()
 })
 
+map.on('click', (e) => {
+  featureOfInterest = null
+  popup.remove()
+})
+
 map.on('load', async () => {
 
   testResults = await getJson(dataUrl)
