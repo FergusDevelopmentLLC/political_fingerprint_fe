@@ -298,11 +298,16 @@ handlePopup = () => {
 
     map.flyTo({
       center: [e.features[0].properties.albers_x, e.features[0].properties.albers_y],
-      zoom: 6,
+      zoom: 6.5,
+      maxDuration: 1100,
       essential: true
     })
 
-    showPopup(e.features[0])
+    let feature = e.features[0]
+
+    setTimeout(() => { 
+      showPopup(feature)
+    }, 1000)
 
   })
 
