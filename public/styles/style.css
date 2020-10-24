@@ -547,12 +547,16 @@ a:active {
     text-align: center;
 }
 
+.home-value p:first-of-type {
+    margin-top: .25rem;
+}
+
 .home-img {
     width: 100%;
 }
 
 .home-img-value {
-    width: 40%;
+    width: 50%;
 }
 
 @media screen and (max-width: 850px) {
