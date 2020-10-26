@@ -61,20 +61,10 @@ h5 {
     padding: 0;
 }
 
-h6 {
-    font-size: 2rem;
-    margin: 0rem 0 1.5rem;
-    padding: 0;
-    font-weight: normal;
-}
-
-li {
-    font-size: 16pt;
-    text-indent: 16pt;
-}
 a {
     font-family: inherit;
 }
+
 img.center {
     display: block;
     margin: 1em auto;
@@ -279,37 +269,6 @@ span.weight-300 {
     max-width: 22rem;
 }
 
-.home {
-    /* width: 70%; */
-    margin: auto;
-}
-
-.home p {
-    padding: 0;
-    margin: 0 0 1.25rem 0;
-    font-size: 1.75rem;
-    line-height: 2rem;
-}
-
-.home ol {
-    /* padding: 0 0 0 2rem; */
-    /* padding: 0; */
-    /* margin: 0; */
-
-    /* padding-left: 0; */
-    /* If you want you can change the list type from inside or outside */
-    list-style: inside decimal;
-}
-
-
-.home ol li {
-    color: #444444;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.75rem;
-    padding: 0;
-    margin: 0;
-}
-
 .img-home {
     width: 100%;
 }
@@ -324,10 +283,12 @@ span.weight-300 {
 
 .home a:link {
     color: #444444;
+    text-decoration: underline;
 }
   
 .home a:visited {
     color: #444444;
+    text-decoration: underline;
 }
   
 .home a:hover {
@@ -508,12 +469,6 @@ a:active {
     margin: 0 0 3rem 0;
 }
 
-.continuum-wrapper div {
-    /* border: 1px solid orange; */
-    /* flex-basis: auto; */
-    /* flex-basis: 33%; */
-}
-
 .home-value div {
     text-align: center;
     margin: auto;
@@ -557,11 +512,27 @@ a:active {
 
 h6 {
     font-size: 1rem;
-    margin: 0;
+    margin: .3rem 0;
 }
 
 .home {
+    margin: auto;
     width: 90%;
+}
+
+.home ol {
+    list-style-position: inside;
+    padding-left: .25rem;
+    margin: .5rem 0;
+}
+
+.home ol li {
+    color: #444444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    padding: 0;
+    margin: 0;
 }
 
 .home p {
@@ -579,6 +550,12 @@ h5 {
 .home-img-value {
     width: 30%;
 }
+
+/* media queries */
+/* ================================================================= */
+/* ================================================================= */
+/* ================================================================= */
+/* ================================================================= */
 
 @media screen and (max-width: 850px) {
     .home {
@@ -636,6 +613,11 @@ h5 {
         line-height: 1rem;
         margin: 0;
     }
+
+    .home ol li {
+        font-size: .9rem;
+    }
+    
     
     
 }

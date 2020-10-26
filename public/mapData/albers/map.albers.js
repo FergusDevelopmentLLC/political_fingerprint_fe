@@ -179,7 +179,7 @@ const showPopup = (countyOfInterest) => {
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
 // get bounding box: http://bboxfinder.com
-let mapBounds = [-21, -17, 21, 14]//Southwest corner, Northeast corner
+let mapBounds = [-21, -18.25, 21, 14]//Southwest corner, Northeast corner
 
 let center = [(mapBounds[0] + mapBounds[2]) / 2, (mapBounds[1] + mapBounds[3]) / 2]
 
@@ -204,11 +204,11 @@ map.fitBounds([
   [mapBounds[2], mapBounds[3]]
 ])
 
-map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-map.addControl(new mapboxgl.FullscreenControl(), 'top-right')
-map.addControl(new ExtrudeMapControl(), 'top-left')
-map.addControl(new RotateMapControl(), 'top-left')
-map.addControl(new ResetMapControl(), 'top-left')
+map.addControl(new mapboxgl.NavigationControl(), 'top-left')
+map.addControl(new mapboxgl.FullscreenControl(), 'top-left')
+map.addControl(new ExtrudeMapControl(), 'top-right')
+map.addControl(new RotateMapControl(), 'top-right')
+map.addControl(new ResetMapControl(), 'top-right')
 map.addControl(new LegendMapControl(), 'bottom-right')
 
 map.scrollZoom.disable()
