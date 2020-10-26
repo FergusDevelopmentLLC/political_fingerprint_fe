@@ -93,6 +93,8 @@ svg {
 
 @media screen and (max-width: 1350px) {
   .legend-description {
+    font-size: .65rem;
+    line-height: .65rem;
     padding: 0 .2rem 0 0;
   }
 }
