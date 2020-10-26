@@ -46,7 +46,6 @@
     }
 
     #map-container {
-      width: 75%;
       margin: 0 auto;
       background: #808080;
       padding: 2rem;
@@ -79,35 +78,18 @@
   <div class='logo-wrapper'>
     <img src='https://res.cloudinary.com/fergusdev/image/upload/v1602701054/politipoint/logos/politipoint-vertical-color_txkgp9.png' title='PolitiPoint.org' />
   </div>
-  <h4><span id="version"></span><br/><span id="version-description"></span></h4>
-  <hr />
+  <h6><span id="version"></span></h6>
+  
   <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   <div class="home">
     <h5>The Test</h5>
-    
-    <p class="test-instructions" id="test-version-01">
-      PolitiPoint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.<br/><br/>
-      The test will present you with a series of statements. Indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> 
-      how closely you identify with the statement.<br/><br/>
-      Your responses will indicate where you place on a continuum between two opposing perspectives in each of four categories 
-      (<strong>Economic</strong>, <strong>Diplomatic</strong>, <strong>Civil</strong> and <strong>Societal</strong>).
+    <p class="test-instructions">
+      PolitiPoint provides insight into political leanings beyond the traditional "right" and "left" framework. Test takers are presented a series of statements.
+      Each have a particular political viewpoint. Indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify 
+      with the statement. Based on your responses, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
+      categories:  
     </p>
-
-    <p class="test-instructions" id="test-version-02">
-        PolitiPoint is a test that provides insight into political leanings beyond the traditional "right" and "left" framework.<br/><br/>
-        The test will present you with a series of statements. Indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> 
-        how closely you identify with the statement.<br/><br/>
-        Your responses will indicate where you place on a continuum between two opposing perspectives in each of two categories 
-        (<strong>Economic</strong> and <strong>Civil</strong>).
-      </p>
     
-    <!-- <div class="img-home-wrapper">
-      <img class="img-home" id="img-home-economic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/economic_v4qiia.png"></img>
-      <img class="img-home" id="img-home-diplomatic" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/diplomatic_dwu2h7.png"></img>
-      <img class="img-home" id="img-home-civil" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/civil_gxpwpm.png"></img>
-      <img class="img-home" id="img-home-societal" src="https://res.cloudinary.com/fergusdev/image/upload/v1602626391/PolitiPoint/axis/societal_x7z2os.png"></img>
-    </div> -->
-
     <div class="continuum-wrapper">
       <div class="home-value">
         <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471674/politipoint/axis/equality_n7pfnb.png' /></div>
@@ -119,7 +101,7 @@
       <div class="home-arrow"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/economic_arrow_ghcmyr.png' /></div>
       <div class="home-value">
         <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/markets_nivxqb.png' /></div>
-        <p>Economy focused on growth</p>
+        <p>Growth focused ecomomy</p>
         <p>Favors lower taxes</p>
         <p>Competition / Deregulation</p>
         <p>Tends towards laissez-faire capitalism</p>
@@ -228,21 +210,18 @@
     let versionText = `Version: ${version}`
     document.getElementById('version').innerHTML = versionText
 
-    if (version == 2) {
-      document.getElementById('version-description').innerHTML = `25 statements`
-      document.getElementById('test-version-02').style.display = 'block'
-      document.getElementById('img-home-economic').style.display = 'block'
-      document.getElementById('img-home-civil').style.display = 'block'
-    }
-    else {
-      document.getElementById('version-description').innerHTML = `70 statements`
-      document.getElementById('test-version-01').style.display = 'block'
-
+    // if (version == 2) {
+    //   document.getElementById('test-version-02').style.display = 'block'
+    //   document.getElementById('img-home-economic').style.display = 'block'
+    //   document.getElementById('img-home-civil').style.display = 'block'
+    // }
+    // else {
+      //document.getElementById('test-version-01').style.display = 'block'
       // document.getElementById('img-home-economic').style.display = 'block'
       // document.getElementById('img-home-diplomatic').style.display = 'block'
       // document.getElementById('img-home-civil').style.display = 'block'
       // document.getElementById('img-home-societal').style.display = 'block'
-    }
+    //}
   </script>
   
   <script src="js/defaults.js"></script>
@@ -253,9 +232,13 @@
   <script src="mapData/albers/controls/extrude.js"></script>
   <script src="mapData/albers/controls/reset.js"></script>
   <script src="mapData/albers/controls/rotate.js"></script>
+  <script src="mapData/albers/controls/legend.js"></script>
 
   <script src="mapData/albers/map.albers.js"></script>
-
+  <script>
+    document.getElementById('test-results-count').innerHTML = "11";
+  </script>
+  
 </body>
 
 </html>

@@ -86,19 +86,18 @@ img.center {
     box-sizing: border-box;
     background-color: #2196f3;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
     border: 5px solid #fff;
-    border-radius: 8pt;
+    border-radius: 1rem;
     color: white;
-    padding: 8pt;
-    width: 50%;
-    min-width: 500pt;
+    padding: 1rem;
+    min-width: 40rem;
     text-align: center;
     text-decoration: none;
     display: block;
-    font-size: 3rem;
-    margin: -2px auto;
+    margin: 0 auto;
     cursor: pointer;
-    height: 6rem;
+    height: 5.5rem;
 }
 
 .button-selected {
@@ -316,7 +315,7 @@ span.weight-300 {
 }
 
 .home-button-wrapper {
-    margin: 2rem 0 1rem 0;
+    margin: 1rem 0;
 }
 
 .home a {
@@ -357,16 +356,16 @@ span.weight-300 {
     display: none;
 }
 
-.test-instructions {
+/* .test-instructions {
     display: none;
-}
+} */
 
 .map-wrapper {
     margin-bottom: 1rem;
 }
   
 div#map-container {
-    padding-bottom: 40%;
+    padding-bottom: 45%;
     margin: auto;
 }
 
@@ -506,8 +505,7 @@ a:active {
 .continuum-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    margin: 0 0 4rem 0;
+    margin: 0 0 3rem 0;
 }
 
 .continuum-wrapper div {
@@ -524,11 +522,11 @@ a:active {
 
 .home-value {
     text-align: center;
-    flex-basis: 35%;
+    flex-basis: 38%;
 }
 
 .home-arrow {
-    flex-basis: 30%;
+    flex-basis: 24%;
     margin-top: 1rem;
 }
 
@@ -555,8 +553,34 @@ a:active {
     width: 100%;
 }
 
+/*  */
+.logo-wrapper img {
+    width: 15%;
+}
+
+h6 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.home {
+    width: 90%;
+}
+
+.home p {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+}
+
+h5 {
+    font-size: 1.75rem;
+    text-align: left;
+    margin: 0 0 .5rem 0;
+    padding: 0;
+}
+
 .home-img-value {
-    width: 50%;
+    width: 30%;
 }
 
 @media screen and (max-width: 850px) {
