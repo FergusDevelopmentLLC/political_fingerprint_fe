@@ -14,7 +14,7 @@ class LegendMapControl {
 
       this.desc = document.createElement('div')
       this.desc.classList.add('legend-description')
-      this.desc.innerHTML = "There are <span id='test-results-count'></span> total test results. <span id='county-3d-desc'>County height indicates number of tests for that county.</span>"
+      this.desc.innerHTML = "There are <span id='test-results-count'></span> total test results. Click on a county for more detail. <span id='county-3d-desc'>County height indicates number of tests for that county.</span>"
       this.container.appendChild(this.desc)
   
       return this.container
