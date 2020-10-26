@@ -1,11 +1,13 @@
 class LegendMapControl {
+
     onAdd(map) {
-  
+    
       this.map = map
   
       
       this.container = document.createElement('div')
       this.container.classList.add('legend-wrapper')
+      this.container.setAttribute("id", "legend-wrapper")
     
       this.img = document.createElement('img')
       this.img.classList.add('legend')
@@ -16,7 +18,7 @@ class LegendMapControl {
       this.desc.classList.add('legend-description')
       this.desc.innerHTML = "There are <span id='test-results-count'></span> total test results. Click on a county for more detail. <span id='county-3d-desc'>County height indicates number of tests for that county.</span>"
       this.container.appendChild(this.desc)
-  
+      
       return this.container
     }
   

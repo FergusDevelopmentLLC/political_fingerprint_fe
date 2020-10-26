@@ -64,6 +64,14 @@ const scaleMap = () => {
   
   map.resize()
 
+  if( window.innerHeight == screen.height) {
+    let legend = document.getElementById('legend-wrapper')
+    legend.style.display = 'block'
+    legend.style.width = '55%'
+  }
+  else {
+    document.getElementById('legend-wrapper').style.display = 'none'
+  }
 }
 
 const handlePopup = () => {
