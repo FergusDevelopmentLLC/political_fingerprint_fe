@@ -220,6 +220,9 @@ map.on('load', async () => {
   testResults = await getJson(dataUrl)
   countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
 
+  let textCountDisplay = document.getElementById('test-results-count')
+  if(textCountDisplay) textCountDisplay.innerHTML = testResults.reduce((acc, obj) => { return acc + obj.tr_count }, 0)
+
   map.addSource('counties', {
     type: 'vector',
     url: 'mapbox://willcarter.czkf2uey'
