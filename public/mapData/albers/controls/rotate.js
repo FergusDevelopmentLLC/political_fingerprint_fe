@@ -6,7 +6,7 @@ class RotateMapControl {
     this.container = document.createElement('div')
     this.container.classList.add('mapboxgl-ctrl')
     this.container.classList.add('mapboxgl-ctrl-group')
-
+    
     this.button = document.createElement('button')
     this.button.classList.add('mapcontrol')
     this.button.setAttribute('id', 'rotate')
