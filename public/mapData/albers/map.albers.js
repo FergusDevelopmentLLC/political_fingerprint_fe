@@ -65,7 +65,6 @@ const scaleMap = () => {
   map.resize()
 
   let legend = document.getElementById('legend-wrapper')
-
   if(window.innerHeight == screen.height || window.location.href.indexOf("map.html") > -1) {
     legend.style.display = 'block'
     legend.style.width = '55%'
