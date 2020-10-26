@@ -205,7 +205,7 @@ map.fitBounds([
 ])
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-left')
-map.addControl(new mapboxgl.FullscreenControl(), 'top-left')
+map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right')
 map.addControl(new ExtrudeMapControl(), 'top-right')
 map.addControl(new RotateMapControl(), 'top-right')
 map.addControl(new ResetMapControl(), 'top-right')
