@@ -41,6 +41,10 @@ class ResetMapControl {
         [mapBounds[2], mapBounds[3]]
       ])
 
+      document.getElementById('county-3d-desc').style.display = 'none'
+      document.getElementById('county-more-detail').style.display = 'inline'
+
+      console.log('here')
     })
 
     return this.container

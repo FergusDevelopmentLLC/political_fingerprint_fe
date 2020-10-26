@@ -62,10 +62,6 @@ const scaleMap = () => {
     [mapBounds[2], mapBounds[3]]
   ])
   
-  map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
-  map.setPitch(0)
-  map.setBearing(0)
-
   map.resize()
   
   let legend = document.getElementById('legend-wrapper')

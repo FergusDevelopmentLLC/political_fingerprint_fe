@@ -25,7 +25,6 @@ class ExtrudeMapControl {
         this.button.setAttribute("title", 'Flatten Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', .8)
         document.getElementById('county-3d-desc').style.display = 'inline'
-        document.getElementById('county-click-desc').style.display = 'inline'
         document.getElementById('county-more-detail').style.display = 'none'
         this.map.easeTo({ pitch: 30 })
       } else {
@@ -33,7 +32,6 @@ class ExtrudeMapControl {
         this.button.setAttribute("title", 'Extrude Map')
         this.map.setPaintProperty('county_extruded', 'fill-extrusion-opacity', 0)
         document.getElementById('county-3d-desc').style.display = 'none'
-        document.getElementById('county-click-desc').style.display = 'inline'
         document.getElementById('county-more-detail').style.display = 'inline'
         this.map.easeTo({ pitch: 0 })
       }

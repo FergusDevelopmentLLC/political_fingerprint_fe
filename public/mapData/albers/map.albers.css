@@ -80,7 +80,7 @@ svg {
   .legend-description {
     font-size: .8rem;
     line-height: .8rem;
-    padding: .2rem 0;
+    padding: .2rem .2rem;
   }
 }
 
@@ -95,6 +95,7 @@ svg {
   .legend-description {
     font-size: .65rem;
     line-height: .65rem;
+    
   }
 }
 
