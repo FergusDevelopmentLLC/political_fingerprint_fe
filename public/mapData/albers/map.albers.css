@@ -53,7 +53,7 @@ svg {
 }
 
 .legend {
-  vertical-align: middle;
+  vertical-align: baseline;
   width: 100%;
   background: #fff;
 }
