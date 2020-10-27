@@ -53,8 +53,8 @@
     display: none;
   }
 
-  #results-economic, #results-diplomatic, #results-civil, #results-societal, #results-ideology, #results-map {
-    width: 95%;
+  #results-economic, #results-diplomatic, #results-civil, #results-societal, #results-ideology {
+    width: 100%;
     margin: auto;
   }
 
@@ -84,7 +84,6 @@
   }
 
   #map-container {
-    width: 75%;
     background: #808080;
     padding: 2rem;
     border-radius: 10px;
@@ -92,6 +91,15 @@
 
   #results-back {
     margin: 2rem 0 0 0;
+  }
+  
+  #results-container {
+    width: 97%;
+    margin: auto;
+  }
+
+  .results-continuum {
+    margin-bottom: 2rem !important;
   }
 
 </style>
@@ -113,51 +121,52 @@
   4. Switch all images and toggle setBar() function below 
 -->
 
-<div id="results-economic">
-  <h2>Economic: <span class="weight-300" id="economic-label"></span></h2>
-  <div class="axis" id="axis-economic">
-    <div><img id="img-equality" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603471674/politipoint/axis/equality_n7pfnb.png" /></div>
-    <div class="bar-wrapper" id="bar-economic"></div>
-    <div><img id="img-wealth" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/markets_nivxqb.png" /></div>
+<div id="results-container">
+  <div class="results-continuum" id="results-economic">
+    <h5>Economic: <span class="weight-300" id="economic-label"></span></h5>
+    <div class="axis" id="axis-economic">
+      <div><img id="img-equality" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603471674/politipoint/axis/equality_n7pfnb.png" /></div>
+      <div class="bar-wrapper" id="bar-economic"></div>
+      <div><img id="img-wealth" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/markets_nivxqb.png" /></div>
+    </div>
   </div>
-</div>
 
-<div id="results-diplomatic">
-  <h2>Diplomatic: <span class="weight-300" id="diplomatic-label"></span></h2>
-  <div class="axis" id="axis-diplomatic">
-    <div><img id="img-peace" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/world_gsftlk.png" /></div>
-    <div class="bar-wrapper" id="bar-diplomatic"></div>
-    <div><img id="img-might" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/nation_ovlorq.png" /></div>
+  <div class="results-continuum" id="results-diplomatic">
+    <h5>Diplomatic: <span class="weight-300" id="diplomatic-label"></span></h5>
+    <div class="axis" id="axis-diplomatic">
+      <div><img id="img-peace" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/world_gsftlk.png" /></div>
+      <div class="bar-wrapper" id="bar-diplomatic"></div>
+      <div><img id="img-might" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/nation_ovlorq.png" /></div>
+    </div>
   </div>
-</div>
 
-<div id="results-civil">
-  <h2>Civil: <span class="weight-300" id="civil-label"></span></h2>
-  <div class="axis" id="axis-civil">
-      <div><img id="img-authority" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/authority_ymkmvq.png" /></div>
-    <div class="bar-wrapper" id="bar-civil"></div>
-    <div><img id="img-liberty" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/liberty_cmq4hm.png" /></div>
+  <div class="results-continuum" id="results-civil">
+    <h5>Civil: <span class="weight-300" id="civil-label"></span></h5>
+    <div class="axis" id="axis-civil">
+        <div><img id="img-authority" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/authority_ymkmvq.png" /></div>
+      <div class="bar-wrapper" id="bar-civil"></div>
+      <div><img id="img-liberty" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/liberty_cmq4hm.png" /></div>
+    </div>
   </div>
-</div>
 
-<div id="results-societal">
-  <h2>Societal: <span class="weight-300" id="societal-label"></span></h2>
-  <div class="axis" id="axis-societal">
-    <div><img id="img-progress" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/progress_ygaeoo.png" /></div>
-    <div class="bar-wrapper" id="bar-societal"></div>
-    <div><img id="img-tradition" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/tradition_lgt21n.png" /></div>
+  <div class="results-continuum" id="results-societal">
+    <h5>Societal: <span class="weight-300" id="societal-label"></span></h5>
+    <div class="axis" id="axis-societal">
+      <div><img id="img-progress" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/progress_ygaeoo.png" /></div>
+      <div class="bar-wrapper" id="bar-societal"></div>
+      <div><img id="img-tradition" class="result-axis-image" src="https://res.cloudinary.com/fergusdev/image/upload/v1603210184/politipoint/axis/tradition_lgt21n.png" /></div>
+    </div>
   </div>
-</div>
 
-<div id="results-ideology">
-  <h5 class="ideologies-link"><a href='ideologies.html'>Ideology match</a>: <span id="ideology-label"></span></h5>
-  <p id="ideology-definition"></p>
-</div>
+  <h3 class="ideologies-link"><a href='ideologies.html'>Ideology match</a>: <span id="ideology-label"></span></h3>
+  <div id="results-ideology">
+    <p id="ideology-definition"></p>
+  </div>
 
-<div id="results-map">
-  <h5>Test results map</h5>
-  <p id="results-map-description">Nam id est vel mi cursus maximus at ac elit. Quisque laoreet justo eros, ut vestibulum ex tristique ut. Fusce sodales eu sapien vitae dapibus. Praesent in efficitur magna. Nullam at commodo enim, in congue sem. Integer id magna auctor, feugiat nibh sed, aliquet libero. Praesent sit amet malesuada purus. Praesent at risus sapien.</p>
-  <div id='map-container'></div>
+  <h3>Test results map</h3>
+  <div id="results-map">
+    <div id='map-container'></div>
+  </div>
 </div>
 
 <div id="results-back">
