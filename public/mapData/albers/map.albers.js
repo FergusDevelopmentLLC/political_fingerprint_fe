@@ -65,13 +65,25 @@ const scaleMap = () => {
   map.resize()
   
   let legend = document.getElementById('legend-wrapper')
-  if(window.innerHeight == screen.height || window.location.href.indexOf("map.html") > -1) {
+
+  console.log('window.innerWidth', window.innerWidth)
+  console.log('window.innerHeight', window.innerHeight)
+  console.log('window.location.href.indexOf("map.html")', window.location.href.indexOf("map.html"))
+
+  if (window.innerWidth > 420) {
     legend.style.display = 'block'
     legend.style.width = '55%'
   }
   else {
-    legend.style.display = 'none'
+    if(window.innerHeight == screen.height || window.location.href.indexOf("map.html") > -1) {
+      legend.style.display = 'block'
+      legend.style.width = '55%'
+    }
+    else {
+      legend.style.display = 'none'
+    }
   }
+  
 }
 
 const handlePopup = () => {
