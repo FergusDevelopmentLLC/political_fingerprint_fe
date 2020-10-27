@@ -66,18 +66,16 @@ const scaleMap = () => {
   
   let legend = document.getElementById('legend-wrapper')
 
-  console.log('window.innerWidth', window.innerWidth)
-  console.log('window.innerHeight', window.innerHeight)
-  console.log('window.location.href.indexOf("map.html")', window.location.href.indexOf("map.html"))
-
   if (window.innerWidth > 420) {
     legend.style.display = 'block'
     legend.style.width = '55%'
+    map.scrollZoom.enable()
   }
   else {
     if(window.innerHeight == screen.height || window.location.href.indexOf("map.html") > -1) {
       legend.style.display = 'block'
       legend.style.width = '55%'
+      map.scrollZoom.enable()
     }
     else {
       legend.style.display = 'none'
@@ -211,7 +209,7 @@ let getColor = d3.scaleLinear().domain([0, 99]).range(["#ff0000", "#0015bc"])
 
 let popup = new mapboxgl.Popup({
   offset: 0,
-  closeButton: false,
+  closeButton: true,
   closeOnClick: false
 })
 
