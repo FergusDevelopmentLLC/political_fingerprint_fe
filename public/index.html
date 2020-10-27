@@ -86,11 +86,11 @@
     <p class="test-instructions">
       PolitiPoint provides insight into political leanings beyond the traditional "right" and "left" framework. Test takers are presented a series of statements.
       Each have a particular political viewpoint. Indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify 
-      with the statement. Based on your responses, your results will indicate where you place on a continuum between two opposing perspectives in each of four 
+      with the statement. Based on your responses, your results will indicate where you place on a continuum between two opposing perspectives in each of <span id="ideology-count"></span>
       categories:  
     </p>
 
-    <div class="continuum-wrapper">
+    <div class="continuum-wrapper" id="continuum-economic">
       <div class="continuum-img-wrapper">
         <div class="home-value">
           <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471674/politipoint/axis/equality_n7pfnb.png' /></div>
@@ -117,7 +117,7 @@
       </div>
     </div>
     
-    <div class="continuum-wrapper">
+    <div class="continuum-wrapper" id="continuum-diplomatic">
       <div class="continuum-img-wrapper">
         <div class="home-value">
           <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/world_gsftlk.png' /></div>
@@ -144,7 +144,7 @@
       </div>
     </div>
 
-    <div class="continuum-wrapper">
+    <div class="continuum-wrapper" id="continuum-civil">
       <div class="continuum-img-wrapper">
         <div class="home-value">
           <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/authority_ymkmvq.png' /></div>
@@ -169,7 +169,7 @@
       </div>
     </div>
 
-    <div class="continuum-wrapper">
+    <div class="continuum-wrapper" id="continuum-societal">
       <div class="continuum-img-wrapper">
         <div class="home-value">
           <div class="home-img-value"><img class="home-img" src='https://res.cloudinary.com/fergusdev/image/upload/v1603471314/politipoint/axis/progress_ygaeoo.png' /></div>
@@ -192,6 +192,7 @@
           <li>Holds the status quo</li>
         </ul>
       </div>
+    </div>
       
     <h5>Test results map</h5>
     <p>
@@ -248,19 +249,18 @@
   <script>
     let versionText = `Version: ${version}`
     document.getElementById('version').innerHTML = versionText
-
-    // if (version == 2) {
-    //   document.getElementById('test-version-02').style.display = 'block'
-    //   document.getElementById('img-home-economic').style.display = 'block'
-    //   document.getElementById('img-home-civil').style.display = 'block'
-    // }
-    // else {
-      //document.getElementById('test-version-01').style.display = 'block'
-      // document.getElementById('img-home-economic').style.display = 'block'
-      // document.getElementById('img-home-diplomatic').style.display = 'block'
-      // document.getElementById('img-home-civil').style.display = 'block'
-      // document.getElementById('img-home-societal').style.display = 'block'
-    //}
+    if(version === 1) {
+      document.getElementById('ideology-count').innerHTML = "four"
+      document.getElementById('continuum-economic').style.display = "block"
+      document.getElementById('continuum-diplomatic').style.display = "block"
+      document.getElementById('continuum-civil').style.display = "block"
+      document.getElementById('continuum-societal').style.display = "block"
+    }
+    else {
+      document.getElementById('ideology-count').innerHTML = "two"
+      document.getElementById('continuum-economic').style.display = "block"
+      document.getElementById('continuum-civil').style.display = "block"
+    }
   </script>
   
   <script src="js/defaults.js"></script>

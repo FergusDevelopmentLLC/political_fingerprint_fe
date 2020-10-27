@@ -464,7 +464,7 @@ a:active {
 }
 
 .continuum-wrapper {
-    /* display: flex; */
+    display: none;
     flex-wrap: nowrap;
     margin: 0 0 3rem 0;
 }
