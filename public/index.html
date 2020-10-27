@@ -3,6 +3,7 @@
 
 <head>
   <link href='styles/style.css' rel='stylesheet' type='text/css'>
+  <link href='styles/spinner.css' rel='stylesheet' type='text/css'>
   <link href='mapData/albers/map.albers.css' rel='stylesheet' />
   <title>PolitiPoint.org</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -83,6 +84,9 @@
   <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   <div class="home">
     <h5>The Test</h5>
+    
+    <div class="">Loading...</div>
+
     <p class="test-instructions">
       PolitiPoint provides insight into political leanings beyond the traditional "right" and "left" framework. Test takers are presented a series of statements.
       Each have a particular political viewpoint. Indicate from <strong>Strongly Agree</strong> to <strong>Strongly Disagree</strong> how closely you identify 
@@ -201,7 +205,10 @@
       to see information about test result counts per county.
     </p>
     <div class="map-wrapper">
-      <div id="map-container"></div>
+      <div id="map-container">
+          <div id="loading" class="loader">Loading&#8230;</div>
+      </div>
+      
     </div>
     <p>
       The map above is randomly generated for illustration purposes and do not reflect actual tests results. For actual 
@@ -275,6 +282,9 @@
 
   <script src="mapData/albers/map.albers.js"></script>
   
+  <script>
+    setSpinnerVisibilityTo('visible')
+  </script>
 </body>
 
 </html>

@@ -176,6 +176,10 @@ const showPopup = (countyOfInterest) => {
     .addTo(map)
 }
 
+const setSpinnerVisibilityTo = (state) => {
+  document.getElementById('loading').style.visibility = state
+}
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
 // get bounding box: http://bboxfinder.com
@@ -329,6 +333,8 @@ map.on('load', async () => {
   })
   
   handlePopup()
+
+  setSpinnerVisibilityTo('hidden')
 
 })
 

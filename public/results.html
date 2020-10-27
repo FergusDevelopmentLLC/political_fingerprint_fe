@@ -12,10 +12,11 @@
   }
 
   .bar-wrapper {
-    margin: 0 .05rem 0 .05rem;
+    margin: 0;
     text-align: center;
     width: 100%;
-    border: .3rem solid #222222;
+    border-top: .3rem solid #222222;
+    border-bottom: .3rem solid #222222;
   }
 
   /* bar svg */
@@ -81,6 +82,10 @@
     line-height: 1rem;
   }
 
+  #results-map {
+    margin-bottom: .5rem;
+  }
+
   #map-container {
     background: #808080;
     padding: 2rem;
@@ -88,7 +93,7 @@
   }
 
   #results-back {
-    margin: 2rem 0 0 0;
+    margin: 0;
   }
   
   #results-container {
@@ -138,6 +143,19 @@
     flex-basis: 64%;
     border: 1px solid black;
   }
+
+  .bar-text {
+    font-size: 2rem;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+  
+  .bar-text {
+    font-size: 1rem;
+  }
+
 }
 
 </style>
@@ -203,9 +221,14 @@
   </div>
 
   <h5>Test results map</h5>
+  <p>
+    If you chose to share your test results, they will be represented in the following map. Zoom to a particular county and click it for details. Click the 3D extrude 
+    button to see how the number of tests from each county compares.
+  </p>
   <div id="results-map">
     <div id='map-container'></div>
   </div>
+  <p>Click <a href='map.html'>here</a> to see the map in fullscreen.</p>
 </div>
 
 <div id="results-back">
@@ -237,10 +260,15 @@
 
     let width = document.getElementById(`bar-${target}`).offsetWidth
     let height = .05 * width
-    if (width < 700) {
-      height = .10 * width
-    } 
+    
+    if (width < 1025) {
+      height = .15 * width
+    }
 
+    if (width < 700) {
+      height = .15 * width
+    }
+    
     let lineValue = value
     if(flip) {
       lineValue = (100 - value)
@@ -261,8 +289,8 @@
           <g>
             <rect class="bar" width="${width}" height="${height}" />
             <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
-            <text x="${(width * .01)}" y="${height * .65}" class="bar-text">${rightPercentText}</text>
-            <text x="${width - (width * .01)}" y="${height * .65}" class="bar-text" text-anchor="end">${leftPercentText}</text>
+            <text x="${(width * .01)}" y="${ height - (.35 * height) }" class="bar-text">${rightPercentText}</text>
+            <text x="${width - (width * .01)}" y="${ height - (.35 * height)  }" class="bar-text" text-anchor="end">${leftPercentText}</text>
           </g>ex
         </svg>`
 

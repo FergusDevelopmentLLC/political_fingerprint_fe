@@ -109,25 +109,25 @@ window.onload = function () {
   ctx.fillStyle = "#EEEEEE"
   ctx.fillRect(0, 0, 800, 650);
 
-  img = document.getElementById("img-equality")
-  ctx.drawImage(img, 20, 170, 100, 100);
-  img = document.getElementById("img-wealth")
-  ctx.drawImage(img, 680, 170, 100, 100)
+  // img = document.getElementById("img-equality")
+  // ctx.drawImage(img, 20, 170, 100, 100);
+  // img = document.getElementById("img-wealth")
+  // ctx.drawImage(img, 680, 170, 100, 100)
 
-  img = document.getElementById("img-might")
-  ctx.drawImage(img, 20, 290, 100, 100)
-  img = document.getElementById("img-peace")
-  ctx.drawImage(img, 680, 290, 100, 100)
+  // img = document.getElementById("img-might")
+  // ctx.drawImage(img, 20, 290, 100, 100)
+  // img = document.getElementById("img-peace")
+  // ctx.drawImage(img, 680, 290, 100, 100)
   
-  img = document.getElementById("img-liberty")
-  ctx.drawImage(img, 20, 410, 100, 100)
-  img = document.getElementById("img-authority")
-  ctx.drawImage(img, 680, 410, 100, 100)
+  // img = document.getElementById("img-liberty")
+  // ctx.drawImage(img, 20, 410, 100, 100)
+  // img = document.getElementById("img-authority")
+  // ctx.drawImage(img, 680, 410, 100, 100)
   
-  img = document.getElementById("img-tradition")
-  ctx.drawImage(img, 20, 530, 100, 100)
-  img = document.getElementById("img-progress")
-  ctx.drawImage(img, 680, 530, 100, 100)
+  // img = document.getElementById("img-tradition")
+  // ctx.drawImage(img, 20, 530, 100, 100)
+  // img = document.getElementById("img-progress")
+  // ctx.drawImage(img, 680, 530, 100, 100)
   
   ctx.fillStyle = "#222222"
   ctx.fillRect(120, 180, 560, 80)
