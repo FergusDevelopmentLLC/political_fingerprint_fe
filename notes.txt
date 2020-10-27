@@ -76,3 +76,23 @@ https://www.digitalocean.com/community/questions/how-do-i-point-my-custom-domain
 https://www.informit.com/articles/article.aspx?p=2468330&seqNum=15
 
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+Happy Election season. Help generate some meaningful data, gain insight and make your viewpoint count! 
+
+Hello,
+
+PolitiPoint.org is a web project I have been working that provides insight into political leanings beyond the traditional "right" 
+and "left" framework. By presenting a series of politically themed statements and collecting reactions to them, Politipoint can 
+give a deeper insight into the test taker's political stance.
+
+In addition, test results can be averaged with others to drive this national map. Now at the outset, with only a handful of test 
+results so far, the map is a bit sparce. It needs many test takers from many counties to be useful / interesting.  This is where 
+you come in.
+
+Make your viewpoint count. Learn more about yourself and take the test at https://politipoint.org.
+
+Thank you!
+Will Carter
+
+P.S. Looking for something shorter? Version 2 of the test does not consider as many factors, has less statements, and likely not as 
+insightful. If this isn't your thing, no worries. Thank you for taking a look at my project.
