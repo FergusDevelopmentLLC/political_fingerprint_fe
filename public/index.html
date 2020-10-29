@@ -70,7 +70,9 @@
 
   <script>
     const params = new URLSearchParams(window.location.search)
-    let version = 1
+    
+    let version = 2
+    
     if (params.has('qv')) {
       version = parseInt(params.get('qv'))
     }
