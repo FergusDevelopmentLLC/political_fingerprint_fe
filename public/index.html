@@ -169,8 +169,8 @@
         <div class="home-li-spacer"></div>
         <ul class="home-li-value">
           <li>Champions limited government</li>
-          <li>Favors strong civil freedoms of speech, religion, assembly</li>
-          <li>Puts high value on privacy</li>
+          <li>Favors strong civil freedoms of speech, religion, assembly, privacy</li>
+          <li>Tends towards anarchism</li>
         </ul>
       </div>
     </div>
@@ -202,9 +202,9 @@
       
     <h5>Test results map</h5>
     <p>
-      Upon test completion, the test taker is given a chance to aggregate their results with others based on county. 
+      Upon test completion, the test taker is given the option to aggregate their results with others based on county. 
       Click/tap on a county in the map below to see aggregated details for that county. Click the extrude map button 
-      to see information about test result counts per county.
+      to see information about test result counts per county. 
     </p>
     <div class="map-wrapper">
       <div id="map-container">
@@ -247,14 +247,21 @@
     <p> 
         PolitiPoint is inspired and based on the open source project, <a href='https://github.com/8values/8values.github.io'
         target='_blank'>8values</a>, and <a href='https://www.politicalcompass.org/' target='_blank'>Political
-        compass</a>. Currently all statements and test logic matches 
-        <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a>.
+        compass</a>. Currently all statement wording and bulk of test logic matches <a href='https://github.com/8values/8values.github.io' target='_blank'>8values</a>.
     </p>
-    
+    <h5>Questions / Comments?</h5>
+    <p> 
+      Follow us on twitter: <a href='https://twitter.com/politipoint'>@politipoint</a>
+      Contact us by <a href="politipoint@protonmail.com">email</a><br/>
+    </p>
   </div>
 
   <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   
+  <div>
+    
+  </div>
+
   <script>
     let versionText = `Version: ${version}`
     document.getElementById('version').innerHTML = versionText
@@ -281,6 +288,7 @@
   <script src="mapData/albers/controls/reset.js"></script>
   <script src="mapData/albers/controls/rotate.js"></script>
   <script src="mapData/albers/controls/legend.js"></script>
+  <script src="mapData/albers/controls/logo.js"></script>
 
   <script src="mapData/albers/map.albers.js"></script>
   

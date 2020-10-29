@@ -76,6 +76,11 @@ svg {
   padding: .1rem .5rem .4rem 0;
 }
 
+#map-politipoint-link {
+  border: 1px solid blue;
+  z-index: 1000;
+}
+
 @media screen and (max-width: 1780px) {
   .legend-description {
     font-size: .8rem;

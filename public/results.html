@@ -232,6 +232,13 @@
     </div>
   </div>
   <p>Click <a href='map.html'>here</a> to see the map in fullscreen.</p>
+
+  <h5>Questions / Comments?</h5>
+  <p> 
+    Follow us on twitter: <a href='https://twitter.com/politipoint'>@politipoint</a><br/>
+    Contact us by <a href="politipoint@protonmail.com">email</a><br/>
+  </p>
+
 </div>
 
 <div id="results-back">
@@ -246,6 +253,7 @@
 <script src="mapData/albers/controls/reset.js"></script>
 <script src="mapData/albers/controls/rotate.js"></script>
 <script src="mapData/albers/controls/legend.js"></script>
+<script src="mapData/albers/controls/logo.js"></script>
 
 <script src="mapData/albers/map.albers.js"></script>
 
@@ -264,42 +272,45 @@
         </defs>`
 
     let width = document.getElementById(`bar-${target}`).offsetWidth
-    let height = .05 * width
     
-    if (width < 1025) {
-      height = .15 * width
-    }
+    if (width > 0) {
+      let height = .05 * width
+    
+      if (width < 1025) {
+        height = .1 * width
+      }
 
-    if (width < 700) {
-      height = .15 * width
-    }
-    
-    let lineValue = value
-    if(flip) {
-      lineValue = (100 - value)
-    }
-    let linePosition = (lineValue * width) / 100
-    
-    let leftPercent = (lineValue * 100) / 100
-    let rightPercent = (100 - ((lineValue * 100) / 100))
+      if (width < 450) {
+        height = .15 * width
+      }
 
-    let leftPercentText = ''
-    let rightPercentText = ''
-    if(leftPercent > rightPercent) leftPercentText = `${leftPercent.toFixed(0)}%`
-    if(rightPercent > leftPercent) rightPercentText = `${rightPercent.toFixed(0)}%`
-    
-    let barSvg = 
-        `<svg viewBox="0 0 ${width} ${height}">
-          ${defs}
-          <g>
-            <rect class="bar" width="${width}" height="${height}" />
-            <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
-            <text x="${(width * .01)}" y="${ height - (.35 * height) }" class="bar-text">${rightPercentText}</text>
-            <text x="${width - (width * .01)}" y="${ height - (.35 * height)  }" class="bar-text" text-anchor="end">${leftPercentText}</text>
-          </g>ex
-        </svg>`
+      let lineValue = value
+      if(flip) {
+        lineValue = (100 - value)
+      }
+      let linePosition = (lineValue * width) / 100
+      
+      let leftPercent = (lineValue * 100) / 100
+      let rightPercent = (100 - ((lineValue * 100) / 100))
 
-    document.getElementById(`bar-${target}`).innerHTML = barSvg
+      let leftPercentText = ''
+      let rightPercentText = ''
+      if(leftPercent > rightPercent) leftPercentText = `${leftPercent.toFixed(0)}%`
+      if(rightPercent > leftPercent) rightPercentText = `${rightPercent.toFixed(0)}%`
+      
+      let barSvg = 
+          `<svg viewBox="0 0 ${width} ${height}">
+            ${defs}
+            <g>
+              <rect class="bar" width="${width}" height="${height}" />
+              <line class="line" x1="${linePosition}" y1="0" x2="${linePosition}" y2="${height}" />
+              <text x="${(width * .01)}" y="${ height - (.35 * height) }" class="bar-text">${rightPercentText}</text>
+              <text x="${width - (width * .01)}" y="${ height - (.35 * height)  }" class="bar-text" text-anchor="end">${leftPercentText}</text>
+            </g>ex
+          </svg>`
+
+      document.getElementById(`bar-${target}`).innerHTML = barSvg
+    }
   }
 
   const getIdeologyMatches = async (economic, diplomatic, civil, societal) => {

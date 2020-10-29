@@ -92,10 +92,15 @@ const handlePopup = () => {
 
     map.getCanvas().style.cursor = 'pointer'
 
+    let mapContainerWidth = document.getElementById("map-container").offsetWidth
+
+    console.log('mapContainerWidth', mapContainerWidth)
+    //let zoomLevel = 6.5
+    let zoomLevel = 8
+
     map.flyTo({
       center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
-      zoom: 6.5,
-      maxDuration: 1100,
+      zoom: zoomLevel,
       essential: true
     })
 
@@ -174,7 +179,7 @@ const showPopup = (countyOfInterest) => {
           </svg>
         </div>`
 
-    tooltip_msg += `<div class='popup-subheader'>Ideology: <em>${match.ideology_match_name}</em></div>`
+    tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=25.0&d=50&g=56.7&s=50&v=2'>${match.ideology_match_name}</a></em></div>`
   }
   else {
     tooltip_msg += `<div class="popup-subheader">No test results</div>`
@@ -224,6 +229,7 @@ map.addControl(new RotateMapControl(), 'top-right')
 map.addControl(new mapboxgl.FullscreenControl(), 'top-right')
 map.addControl(new ResetMapControl(), 'top-right')
 map.addControl(new LegendMapControl(), 'bottom-right')
+map.addControl(new LogoControl(), 'bottom-left')
 
 map.scrollZoom.disable()
 
