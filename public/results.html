@@ -337,15 +337,17 @@
   let v = params.get('v')
 
   document.getElementById('results-economic').style.display = 'block'
-  //document.getElementById('results-diplomatic').style.display = 'block'
   document.getElementById('results-civil').style.display = 'block'
-  //document.getElementById('results-societal').style.display = 'block'
-  
   setBar('economic', e, true)
-  //setBar('diplomatic', d, true)
   setBar('civil', g, false)
-  //setBar('societal', s, true)
-
+  
+  if(v && v == 1) {
+    document.getElementById('results-diplomatic').style.display = 'block'
+    document.getElementById('results-societal').style.display = 'block'
+    setBar('societal', s, true)
+    setBar('diplomatic', d, true)
+  }
+  
   populateIdeologyMatches(e, d, g, s)
 
 </script>
