@@ -210,13 +210,9 @@ const showPopup = (countyOfInterest) => {
     //     </div>`
     // }
     
-    if(match.diplomatic && match.societal) {
-      tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&d=${match.diplomatic.toFixed(2)}&g=${match.civil.toFixed(2)}&s=${match.societal.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
-    }
-    else {
-      tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&g=${match.civil.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
-    }
-    
+    // tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&d=${match.diplomatic.toFixed(2)}&g=${match.civil.toFixed(2)}&s=${match.societal.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
+    tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&g=${match.civil.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
+
   }
   else {
     tooltip_msg += `<div class="popup-subheader">No test results</div>`
