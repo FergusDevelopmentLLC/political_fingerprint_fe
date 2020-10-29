@@ -193,10 +193,6 @@
         
         let explanation = document.getElementById('explain').value.trim()
         
-        // console.log('currentQuestionIterationId', currentQuestionIterationId)
-        // console.log('explanation', explanation)
-        // console.log('feedbackScore', feedbackScore)
-
         let questionFeedback = {}
         questionFeedback.question_iteration_id = currentQuestionIterationId
         questionFeedback.score = feedbackScore
@@ -249,18 +245,30 @@
 
     async function results() {
       
-      let e = calc_score(econ, max_econ)
-      let d = calc_score(dipl, max_dipl)
-      let g = calc_score(govt, max_govt)
-      let s = calc_score(scty, max_scty)
+      console.log('e', e)
+      console.log('d', d)
+      console.log('g', g)
+      console.log('s', s)
+
+      let e = 50
+      let d = 50
+      let g = 50
+      let s = 50
+
+      if(econ > 0) { e = calc_score(econ, max_econ) }
+      if(dipl > 0) { d = calc_score(dipl, max_dipl) }
+      if(govt > 0) { g = calc_score(govt, max_govt) }
+      if(scty > 0) { s = calc_score(scty, max_scty) }
 
       let testResult = {}
       testResult.question_version = version
 
+      //save 50 for dipl
+      //save 50 for societal
       testResult.economic = parseFloat(e)
-      if(d > 0) { testResult.diplomatic = parseFloat(d) }
+      testResult.diplomatic = parseFloat(d)
       testResult.civil = parseFloat(g)
-      if(s > 0) { testResult.societal = parseFloat(s) }
+      testResult.societal = parseFloat(s)
 
       const options = {
         method: 'POST',
