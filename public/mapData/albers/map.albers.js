@@ -8,11 +8,23 @@ const getJson = async (url) => {
 }
 
 const getColorFor = (testResult) => {
-  let total = parseFloat(testResult['economic']) 
-              + parseFloat(testResult['diplomatic'])
-              + (100 - parseFloat(testResult['civil'])) 
-              + parseFloat(testResult['societal'])
-  let avg = total / 4
+  
+  let total
+  let avg
+
+  if(testResult['diplomatic'] && parseFloat(testResult['societal'])) {
+    total = parseFloat(testResult['economic']) 
+          + parseFloat(testResult['diplomatic'])
+          + (100 - parseFloat(testResult['civil'])) 
+          + parseFloat(testResult['societal'])
+    avg = total / 4
+  }
+  else {
+    total = parseFloat(testResult['economic']) 
+          + (100 - parseFloat(testResult['civil'])) 
+    avg = total / 2
+  }
+  
   return d3.color(getColor(avg)).formatHex()
 }
 
@@ -135,6 +147,8 @@ const showPopup = (countyOfInterest) => {
   tooltip_msg += `<div>`
   if (match) {
 
+    console.log('match', match)
+
     let width = 100
     let height = 15
     let defs = `
@@ -145,7 +159,8 @@ const showPopup = (countyOfInterest) => {
             </linearGradient>
           </defs>`
 
-    tooltip_msg += 
+    if(match.economic) {
+      tooltip_msg += 
         `
         <div class='popup-subheader'>Economic: <em>${match.economic_match}</em></div>
         <div class='popup-barheader'><div>Equality</div><div>Markets</div></div>
@@ -155,21 +170,24 @@ const showPopup = (countyOfInterest) => {
             <rect class="bar" width="${width}" height="${height}" />
             <line class="line" x1="${100 - match.economic}" y1="0" x2="${100 - match.economic}" y2="${height}" />
           </svg>
-        </div>
-        `
-    tooltip_msg += `
-        <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
-        <div class='popup-barheader'><div>World</div><div>Nation</div></div>
-        <div class="bar-wrapper-map">
-          <svg height="${height}" width="${width}">
-            ${defs}
-            <rect class="bar" width="${width}" height="${height}" />
-            <line class="line" x1="${100 - match.diplomatic}" y1="0" x2="${100 - match.diplomatic}" y2="${height}" />
-          </svg>
-          
         </div>`
+    }
 
-    tooltip_msg += `
+    // if(match.diplomatic) {
+    //   tooltip_msg += `
+    //     <div class='popup-subheader'>Diplomatic: <em>${match.diplomatic_match}</em></div>
+    //     <div class='popup-barheader'><div>World</div><div>Nation</div></div>
+    //     <div class="bar-wrapper-map">
+    //       <svg height="${height}" width="${width}">
+    //         ${defs}
+    //         <rect class="bar" width="${width}" height="${height}" />
+    //         <line class="line" x1="${100 - match.diplomatic}" y1="0" x2="${100 - match.diplomatic}" y2="${height}" />
+    //       </svg>
+    //     </div>`
+    // }
+    
+    if(match.civil) {
+      tooltip_msg += `
         <div class='popup-subheader'>Civil: <em>${match.civil_match}</em></div>
         <div class='popup-barheader'><div>Authority</div><div>Liberty</div></div>
         <div class="bar-wrapper-map">
@@ -179,19 +197,28 @@ const showPopup = (countyOfInterest) => {
             <line class="line" x1="${match.civil}" y1="0" x2="${match.civil}" y2="${height}" />
           </svg>
         </div>`
-
-    tooltip_msg += `
-        <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
-        <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
-        <div class="bar-wrapper-map">
-          <svg height="${height}" width="${width}">
-            ${defs}
-            <rect class="bar" width="${width}" height="${height}" />
-            <line class="line" x1="${100 - match.societal}" y1="0" x2="${100 - match.societal}" y2="${height}" />
-          </svg>
-        </div>`
-
-    tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&d=${match.diplomatic.toFixed(2)}&g=${match.civil.toFixed(2)}&s=${match.societal.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`
+    }
+    
+    // if(match.societal) {
+    //   tooltip_msg += `
+    //     <div class='popup-subheader'>Societal: <em>${match.societal_match}</em></div>
+    //     <div class='popup-barheader'><div>Progress</div><div>Tradition</div></div>
+    //     <div class="bar-wrapper-map">
+    //       <svg height="${height}" width="${width}">
+    //         ${defs}
+    //         <rect class="bar" width="${width}" height="${height}" />
+    //         <line class="line" x1="${100 - match.societal}" y1="0" x2="${100 - match.societal}" y2="${height}" />
+    //       </svg>
+    //     </div>`
+    // }
+    
+    if(match.diplomatic && match.societal) {
+      tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&d=${match.diplomatic.toFixed(2)}&g=${match.civil.toFixed(2)}&s=${match.societal.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
+    }
+    else {
+      tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&g=${match.civil.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`  
+    }
+    
   }
   else {
     tooltip_msg += `<div class="popup-subheader">No test results</div>`

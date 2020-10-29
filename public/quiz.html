@@ -70,9 +70,9 @@
       version = parseInt(params.get('qv'))
     }
 
-    // if(params.has('qn')) {
-    //   qn = parseInt(params.get('qn'))
-    // }
+    if(params.has('qn')) {
+      qn = parseInt(params.get('qn'))
+    }
 
     // turn off next button
     document.getElementById("next_button_on").style.display = 'none'
@@ -249,23 +249,18 @@
 
     async function results() {
       
-      let e = 50
-      let d = 50
-      let g = 50
-      let s = 50
-
-      if(econ) e = calc_score(econ, max_econ)
-      if(dipl) d = calc_score(dipl, max_dipl)
-      if(govt) g = calc_score(govt, max_govt)
-      if(scty) s = calc_score(scty, max_scty)
+      let e = calc_score(econ, max_econ)
+      let d = calc_score(dipl, max_dipl)
+      let g = calc_score(govt, max_govt)
+      let s = calc_score(scty, max_scty)
 
       let testResult = {}
       testResult.question_version = version
 
       testResult.economic = parseFloat(e)
-      testResult.diplomatic = parseFloat(d)
+      if(d > 0) { testResult.diplomatic = parseFloat(d) }
       testResult.civil = parseFloat(g)
-      testResult.societal = parseFloat(s)
+      if(s > 0) { testResult.societal = parseFloat(s) }
 
       const options = {
         method: 'POST',
