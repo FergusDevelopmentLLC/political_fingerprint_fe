@@ -6,6 +6,7 @@ class LogoControl {
     this.container = document.createElement('div')
     this.container.classList.add('mapboxgl-ctrl')
     this.container.classList.add('mapboxgl-ctrl-group')
+    this.container.classList.add('politipoint-button-container')
 
     this.button = document.createElement('button')
     this.button.classList.add('mapcontrol')

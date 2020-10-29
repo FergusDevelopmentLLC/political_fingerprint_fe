@@ -65,16 +65,23 @@ const scaleMap = () => {
   map.resize()
   
   let legend = document.getElementById('legend-wrapper')
+  let politipointButtons = document.getElementsByClassName('politipoint-button-container') 
 
   if (window.innerWidth > 420) {
     legend.style.display = 'block'
     legend.style.width = '55%'
+    if(politipointButtons && politipointButtons.length > 0) {
+      politipointButtons[0].style.visibility = 'visible'
+    }
     map.scrollZoom.enable()
   }
   else {
     if(window.innerHeight == screen.height || window.location.href.indexOf("map.html") > -1) {
       legend.style.display = 'block'
       legend.style.width = '55%'
+      if(politipointButtons && politipointButtons.length > 0) {
+        politipointButtons[0].style.visibility = 'visible'
+      }
       map.scrollZoom.enable()
     }
     else {
@@ -94,9 +101,14 @@ const handlePopup = () => {
 
     let mapContainerWidth = document.getElementById("map-container").offsetWidth
 
-    console.log('mapContainerWidth', mapContainerWidth)
-    //let zoomLevel = 6.5
     let zoomLevel = 8
+    if(mapContainerWidth < 500) zoomLevel = 6
+
+    let match = testResults.find(tr => tr.geoid === featureOfInterest.properties.geoid)
+
+    if (match) {
+      zoomLevel = zoomLevel - 2
+    }
 
     map.flyTo({
       center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
@@ -179,7 +191,8 @@ const showPopup = (countyOfInterest) => {
           </svg>
         </div>`
 
-    tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=25.0&d=50&g=56.7&s=50&v=2'>${match.ideology_match_name}</a></em></div>`
+    console.log('match', match)
+    tooltip_msg += `<div class='popup-subheader'>Ideology: <em><a href='https://politipoint.org/results.html?e=${match.economic.toFixed(2)}&d=${match.diplomatic.toFixed(2)}&g=${match.civil.toFixed(2)}&s=${match.societal.toFixed(2)}'>${match.ideology_match_name}</a></em></div>`
   }
   else {
     tooltip_msg += `<div class="popup-subheader">No test results</div>`

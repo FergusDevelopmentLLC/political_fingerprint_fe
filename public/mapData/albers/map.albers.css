@@ -6,12 +6,12 @@
 .popup-header {
   padding-bottom: .1rem;
   border-bottom: 1px solid #484848;
-}
+  }
 
 .popup-subheader {
   text-align: left;
   line-height: .8rem;
-  margin-top: .5rem;
+  margin-top: .2rem;
 }
 
 .bar-wrapper-map {
@@ -76,9 +76,8 @@ svg {
   padding: .1rem .5rem .4rem 0;
 }
 
-#map-politipoint-link {
-  border: 1px solid blue;
-  z-index: 1000;
+.politipoint-button-container {
+  visibility: visible;
 }
 
 @media screen and (max-width: 1780px) {
@@ -108,4 +107,8 @@ svg {
   .legend-wrapper {
     display: none;
   }  
+
+  .politipoint-button-container {
+    visibility: hidden;
+  }
 }
