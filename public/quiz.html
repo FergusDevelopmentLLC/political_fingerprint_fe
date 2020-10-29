@@ -244,11 +244,6 @@
     }
 
     async function results() {
-      
-      console.log('e', e)
-      console.log('d', d)
-      console.log('g', g)
-      console.log('s', s)
 
       let e = 50
       let d = 50
@@ -282,18 +277,11 @@
               .then(res => res.json())
                 .then(tr => {
                   
-                  // if(tr['county']) {
-                  //   window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&county_name=${tr['county']['name']}&county_geoid=${tr['county']['geoid']}&state_abbrev=${tr['county']['state_abbrev']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
-                  // }
-                  // else {
-                  //   window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
-                  // }
-
                   if(tr['county']) {
-                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&county_name=${tr['county']['name']}&county_geoid=${tr['county']['geoid']}&state_abbrev=${tr['county']['state_abbrev']}&e=${e}&g=${g}&v=${version}`)}`
+                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&county_name=${tr['county']['name']}&county_geoid=${tr['county']['geoid']}&state_abbrev=${tr['county']['state_abbrev']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
                   }
                   else {
-                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&g=${g}&v=${version}`)}`
+                    window.location.href = `participation.html?${btoa(`tr_id=${tr['id']}&e=${e}&d=${d}&g=${g}&s=${s}&v=${version}`)}`
                   }
 
                 })
