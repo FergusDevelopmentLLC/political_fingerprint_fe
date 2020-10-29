@@ -147,8 +147,6 @@ const showPopup = (countyOfInterest) => {
   tooltip_msg += `<div>`
   if (match) {
 
-    console.log('match', match)
-
     let width = 100
     let height = 15
     let defs = `
