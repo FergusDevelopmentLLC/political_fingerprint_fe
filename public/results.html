@@ -232,10 +232,8 @@
     </div>
   </div>
   
-  <h5>Don't like your results?</h5>
-  <p>
-    Give <a href="/index.html?qv=1">version 1</a> a try. It has more questions and additionally covers diplomacy and societal issues.
-  </p>
+  <h5>Don't agree your results?</h5>
+  <p>Give <a href="/quiz.html?qv=1">version 1</a> a try. It has more questions.</p>
 
   <h5>Questions / Comments?</h5>
   <p> 
@@ -342,15 +340,13 @@
 
   document.getElementById('results-economic').style.display = 'block'
   document.getElementById('results-civil').style.display = 'block'
+  document.getElementById('results-diplomatic').style.display = 'block'
+  document.getElementById('results-societal').style.display = 'block'
+  
   setBar('economic', e, true)
   setBar('civil', g, false)
-  
-  if(v && v == 1) {
-    document.getElementById('results-diplomatic').style.display = 'block'
-    document.getElementById('results-societal').style.display = 'block'
-    setBar('societal', s, true)
-    setBar('diplomatic', d, true)
-  }
+  setBar('societal', s, true)
+  setBar('diplomatic', d, true)
   
   populateIdeologyMatches(e, d, g, s)
 

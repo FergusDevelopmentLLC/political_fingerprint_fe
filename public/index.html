@@ -71,7 +71,7 @@
   <script>
     const params = new URLSearchParams(window.location.search)
     
-    let version = 2
+    let version = 3
     
     if (params.has('qv')) {
       version = parseInt(params.get('qv'))
@@ -258,25 +258,14 @@
 
   <div class="home-button-wrapper"><button class="button button-home" onclick="goToTest();">Click/tap here to begin</button></div>
   
-  <div>
-    
-  </div>
-
   <script>
     let versionText = `Version: ${version}`
     document.getElementById('version').innerHTML = versionText
-    if(version === 1) {
-      document.getElementById('ideology-count').innerHTML = "four"
-      document.getElementById('continuum-economic').style.display = "block"
-      document.getElementById('continuum-diplomatic').style.display = "block"
-      document.getElementById('continuum-civil').style.display = "block"
-      document.getElementById('continuum-societal').style.display = "block"
-    }
-    else {
-      document.getElementById('ideology-count').innerHTML = "two"
-      document.getElementById('continuum-economic').style.display = "block"
-      document.getElementById('continuum-civil').style.display = "block"
-    }
+    document.getElementById('ideology-count').innerHTML = "four"
+    document.getElementById('continuum-economic').style.display = "block"
+    document.getElementById('continuum-diplomatic').style.display = "block"
+    document.getElementById('continuum-civil').style.display = "block"
+    document.getElementById('continuum-societal').style.display = "block"
   </script>
   
   <script src="js/defaults.js"></script>
