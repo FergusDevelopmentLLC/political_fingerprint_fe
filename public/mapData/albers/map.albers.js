@@ -1,5 +1,4 @@
 let countiesGeoJson
-let featureOfInterest
 
 const getJson = async url => await fetch(url).then(r => r.json())
 
@@ -90,11 +89,20 @@ const scaleMap = () => {
   
 }
 
+const countyOfInterestHandler = () => {
+  let countyOfInterest
+  return {
+    setCountyOfInterest: feature => countyOfInterest = feature,
+    getCountyOfInterest: () => countyOfInterest
+  }
+}
+let countyHandler = countyOfInterestHandler()
+
 const handlePopup = () => {
 
   map.on('click', 'counties_contracted', (e) => {
 
-    featureOfInterest = e.features[0]
+    countyHandler.setCountyOfInterest(e.features[0])
 
     map.getCanvas().style.cursor = 'pointer'
 
@@ -103,14 +111,14 @@ const handlePopup = () => {
     let zoomLevel = 8
     if(mapContainerWidth < 500) zoomLevel = 6
 
-    let match = testResults.find(tr => tr.geoid === featureOfInterest.properties.geoid)
+    let match = testResults.find(tr => tr.geoid === countyHandler.getCountyOfInterest().properties.geoid)
 
     if (match) {
       zoomLevel = zoomLevel - 2
     }
 
     map.flyTo({
-      center: [featureOfInterest.properties.albers_x, featureOfInterest.properties.albers_y],
+      center: [countyHandler.getCountyOfInterest().properties.albers_x, countyHandler.getCountyOfInterest().properties.albers_y],
       zoom: zoomLevel,
       essential: true
     })
@@ -123,7 +131,7 @@ const handlePopup = () => {
 
 }
 
-const showPopup = (countyOfInterest) => {
+const showPopup = countyOfInterest => {
 
   //let coordinates = [e.lngLat.lng, e.lngLat.lat]
   let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
@@ -209,9 +217,7 @@ const showPopup = (countyOfInterest) => {
     .addTo(map)
 }
 
-const setSpinnerVisibilityTo = (state) => {
-  document.getElementById('loading').style.visibility = state
-}
+const setSpinnerVisibilityTo = state => document.getElementById('loading').style.visibility = state
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGNhcnRlciIsImEiOiJjamV4b2g3Z2ExOGF4MzFwN3R1dHJ3d2J4In0.Ti-hnuBH8W4bHn7k6GCpGw'
 
@@ -260,7 +266,7 @@ map.addControl(legendControl, 'bottom-right')
 map.scrollZoom.disable()
 
 map.on('click', (e) => {
-  featureOfInterest = null
+  countyHandler.setCountyOfInterest(null)
   popup.remove()
 })
 
@@ -291,8 +297,8 @@ let getTestResults = testResultMaker()
 map.on('moveend', () => {
   if (rotator.value() == true) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
 
-  if(featureOfInterest) {
-    showPopup(featureOfInterest)
+  if(countyHandler.getCountyOfInterest()) {
+    showPopup(countyHandler.getCountyOfInterest())
   }
   else {
     popup.remove()

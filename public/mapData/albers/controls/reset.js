@@ -22,7 +22,7 @@ class ResetMapControl {
 
       if(rotator.value() == true) rotator().flip()
       
-      featureOfInterest = null
+      countyHandler.setCountyOfInterest(null)
       
       let threedeeButton = document.getElementById('threedee')
       threedeeButton.setAttribute("title", 'Extrude Map')
