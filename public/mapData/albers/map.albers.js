@@ -286,10 +286,7 @@ let rotator = rotatorMaker()
 const testResultMaker = () => {
   let tr
   return {
-    value: async () => {
-      tr = tr || await getJson(dataUrl)
-      return tr
-    }
+    value: async () => tr || await getJson(dataUrl)
   }
 }
 let getTestResults = testResultMaker()
@@ -373,11 +370,21 @@ map.on('load', async () => {
     }
   })
 
+  let matchingTestResultsFinder = (county) => {
+    return testResults.find((matchingTestResultsCounty) => {
+      if(matchingTestResultsCounty.geoid.toString() === county.properties.geoid.toString()) {
+        return matchingTestResultsCounty
+      }
+    })
+  }
+
   countiesGeoJson.features = countiesGeoJson.features.filter(county => {
-    if(testResults.find(testResult => testResult.geoid.toString() === county.properties.geoid.toString())) {
-      county.properties.height = testResult["pct_height"]
+    if(matchingTestResultsFinder(county)) {
       return county
     }
+  }).map((county) => {
+    county.properties.height = matchingTestResultsFinder(county)["pct_height"]
+    return county
   })
 
   map.addSource('counties-geojson', {
