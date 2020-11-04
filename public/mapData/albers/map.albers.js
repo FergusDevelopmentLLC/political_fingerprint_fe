@@ -1,6 +1,4 @@
 let countiesGeoJson
-let testResults
-let isRotating = false
 let featureOfInterest
 
 const getJson = async (url) => {
@@ -254,33 +252,65 @@ map.fitBounds([
   [mapBounds[2], mapBounds[3]]
 ])
 
-map.addControl(new mapboxgl.NavigationControl(), 'top-left')
-map.addControl(new ExtrudeMapControl(), 'top-right')
-map.addControl(new RotateMapControl(), 'top-right')
-map.addControl(new mapboxgl.FullscreenControl(), 'top-right')
-map.addControl(new ResetMapControl(), 'top-right')
-map.addControl(new LegendMapControl(), 'bottom-right')
-map.addControl(new LogoControl(), 'bottom-left')
+let navControl = new mapboxgl.NavigationControl()
+let extrudeControl = new ExtrudeMapControl()
+let fullscreenControl = new mapboxgl.FullscreenControl()
+let resetControl = new ResetMapControl()
+let rotateControl = new RotateMapControl()
+let logoControl = new LogoControl()
+let legendControl = new LegendMapControl()
+
+map.addControl(navControl, 'top-left')
+map.addControl(extrudeControl, 'top-right')
+map.addControl(fullscreenControl, 'top-right')
+map.addControl(resetControl, 'top-right')
+map.addControl(rotateControl, 'top-right')
+map.addControl(logoControl, 'bottom-left')
+map.addControl(legendControl, 'bottom-right')
 
 map.scrollZoom.disable()
-
-map.on('moveend', () => {
-  if (isRotating) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
-  featureOfInterest ? showPopup(featureOfInterest) : popup.remove()
-})
 
 map.on('click', (e) => {
   featureOfInterest = null
   popup.remove()
 })
 
+const rotatorMaker = () => {
+  let rotating = false
+  return {
+    flip: () => {
+      rotating = !rotating
+    },
+    value: () => {
+      return rotating
+    }
+  }
+}
+let rotator = rotatorMaker()
+
+const testResultMaker = () => {
+  let tr
+  return {
+    value: async () => {
+      tr = tr || await getJson(dataUrl)
+      return tr
+    }
+  }
+}
+let getTestResults = testResultMaker()
+
+map.on('moveend', () => {
+  if (rotator.value() == true) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
+  featureOfInterest ? showPopup(featureOfInterest) : popup.remove()
+})
+
 map.on('load', async () => {
 
-  testResults = await getJson(dataUrl)
+  testResults = await getTestResults.value()
   countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
 
-  let textCountDisplay = document.getElementById('test-results-count')
-  if(textCountDisplay) textCountDisplay.innerHTML = testResults.reduce((acc, obj) => { return acc + obj.tr_count }, 0)
+  let testCountDisplay = document.getElementById('test-results-count')
+  if(testCountDisplay) testCountDisplay.innerHTML = testResults.reduce((acc, obj) => { return acc + obj.tr_count }, 0)
 
   map.addSource('counties', {
     type: 'vector',

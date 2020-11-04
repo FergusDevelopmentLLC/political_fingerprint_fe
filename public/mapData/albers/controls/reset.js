@@ -20,7 +20,8 @@ class ResetMapControl {
 
     this.button.addEventListener('click', () => {
 
-      isRotating = false
+      if(rotator.value() == true) rotator().flip()
+      
       featureOfInterest = null
       
       let threedeeButton = document.getElementById('threedee')

@@ -19,8 +19,8 @@ class RotateMapControl {
     this.container.appendChild(this.button)
 
     this.button.addEventListener('click', () => {
-      isRotating = !isRotating
-      if (isRotating) {
+      rotator.flip()
+      if (rotator.value() == true) {
         rotateBy(this.map.getBearing())
         this.img.setAttribute("src", "https://res.cloudinary.com/fergusdev/image/upload/v1603384104/politipoint/icons/rotate-stop_louvui.png")
         this.button.setAttribute('title', 'Stop rotating')
