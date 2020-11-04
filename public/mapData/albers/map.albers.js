@@ -1,9 +1,7 @@
 let countiesGeoJson
 let featureOfInterest
 
-const getJson = async (url) => {
-  return await fetch(url).then(r => r.json())
-}
+const getJson = async url => await fetch(url).then(r => r.json())
 
 const getColorFor = (testResult) => {
   
