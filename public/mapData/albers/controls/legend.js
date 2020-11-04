@@ -3,7 +3,6 @@ class LegendMapControl {
     onAdd(map) {
     
       this.map = map
-  
       
       this.container = document.createElement('div')
       this.container.classList.add('legend-wrapper')

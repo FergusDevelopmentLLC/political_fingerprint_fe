@@ -1,5 +1,3 @@
-let countiesGeoJson
-
 const getJson = async url => await fetch(url).then(r => r.json())
 
 const getColorFor = (testResult) => {
@@ -14,8 +12,7 @@ const getColorFor = (testResult) => {
   return d3.color(getColor(avg)).formatHex()
 }
 
-const getCountyFillColors = (counties, testResults) => {
-
+const getCountyFillColors = (testResults) => {
   // we want to return an array like this to drive county color
   // let fake = [
   //   'match',
@@ -47,8 +44,7 @@ const getCountyFillColors = (counties, testResults) => {
 
 const rotateBy = (current) => {
   map.rotateTo( current + 5, { duration: 200, easing: (t) => { return t } })//add 5 degrees to the current bearing.
-  // source:
-  // https://gist.github.com/danswick/ceb7de7a29330b024f88
+  // source: https://gist.github.com/danswick/ceb7de7a29330b024f88
 }
 
 const scaleMap = () => {
@@ -89,14 +85,53 @@ const scaleMap = () => {
   
 }
 
-const countyOfInterestHandler = () => {
+const countiesHandler = () => {
   let countyOfInterest
+  let allCounties
   return {
+    getAllCounties: async () => {
+      if(allCounties) {
+        return allCounties
+      }
+      else {
+        allCounties = await getJson("mapData/albers/counties_albers.geojson")
+        return allCounties
+      }
+    },
     setCountyOfInterest: feature => countyOfInterest = feature,
     getCountyOfInterest: () => countyOfInterest
   }
 }
-let countyHandler = countyOfInterestHandler()
+let countyHandler = countiesHandler()
+
+const rotatorHandler = () => {
+  let rotating = false
+  return {
+    flip: () => {
+      rotating = !rotating
+    },
+    isRotating: () => {
+      return rotating
+    }
+  }
+}
+let rotator = rotatorHandler()
+
+const testResultHandler = () => {
+  let tr
+  return {
+    value: async () => {
+      if(tr) {
+        return tr
+      }
+      else {
+        tr = await getJson(dataUrl)
+        return tr
+      }
+    }
+  }
+}
+let getTestResults = testResultHandler()
 
 const handlePopup = () => {
 
@@ -270,29 +305,8 @@ map.on('click', (e) => {
   popup.remove()
 })
 
-const rotatorMaker = () => {
-  let rotating = false
-  return {
-    flip: () => {
-      rotating = !rotating
-    },
-    value: () => {
-      return rotating
-    }
-  }
-}
-let rotator = rotatorMaker()
-
-const testResultMaker = () => {
-  let tr
-  return {
-    value: async () => tr || await getJson(dataUrl)
-  }
-}
-let getTestResults = testResultMaker()
-
 map.on('moveend', () => {
-  if (rotator.value() == true) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
+  if (rotator.isRotating()) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
 
   if(countyHandler.getCountyOfInterest()) {
     showPopup(countyHandler.getCountyOfInterest())
@@ -306,11 +320,10 @@ map.on('moveend', () => {
 map.on('load', async () => {
 
   testResults = await getTestResults.value()
-  countiesGeoJson = await getJson("mapData/albers/counties_albers.geojson")
+  allCounties = await countyHandler.getAllCounties()
 
-  let testCountDisplay = document.getElementById('test-results-count')
-  if(testCountDisplay) testCountDisplay.innerHTML = testResults.reduce((acc, obj) => { return acc + obj.tr_count }, 0)
-
+  document.getElementById('test-results-count').innerHTML = testResults.reduce((acc, obj) => { return acc + obj.tr_count }, 0)
+  
   map.addSource('counties', {
     type: 'vector',
     url: 'mapbox://willcarter.czkf2uey'
@@ -342,7 +355,7 @@ map.on('load', async () => {
     'source-layer': 'counties_albers-ala1ut',
     'type': 'fill',
     'paint': {
-      'fill-color': getCountyFillColors(countiesGeoJson.features, testResults),
+      'fill-color': getCountyFillColors(testResults),
       'fill-outline-color': '#919191'
     }
   })
@@ -378,7 +391,7 @@ map.on('load', async () => {
     })
   }
 
-  countiesGeoJson.features = countiesGeoJson.features.filter(county => {
+  allCounties.features = allCounties.features.filter(county => {
     if(matchingTestResultsFinder(county)) {
       return county
     }
@@ -389,7 +402,7 @@ map.on('load', async () => {
 
   map.addSource('counties-geojson', {
     type: 'geojson',
-    data: countiesGeoJson
+    data: allCounties
   })
 
   map.addLayer({
@@ -398,7 +411,7 @@ map.on('load', async () => {
     'type': 'fill-extrusion',
     'paint': {
       'fill-extrusion-base': 0,
-      'fill-extrusion-color': getCountyFillColors(countiesGeoJson.features, testResults),
+      'fill-extrusion-color': getCountyFillColors(testResults),
       'fill-extrusion-height': [
         'interpolate', ['linear'],
         ['get', 'height'],

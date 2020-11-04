@@ -20,7 +20,7 @@ class ResetMapControl {
 
     this.button.addEventListener('click', () => {
 
-      if(rotator.value() == true) rotator().flip()
+      if(rotator.isRotating()) rotator.flip()
       
       countyHandler.setCountyOfInterest(null)
       
