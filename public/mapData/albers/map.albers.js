@@ -7,21 +7,12 @@ const getJson = async (url) => {
 
 const getColorFor = (testResult) => {
   
-  let total
-  let avg
+  const total = parseFloat(testResult['economic']) 
+              + parseFloat(testResult['diplomatic'])
+              + (100 - parseFloat(testResult['civil'])) 
+              + parseFloat(testResult['societal'])
 
-  if(testResult['diplomatic'] && parseFloat(testResult['societal'])) {
-    total = parseFloat(testResult['economic']) 
-          + parseFloat(testResult['diplomatic'])
-          + (100 - parseFloat(testResult['civil'])) 
-          + parseFloat(testResult['societal'])
-    avg = total / 4
-  }
-  else {
-    total = parseFloat(testResult['economic']) 
-          + (100 - parseFloat(testResult['civil'])) 
-    avg = total / 2
-  }
+  const avg = total / 4
   
   return d3.color(getColor(avg)).formatHex()
 }
