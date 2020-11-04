@@ -290,7 +290,14 @@ let getTestResults = testResultMaker()
 
 map.on('moveend', () => {
   if (rotator.value() == true) rotateBy(map.getBearing())// if isRotating flag is true, keep the map rotating
-  featureOfInterest ? showPopup(featureOfInterest) : popup.remove()
+
+  if(featureOfInterest) {
+    showPopup(featureOfInterest)
+  }
+  else {
+    popup.remove()
+  } 
+
 })
 
 map.on('load', async () => {
@@ -360,21 +367,12 @@ map.on('load', async () => {
     }
   })
 
-  let matchedCounties = []
-
-  for (county of countiesGeoJson.features) {
-    
-    let match = testResults.filter(testResult => {
-      return testResult.geoid.toString() === county.properties.geoid.toString()
-    })
-
-    if (match.length > 0) {
-      county.properties.height = match[0]["pct_height"]
-      matchedCounties.push (county)
+  countiesGeoJson.features = countiesGeoJson.features.filter(county => {
+    if(testResults.find(testResult => testResult.geoid.toString() === county.properties.geoid.toString())) {
+      county.properties.height = testResult["pct_height"]
+      return county
     }
-  }
-
-  countiesGeoJson.features = matchedCounties
+  })
 
   map.addSource('counties-geojson', {
     type: 'geojson',
