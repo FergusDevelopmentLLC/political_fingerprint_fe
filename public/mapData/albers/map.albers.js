@@ -27,19 +27,14 @@ const getCountyFillColors = (testResults) => {
   //   'purple',
   //   '#ccc'//other
   // ]
+  
+  let countyColorArray = testResults.reduce((acc, testResult) => {
+    acc = [...acc, testResult['geoid'], getColorFor(testResult)]
+    return acc
+  }, [])
+  
+  return ['match', ['get', 'geoid'], ...countyColorArray, '#ccc']
 
-  let returnArray = []
-  returnArray.push('match')
-  returnArray.push(['get', 'geoid'])
-
-  for (testResult of testResults) {
-    returnArray.push(testResult['geoid'])
-    returnArray.push(getColorFor(testResult))
-  }
-
-  returnArray.push('#ccc')
-
-  return returnArray
 }
 
 const rotateBy = (current) => {
