@@ -57,10 +57,9 @@
   <div id="target">
 
   </div>
+  <script src="js/defaults.js"></script>
   <script>
 
-    const url_prefix = 'http://138.68.23.63:3030'
-    
     const getIdeologies = async () => {
       return await fetch(`${url_prefix}/ideologies`).then(r => r.json())
     }
