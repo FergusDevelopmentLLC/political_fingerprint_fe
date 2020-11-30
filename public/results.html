@@ -295,10 +295,20 @@
       let leftPercent = (lineValue * 100) / 100
       let rightPercent = (100 - ((lineValue * 100) / 100))
 
+      console.log('leftPercent', leftPercent)
+      console.log('rightPercent', rightPercent)
+
       let leftPercentText = ''
       let rightPercentText = ''
-      if(leftPercent > rightPercent) leftPercentText = `${leftPercent.toFixed(0)}%`
-      if(rightPercent > leftPercent) rightPercentText = `${rightPercent.toFixed(0)}%`
+      
+      if(leftPercent.toFixed(0) > rightPercent.toFixed(0)) 
+        leftPercentText = `${leftPercent.toFixed(0)}%`
+      else if(rightPercent.toFixed(0) > leftPercent.toFixed(0))
+        rightPercentText = `${rightPercent.toFixed(0)}%`
+      else {
+        leftPercentText = `${leftPercent.toFixed(0)}%`
+        rightPercentText = `${rightPercent.toFixed(0)}%`
+      }
       
       let barSvg = 
           `<svg viewBox="0 0 ${width} ${height}">
@@ -339,14 +349,14 @@
   let v = params.get('v')
 
   document.getElementById('results-economic').style.display = 'block'
-  document.getElementById('results-civil').style.display = 'block'
   document.getElementById('results-diplomatic').style.display = 'block'
+  document.getElementById('results-civil').style.display = 'block'
   document.getElementById('results-societal').style.display = 'block'
   
   setBar('economic', e, true)
+  setBar('diplomatic', d, true)
   setBar('civil', g, false)
   setBar('societal', s, true)
-  setBar('diplomatic', d, true)
   
   populateIdeologyMatches(e, d, g, s)
 

@@ -70,9 +70,9 @@
       version = parseInt(params.get('qv'))
     }
 
-    // if(params.has('qn')) {
-    //   qn = parseInt(params.get('qn'))
-    // }
+    if(params.has('qn')) {
+      qn = parseInt(params.get('qn'))
+    }
 
     // turn off next button
     document.getElementById("next_button_on").style.display = 'none'
@@ -152,6 +152,11 @@
       scty += mult * questions[qn].effect.scty
       qn++;
       prev_answer = mult;
+
+      console.log('govt', govt)
+      console.log('dipl', dipl)
+      console.log('econ', econ)
+      console.log('scty', scty)
 
       removeAllSelectedButtonsFromClass('button-answer')
       document.getElementById(id).className += " button-selected"
