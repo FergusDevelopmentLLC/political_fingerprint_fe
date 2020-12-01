@@ -141,12 +141,17 @@
 
       let tr = {}
       tr.id = trId
-      tr.optIn = optIn
+      tr.opt_in = optIn
+
+      console.log('countyGeoId', countyGeoId)
+      console.log('newCountyGeoId', newCountyGeoId)
 
       if(countyGeoId !== newCountyGeoId)
-        tr.countyOverride = true
+        tr.county_override = true
 
-      tr.countyGeoId = newCountyGeoId
+      tr.county_geoid = newCountyGeoId
+
+      console.log('tr', tr)
 
       const options = {
         method: 'PATCH',
@@ -154,8 +159,10 @@
         body: JSON.stringify( { test_result: tr } )
       }
 
-      let apiUrl = `${url_prefix}/test_results_check`
+      let apiUrl = `${url_prefix}/test_results/${tr.id}`
       let test_result = await fetch(apiUrl, options).then(r => r.json())
+
+      console.log('test_result', test_result)
 
       let e = params.get('e')
       let d = params.get('d')
@@ -165,7 +172,7 @@
       
       let target = `results.html?e=${e}&d=${d}&g=${g}&s=${s}&v=${v}`
       
-      window.location.href = target
+      //window.location.href = target
 
     }
     
