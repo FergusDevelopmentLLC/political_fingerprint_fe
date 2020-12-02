@@ -29,7 +29,7 @@ const getCountyFillColors = (testResults) => {
   // ]
   
   let countyColorArray = testResults.reduce((acc, testResult) => {
-    acc = [...acc, testResult['geoid'], getColorFor(testResult)]
+    acc = [...acc, testResult['county_geoid'], getColorFor(testResult)]
     return acc
   }, [])
   
@@ -380,7 +380,7 @@ map.on('load', async () => {
 
   let matchingTestResultsFinder = (county) => {
     return testResults.find((matchingTestResultsCounty) => {
-      if(matchingTestResultsCounty.geoid.toString() === county.properties.geoid.toString()) {
+      if(matchingTestResultsCounty.county_geoid.toString() === county.properties.geoid.toString()) {
         return matchingTestResultsCounty
       }
     })
@@ -394,7 +394,7 @@ map.on('load', async () => {
     county.properties.height = matchingTestResultsFinder(county)["pct_height"]
     return county
   })
-
+  
   map.addSource('counties-geojson', {
     type: 'geojson',
     data: allCounties
