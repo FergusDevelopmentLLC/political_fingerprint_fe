@@ -165,7 +165,7 @@ const showPopup = countyOfInterest => {
 
   //let coordinates = [e.lngLat.lng, e.lngLat.lat]
   let coordinates = [countyOfInterest.properties.albers_x, countyOfInterest.properties.albers_y]
-  let match = testResults.find(tr => tr.geoid === countyOfInterest.properties.geoid)
+  let match = testResults.find(tr => tr.county_geoid === countyOfInterest.properties.geoid)
 
   let tooltip_msg = ''
   tooltip_msg += `<div class="popup-header"><strong>${countyOfInterest.properties.name} County, ${countyOfInterest.properties.state_abbrev}</strong></div>`
